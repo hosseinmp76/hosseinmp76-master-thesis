@@ -84,14 +84,24 @@ BoldItalicFont=*BdIt,
 
 
 \newtheorem{قضیه}{قضیه‌ی}[chapter]
-\newtheorem{لم}[قضیه]{لم}
+\newtheorem{lemma}[قضیه]{لم}
 \newtheorem{ادعا}[قضیه]{ادعای}
 \newtheorem{مشاهده}[قضیه]{مشاهده‌ی}
 \newtheorem{نتیجه}[قضیه]{نتیجه‌ی}
+\newtheorem{note}[قضیه]{یادداشت}
+\newtheorem{corollary}[قضیه]{نتیجه‌ی}
 \newtheorem{مسئله}{مسئله‌ی}[chapter]
 \newtheorem{تعریف}{تعریف}[chapter]
+\newtheorem{definition}{تعریف}[chapter]
 \newtheorem{مثال}{مثال}[chapter]
+\newtheorem{example}{مثال}[chapter]
+\newtheorem{remark}{
+	ملاحظه
+}[chapter]
 
+\newenvironment{proof}
+	{\begin{trivlist}\item[\hskip\labelsep{\em اثبات.}]}
+	{\leavevmode\unskip\nobreak\quad\hspace*{\fill}{\ensuremath{{\square}}}\end{trivlist}}
 
 \newenvironment{اثبات}
 	{\begin{trivlist}\item[\hskip\labelsep{\em اثبات.}]}
@@ -113,7 +123,7 @@ BoldItalicFont=*BdIt,
 
 % -------------------- Commands --------------------
 
-
+\newcommand{\lrfootnote}[1]{\footnote{\lr{#1}}}
 \newcommand{\IN}{\ensuremath{\mathbb{N}}} 
 \newcommand{\IZ}{\ensuremath{\mathbb{Z}}} 
 \newcommand{\IQ}{\ensuremath{\mathbb{Q}}} 
@@ -148,7 +158,6 @@ BoldItalicFont=*BdIt,
 
 \newcommand{\REM}[1]{}
 \newcommand{\mycood}[1]{\lr{\tt #1}}
-\newcommand{\myfootnote}[1]{\footnote{\lr{#1}}}
 
 
 

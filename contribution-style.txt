@@ -1,0 +1,1 @@
+use \transf for foot note english word of the translated word and the add it to dictionary

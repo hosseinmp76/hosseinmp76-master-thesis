@@ -1,19 +1,24 @@
-مقدمه: مسئله ریشه هاش. کارهای قبلی کاربرد ها اهمیت ها. تاریخچه
+مقدمه: مسئله ریشه هاش. کارهای قبلی کاربرد ها اهمیت ها. تاریخچه. بخشی شبیه مقدمه کتاب یعنی شامل تعدادی اثبات کوتاه و مثال.
 5
-بخشی شبیه مقدمه کتاب یعنی شامل تعدادی اثبات کوتاه و مثال.
-پیش نیازها: جبر خطی نظریه گراف اطلاعات کدگذاری روش های احتمالاتی
-7
+
+پیش نیازها: جبر خطی نظریه گراف اطلاعات کدگذاری روش های احتمالاتی 7
+
+
 توضیح مسئله: فرمول بندی و صورت دقیق.
 45
 Pliable Index Coding, Siddhartha Brahma, Christina Fragouli
 A Deterministic Algorithm for Pliable Index Coding
 A Polynomial-Time Algorithm for Pliable Index Coding
+
+
 انواع مختلف مسئله:
 10
 Private Pliable Index Coding
 Decentralized Pliable Index Coding
 very Pliable Index Coding
 Preferential Pliable Index Coding
+
+
 نتایج:کار خودمون و مقالات جدید. درباره ی دوئال.
 10
 
