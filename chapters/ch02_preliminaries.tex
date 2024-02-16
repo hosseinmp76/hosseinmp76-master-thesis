@@ -206,3 +206,16 @@ Because $X \rightarrow Y \rightarrow \tilde{X}$ is a Markov chain, we have $I(X 
 $$
 H(X \mid Y) \leq H_b(e)+P(e) \log (|\mathcal{X}|-1)
 $$
+
+
+\section{Linear algebra}
+For a matrix $M$ the $span(M)$ is the row span of the matrix $M$.\\
+Let $V$ be a subspace of $\mathbb{F}^l$. The co-sets of $V$ are the shifts of $V$ by a vector $b\in\mathbb{F}^l$. The co-sets of a subspace are also called Affine subspaces. In mathematical notation, if $W$ is a co-set $V$ then $  \forall a, b \in W: a - b \in V$.
+For a matrix $M$, we define $ker(M)$ as the kernel(null space) of $M$. For a vector space $W$, define $W^\bot$ as the set of all vectors $v\in \mathbb{F}^n$ such that for all $w\in W$ we have $v^T.w=0$. $W^\bot$ is also called the orthogonal complement of $W$ with respect to the canonical inner product. It is well-known that for every finite dimensional vector space $W$ we have: $dim(W) + dim(W^\bot) = n$.
+\\
+For every one-to-one linear function $h$, the inverse function $h^{-1}$ is a linear function too.
+
+\section{Graph Theory:}
+A graph $G$ is a pair $(V, E)$ of a finite set $V$, called the vertex set and a set $E$ of 2-tuple elements of $V$ called the edge set. For a vertex $v\in V$, the set of all other vertices $u$ such that $\{u,v\}\in E$ are called the neighbors of $v$. We denote the set of the neighbors of $v$ by $N(v)$. A graph $G$ is called bipartite with parts $A$ and $B$ when $V$ is the disjoint union of $A$ and $B$ and each edge has exactly one vertex from each part. For a given bipartite graph $G$ with parts $B, C$ and vertices $B = \{B_1, \ldots, b_m\}, C = \{c_1, \ldots, c_n\}$ we call $B$ the ``data'' part and $C$ the ``client'' part. We assign a variable $x_i$ to each $b_i$ vertex. Each $x_i$ is supposed to take a value from a finite field $\mathbb{F}$.  
+%In other words $S_i$ is the set of indexes in the message tuple that client $i$ knows.
+For a vector $\mathcal{V} = (v_1, \ldots, v_m)$ and a set $S = \{s_1, \ldots, s_k\} \subseteq [m]$, we define $\mathcal{V} [S]$ as a $k$-coordinates vector that consists of $k$ coordinates of $V$ with indices from $S$, that is  $\mathcal{V} [S] = (v_{s_1}, \ldots, v_{s_k})$. Also we define $\mathcal{V} [i] := \mathcal{V} [{\{i\}}]$
