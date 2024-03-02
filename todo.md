@@ -1,8 +1,8 @@
 chapters:
-- [ ] 1 Intro: 5p 
+- [x] 1 Intro: 5p 
   - [x] preface
-  - [ ] defination, capacity region
-  - [ ] history
+  - [x] defination, capacity region
+  - [x] history
   - [x] thesis structure
 - [ ] 2 preliminires: 7
   - LA
@@ -15,14 +15,16 @@ chapters:
   - A Deterministic Algorithm for Pliable Index Coding
   - A Polynomial-Time Algorithm for Pliable Index Coding
 
-- [ ] 4 varients:10
-  - [ ] Private Pliable Index Coding
-  - [ ] Decentralized Pliable Index Coding
-  - [ ] very Pliable Index CodingCoding
-  - [ ] Preferential Pliable Index Coding
+- [x] 4 varients:10
+  - [x] Private Pliable Index Coding
+  - [x] Decentralized Pliable Index Coding
+  - [x] very Pliable Index CodingCoding
+  - [x] Preferential Pliable Index Coding
+  
 - [ ] 5 results: 10
   - [ ] arya paper
   - [ ] our work
+
 -  [ ] 6 relations:5
   - [ ] fatemeh book: Index Coding, Distributed Storage, and Guessing Games
   - [ ] On the Index Coding Problem and its Relation to Network Coding and Matroid Theory
