@@ -12,8 +12,19 @@
     #1\lrfootnote{#2}
 }
 
+\newcommand{\myfootcite}[1]{\lrfootnote{\cite{#1}}}
+
 \newcommand{\code}[1]{\texttt{#1}}
 
 \newcommand{\smin}{s_{\rm min}} %min in consecutive
 \newcommand{\smax}{s_{\rm max}} %max in consecutive
 \newcommand{\cardi}{t} %desired message cardinality
+
+
+%\DeclareFixedFootnote{\arya}{ \protect\lr{\protect\cite{arya}}}
+
+\newcommand{\minrank}{\mathrm{minrank}}
+\DeclareMathOperator{\rank}{rank}
+\newcommand\fq{{\mathbb{F}_q}}
+\newcommand{\rdss}{\mathrm{RDSS}}
+\newcommand{\indx}{\mathrm{INDEX}}

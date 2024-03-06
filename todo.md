@@ -4,12 +4,14 @@ chapters:
   - [x] defination, capacity region
   - [x] history
   - [x] thesis structure
+
 - [ ] 2 preliminires: 7
   - LA
   - graph
   - coding
   - information
   - probablistic method
+  
 - [ ] 3 liturture: 45
   - Pliable Index Coding, Siddhartha Brahma, Christina Fragouli
   - A Deterministic Algorithm for Pliable Index Coding
@@ -22,19 +24,20 @@ chapters:
   - [x] Preferential Pliable Index Coding
   
 - [ ] 5 results: 10
-  - [ ] arya paper
+  - [x] arya paper
+  - [ ] fatemeh book Distributed Servers 
   - [ ] our work
 
 -  [ ] 6 relations:5
   - [ ] fatemeh book: Index Coding, Distributed Storage, and Guessing Games
   - [ ] On the Index Coding Problem and its Relation to Network Coding and Matroid Theory
   - [ ] A Pliable Index Coding Approach to Data Shuffling
+
 -  [ ] 7 future:3
   - [ ] Conclusion
   - [ ] Further Reading
       - [ ]  Beyond Multiple Unicast
       - [ ]  Noisy Broadcast
-      - [ ]  Distributed Servers
       - [ ]  Security and Privacy
 
 در هر فصل ابتدا به پاراگراف میاد که میگه این فصل پیرامون چیه

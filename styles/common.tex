@@ -3,7 +3,7 @@
 %  Common Styles and Formattings
 % -------------------------------------------------------
 %\usepackage{natbib}
-\usepackage{amssymb,amsmath}
+\usepackage{amssymb,amsmath, amsthm}
 \usepackage[colorlinks,linkcolor=blue,citecolor=blue]{hyperref}
 \usepackage[usenames,dvipsnames]{pstricks}
 \usepackage{graphicx,subfigure,wrapfig}
@@ -36,6 +36,9 @@
 \usepackage[localise=on,extrafootnotefeatures]{xepersian}
 \usepackage[noend]{algpseudocode}
 \input{styles/alg-fa}
+
+\usepackage{fixfoot}
+
 
 %\usepackage{mathrsfs}
 \usepackage[scr=rsfs]{mathalpha} % invoke as \mathscr
@@ -96,6 +99,9 @@ BoldItalicFont=*BdIt,
 
 
 \newtheorem{قضیه}{قضیه‌ی}[chapter]
+\newtheorem{recal}{
+یادآوری
+}[chapter]
 \newtheorem{theorem}{قضیه‌ی}[chapter]
 \newtheorem{لم}[قضیه]{لم}
 \newtheorem{lemma}[قضیه]{لم}
@@ -107,15 +113,21 @@ BoldItalicFont=*BdIt,
 \newtheorem{مسئله}{مسئله‌ی}[chapter]
 \newtheorem{تعریف}{تعریف}[chapter]
 \newtheorem{مثال}{مثال}[chapter]
-\newtheorem{example}{مثال}[chapter]
+%\newtheorem{example}{مثال}[chapter]
+\newtheorem{example}{مثال}
+\AtBeginEnvironment{example}{%
+	\pushQED{\qed}\renewcommand{\qedsymbol}{$\triangle$}%
+}
+\AtEndEnvironment{example}{\popQED\endexample}
+
 \newtheorem{definition}{تعریف}[chapter]
 \newtheorem{remark}{
 	ملاحظه
 }[chapter]
 
-\newenvironment{proof}
-{\begin{trivlist}\item[\hskip\labelsep{\em اثبات.}]}
-{\leavevmode\unskip\nobreak\quad\hspace*{\fill}{\ensuremath{{\square}}}\end{trivlist}}
+%\newenvironment{proof}
+%{\begin{trivlist}\item[\hskip\labelsep{\em اثبات.}]}
+%{\leavevmode\unskip\nobreak\quad\hspace*{\fill}{\ensuremath{{\square}}}\end{trivlist}}
 
 \newenvironment{اثبات}
 {\begin{trivlist}\item[\hskip\labelsep{\em اثبات.}]}
