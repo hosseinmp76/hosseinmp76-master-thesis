@@ -1,4 +1,6 @@
-\chapter{کارهای پیشین}
+\chapter{
+نتایج جدید
+}
 \section{مقدمه}
 در این فصل ابتدا به بررسی مقاله
 \cite{arya}
@@ -444,7 +446,9 @@ $\mathbb{F}_q$
     ما یک جدول ممکن خطی داریم و تنها هم‌مجموعه‌ای که با هم
     $\mathbb{F}_2^3$
     را پوشش می‌دهند:
-
+       \begin{table}
+	\begin{minipage}{0.49\textwidth}
+	\centering
     \definecolor{myblue}{RGB}{80,80,160}
     \definecolor{mygreen}{RGB}{80,160,80}
     \begin{tikzpicture}[->, >=stealth, auto, semithick]
@@ -477,36 +481,32 @@ $\mathbb{F}_q$
             \node[fit=(B1) (B2) (B3), draw=green, fill=green!10, rounded corners] {};
         \end{scope}
     \end{tikzpicture}
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|c|}
-            \hline
-            000 \\
-            \hline
-            001 \\
-            \hline
-        \end{tabular}
-        \caption*{$T_1$}
-    \end{table}
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|c|}
-            \hline
-            000  \\
-            011   \\
-            110  \\
-            101   \\
-            \hline
-        \end{tabular}
-        \caption*{$T_2$}
-    \end{table}
-%     \begin{minipage}{0.45\textwidth}
-%         \centering
-
-% \end{minipage}
+       \captionof{figure}{}
+       	       \end{minipage}
+       \begin{minipage}{0.25\textwidth}
+			        		\begin{tabular}{|c|}
+			        			\hline
+			        			000 \\
+			        			\hline
+			        			001 \\
+			        			\hline
+			        		\end{tabular}
+			        		\captionof{table}{$T_1$}
+			        	\end{minipage}
+			             \begin{minipage}{0.25\textwidth}
+	 		       		\begin{tabular}{|c|}
+	 		       			\hline
+	 		       			000  \\
+	 		       			011   \\
+	 		       			110  \\
+	 		       			101   \\
+	 		       			\hline
+	 		       		\end{tabular}
+	 		       	\captionof{table}{$T_2$}
+	 		       	       				        	\end{minipage}
+	 		       	\end{table}
 
 \end{example}
-
 
 \begin{lemma}
     فرض کنید $G$ یک گراف دوبخشی روی اجزاء $C, B$ باشد. اگر $(En, I, \overrightarrow{f})$ یک کد نمایه‌ای قابل انعطاف خطی برای $G$ باشد، آنگاه یک LPSIC $(W, J, \overrightarrow{g})$ وجود دارد به طوری که $W  = ker(En)$

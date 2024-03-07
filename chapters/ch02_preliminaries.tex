@@ -36,12 +36,7 @@ $$H(x) = \log(n)$$
 در واقع آنتروپی در این حالت نشان دهنده‌ی تعداد بیت لازم برای این است که به فرد دیگری اطلاع دهیم سمپل متغیر تصادفی کدام مقدار بوده است. در واقع بعد از سمپل گرفتن از متغیر تصادفی سوال شما این خواهد بود که کدام عضو مجموعه‌ی ساپورت آمده است و برای پاسخ به این سوال من باید
 $\log(n)$
 به شما داده بدهم.
-
-اما اطلاعات چیست؟ اطلاعات چیز عجیبی نیست. هر نوع داده ای را شامل میشود. بهتر است بپرسیم چه اطلاعاتی ارزشمند است. به مثال تاس و سکه برگردیم. اگر من هم خروجی تاس را بدانم و هم خروجی سکه برای دانستن کدام یک بیشتر حاظر اید پول بدهید؟ با احتمال یک دوم میتوانید گزینه درست را برای سکه حدس بزنید ولی برای تاس این به یک ششم تقلیل میابد.
-
-در واقع ارزش اطلاعات همان میزان ابهامی است که تا قبل از دانستنش داشتیم. در حالت متغیر تصادفی یکنواخت هر چه مجموعه ساپورت بزرگتر باشد ارزش اطلاعات بیشتر است. میتوان این گونه دید که میزان اطلاعاتی که دانستن خروجی سمپل گرفته شده از تاس بیشتر از دانستن داده مشابه برای سکه است. در واقع میتوان به جای آزمایش سکه تاسی انداخت و زوجیت خروجی را به عنوان رو و زیر آمدن سکه در نظر گرفت و علاوه بر آن این داده را هم نزد خود محفوظ داشت که کدام یک از اعداد زوج یا فرد آمده است.
-
-با این توصیفات میدانیم که آنتروپی برای میزان ارزش و یا حجم داده‌ای که یک داده دارد تعریف میشود. برای متغیر تصادفی
+برای متغیر تصادفی
 $X$
 با محموعه‌ی ساپورت
 $[n]$
@@ -51,23 +46,15 @@ $i$
 $p_i$
 میگیرد میزان اطلاعات یا آنتروپی را به این صورت تعریف میکنیم:
 $$H(X) = \sum_{i = 1}^{n} p_i \log(\frac{1}{n})$$
-تمرین: نشان دهید این در حالت متغیر تصادفی یکنواخت با تعریف قبلی برابر است.
 
-پرسش: چه هنگام مقدار آنتروپی یک متغیر تصادفی با مجموعه‌ی ساپورت
-$n$
-عضوی بیشینه میشود؟
-
-برای پاسخ به این سوال اول به شهود خود نگاه میکنیم. کدام یک از این دو سکه باید آنتروپی بالاتری داشته باشد: سکه ای سالم یا سکه ای که با احتمال
-$90$
-درصد شیر و با احتمال
-$10$
-درصد خط می‌اید؟
-
-گزاره: بیشینه آنتروپی برای متغیر تصادفی با
+\begin{theorem}
+بیشینه آنتروپی برای متغیر تصادفی با
 $n$
 مقدار زمانی رخ میدهد که
 $$p_1 = p_2 = \dots p_n = \frac{1}{n}$$
-برهان: برای این اثبات به نامساوی سنسن نیاز داریم: برای تابع محدب
+\end{theorem}
+\begin{proof}
+برای این اثبات به نامساوی سنسن نیاز داریم: برای تابع محدب
 $f$
 و نقاط
 $a_1, a_2, \dots, a_n$
@@ -79,11 +66,12 @@ $\sum_{i = 1}^{n} p_i = 1$
 $$f(\sum_{i = 1}^{n} p_i a_i) \leq \sum_{i = 1}^{n} p_i f(a_i)$$
 اگر تابع
 $- log$
-را که محدب است در بالا قرار دهیم مسئله حل میشود.(تمرین: این کار را انجام دهید)
+را که محدب است در بالا قرار دهیم مسئله حل میشود
+\end{proof}
 
 \subsection{گزاره‌های ابتدایی}
-
-قضیه: اگر
+\begin{theorem}
+اگر
 $X$
 و
 $Y$
@@ -96,40 +84,48 @@ $Z = (X, Y)$
     H(W) &= H(X) \\
     H(Z) &= H(X) + H(Y)
 \end{align*}
-برهان: تعریف را بنویسید و بسط دهید.
+\end{theorem}
+\begin{proof}
+	با توجه به تمرین خواهیم داشت:
 $$H(Z) = \sum_{X = x, Y = y} P(X = x, Y = y) \log(\frac{1}{ P(X = x, Y = y)})$$
-
-تمرین: بقیه اثبات را بنویسید.
-تعریف:
+بقیه اثبات سر راست است.
+\end{proof}
+\begin{definition}
 $$H(X | Y = y) := \sum_{X = x} P(X = x| Y = y) \log(\frac{1}{P(X = x| Y = y)})$$
 $$H(X|Y) := \sum_{Y = y} P(Y = y) H(X | Y = y)$$
+\end{definition}
 
-قضیه: اگر
+\begin{theorem}
+اگر
 $X$
 و
 $Y$
 مستقل باشند:
 $$H(X|Y) = H(X)$$
-قضیه:
+\end{theorem}
+\begin{theorem}
 $$H(X) \geq 0$$
 $$Z = (X, Y) \rightarrow H(X, Y) := H(Z) \rightarrow H(X, Y) = H(Y) + H(X|Y) $$
 $$H(X_1, X_2, \dots X_n) = H(X_1) + H(X_2 | X_1) + \dots + H(X_n | X_1 X_2 \dots X_n)$$
 $$H(X_1, X_2, \dots X_n) \leq \sum_{i = 1}^{n} H(X_i)$$
-
+\end{theorem}
 \subsection{اطلاعات متقابل}
-تعریف: آنتروپی نسبی/فاصله کولبک لیبلر: برای دو تابع احتمال به شکل زیر تعریف میشود:
+\begin{definition}
+آنتروپی نسبی/فاصله کولبک لیبلر: برای دو تابع احتمال به شکل زیر تعریف میشود:
 $$
 D(p||q) = \sum_{x \in \mathcal{X}} p(x) \log(\dfrac{p(x)}{q(x)})
 $$
-که برابر مقدار زیر هم هست:
+که برابر است با:
 $$E_p \log(\dfrac{p(X)}{q(X)})$$
-
-قضیه: آنتروپی نسبی همیشه نامنفی است و برابر صفر است اگر و تنها اگر
+\end{definition}
+\begin{theorem}
+آنتروپی نسبی همیشه نامنفی است و برابر صفر است اگر و تنها اگر
 $p = q$
+\end{theorem}
+این تابع واقعا تابع فاصله ریاضیاتی نیست ولی تفاوت بین دو توزیع را شبیه سازی می‌کند.
 
-نکته کنکوری: این تابع واقعا تابع فاصله ریاضیاتی نیست ولی حس تفاوت بین دو توزیع را به ما میدهد.
-
-تعریف: اطلاعات متفابل:
+\begin{definition}
+اطلاعات متفابل:
 $$I(X; Y) := \sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} p(x, y) \log(\dfrac{p(x, y)}{p(x)p(y)})$$
 که برابر است با:
 \begin{align*}
@@ -137,31 +133,24 @@ $$I(X; Y) := \sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} p(x, y) \log(\dfr
     \\
     &= E_{p(x, y)} \log(\dfrac{p(X, Y)}{p(X)p(Y)})
 \end{align*}
-
-در واقع اطلاعات متقابل به ما میگوید
-
-نامساوی پردازش داده:
-
-
+\end{definition}
 نامساوی فانو: فرض کنید با دانستن مقدار یک سمپل از متغیر تصادفی
 $Y$
 مقدار سمپل متغیر تصادفی
 $X$
 که با
 $Y$
-همبسته است را حدس بزنیم. چقدر می توانیم دقیق شویم و یا چقدر خطا خواهیم داشت؟ به طبع اگر این دو متغیر از هم مستقل باشند هیچ حدس ارزشمندی نمی توانیم بزنیم. میدانیم که
+همبسته است را حدس بزنیم. میدانیم که
 $H(X|Y) = 0$
 اگر و تنها اگر
 $X$
 تابعی از
 $Y$
-باشد. شهود ما میگوید که هر چقدر که این مقدار کمتر باشد حدس ما درست تر خواهد بود. در واقع هر چه این مقدار بزرگ تر باشد میدار ابهام بیشتری در دل
-$X$
-هست که با دانستن
-$Y$
-مبهم میماند.
-
-قضیه فانو: فرض کنید
+باشد. 
+\begin{theorem}[
+	فانو
+	]
+فرض کنید
 $P(x, y)$
 تابع احتمال توام دو متغیر تصادفی باشد که
 $X$
@@ -173,68 +162,139 @@ $Y = f(X)$
 $$P_e := P(X \neq \hat{X})$$
 خواهیم داشت:
 $$H(X|Y) \leq H_b(P_e) + P_e \log(\mathcal{X} - 1)$$
-
-
-مشاهده: نامساوی فانو برای ما یک حد پایین میاید که برای یک
+\end{theorem}
+\begin{remark}
+نامساوی فانو برای ما یک حد پایین میاید که برای یک
 $f$
 داده شده(یک تخمین از
 $X$
-/ یک مشاهده نویزدار از
+ یک مشاهده نویزدار از
 $X$
 ) هیچ تابع
 $G:\mathcal{Y} \rightarrow \mathcal{X}$
 ای(یک تخمین برای مقدار
 $X$
 ) وجود ندارد که بهتر از این حد عمل کند و به بیان دیگر همیشه حداقل این مقدار خطا خواهیم داشت.
+\end{remark}
+\section{جبرخطی}
+\begin{definition}
+	برای مجموعه‌ی بردار‌های
+	$S$
+		\transf{
+		پوشش خطی
+	}{span}
+	ترکیب خطی اعضای آن است یعنی:
+	$span(S) = \{ \sum\limits_{v \in S} \lambda v\}$
+	
+	برای ماتریس
+	$M$
+آن را پوشش خطی سطرهای 
+$M$
+می‌گیریم.
 
-اثبات:
-متغیر تصادفی شاخص زیر را تعریف میکنیم:
+\begin{definition}[
+	همدسته
+	]
+	برای یک زیر فضای برداری
+	$V \subseteq \mathbb{F}^l$
+	به
+	$W$
+	هم‌دسته‌‌‌ی
+	$V$
+	می‌گوییم اگر یک بردار
+	$x \in \mathbb{F}^l$
+	وجود داشته باشد که
+	$$W = V + x = \{w: w \in \mathbb{F}^l, \exists v \in V, w = v + x\}$$
+	هم‌دسته‌های یک زیرفضای برداری،
+	\transf{
+	زیرفضاهای آفین
+	}{
+	Affine subspaces
+	}
+	گفته می‌شود.
+\end{definition}
+\begin{definition}[
+	هسته
+	]
+	\transf{
+	هسته
+	}{kernel}
+	ماتریس
+	$M$
+	به صورت زیر تعریف می‌شود:
+	$$ker(M) = \{v: Mv = 0\}$$
+\end{definition}
+برای فضای برداری
+$W$
+فضای عمود یا
+\transf{
+مکمل عمود
+}{orthogonal complement}
+ را به صورت
+$W^\bot = \{v: \forall w \in W, v^T.w = 0\}$
+تعریف می‌کنیم.
 
-$$
-E:= \begin{cases}1 & \text { if } \tilde{X} \neq X, \\ 0 & \text { if } \tilde{X}=X .\end{cases}
-$$
-با استفاده از قائده زنجیری آنتروپی میتوان
-$ H(E, X \mid \tilde{X})$
-را به دو شکل نوشت:
-$$
-\begin{aligned}
-    H(E, X \mid \tilde{X}) &=H(X \mid \tilde{X})+\underbrace{H(E \mid X, \tilde{X})}_{=0} \\
-    &=H(E \mid \tilde{X})+H(X \mid E, \tilde{X})
-\end{aligned}
-$$
-Equating the two
-$$
-H(X \mid \tilde{X})=H(E \mid \tilde{X})+H(X \mid E, \tilde{X})
-$$
-Expanding the right most term, $H(X \mid E, \tilde{X})$
-$$
-\begin{aligned}
-    H(X \mid E, \tilde{X}) &=\underbrace{H(X \mid E=0, \tilde{X})}_{=0} \cdot P(E=0)+H(X \mid E=1, \tilde{X}) \cdot \underbrace{P(E=1)}_{=P(e)} \\
-    &=H(X \mid E=1, \tilde{X}) \cdot P(e)
-\end{aligned}
-$$
-Since $E=0$ means $X=\tilde{X}$; being given the value of $\tilde{X}$ allows us to know the value of $X$ with certainty. This makes the term $H(X \mid E=0, \tilde{X})=0$. On the other hand, $E=1$ means that $\tilde{X} \neq X$, hence given the value of $\tilde{X}$, we can narrow down $X$ to one of $|\mathcal{X}|-1$ different values, allowing us to upper bound the conditional entropy $H(X \mid E=1, \tilde{X}) \leq \log (|\mathcal{X}|-1)$. Hence
-$$
-H(X \mid E, \tilde{X}) \leq \log (|\mathcal{X}|-1) \cdot P(e)
-$$
-The other term, $H(E \mid \tilde{X}) \leq H(E)$, because conditioning reduces entropy. Because of the way $E$ is defined, $H(E)=H_b(e)$, meaning that $H(E \mid \tilde{X}) \leq H_b(e)$. Putting it all together,
-$$
-H(X \mid \tilde{X}) \leq H_b(e)+P(e) \log (|\mathcal{X}|-1)
-$$
-Because $X \rightarrow Y \rightarrow \tilde{X}$ is a Markov chain, we have $I(X ; \tilde{X}) \leq I(X ; Y)$ by the data processing inequality, and hence $H(X \mid \tilde{X}) \geq H(X \mid Y)$, giving us
-$$
-H(X \mid Y) \leq H_b(e)+P(e) \log (|\mathcal{X}|-1)
-$$
+\begin{theorem}
+	برای هر فضای برداری متناهی داریم:
+	$$dim(W) + dim(W^T) = n$$
+\end{theorem}
+\begin{remark}
+	برای هر تابع یک‌به‌یک خطی مانند
+	$h$
+	تابع وارون 
+	$h^{-1}$
+	نیز خطی است:
+\end{remark}
 
+برای بردار
+$\mathcal{V} = (v_1, \ldots, v_m)$ 
+و مجموعه
+$S = \{s_1, \ldots, s_k\} \subseteq [m]$
+بردار
+$\mathcal{V} [S]$ 
+با 
+$k$
+درایه را به این صورت تعریف میکنیم که شامل 
+$k$ 
+درایه از
+$V$ 
+با اندیس های
+$S$, 
+است یعنی:
+$\mathcal{V} [S] = (v_{s_1}, \ldots, v_{s_k})$
+همچنین تعریف میکنیم:
+$\mathcal{V} [i] := \mathcal{V} [{\{i\}}]$
 
-\section{Linear algebra}
-For a matrix $M$ the $span(M)$ is the row span of the matrix $M$.\\
-Let $V$ be a subspace of $\mathbb{F}^l$. The co-sets of $V$ are the shifts of $V$ by a vector $b\in\mathbb{F}^l$. The co-sets of a subspace are also called Affine subspaces. In mathematical notation, if $W$ is a co-set $V$ then $  \forall a, b \in W: a - b \in V$.
-For a matrix $M$, we define $ker(M)$ as the kernel(null space) of $M$. For a vector space $W$, define $W^\bot$ as the set of all vectors $v\in \mathbb{F}^n$ such that for all $w\in W$ we have $v^T.w=0$. $W^\bot$ is also called the orthogonal complement of $W$ with respect to the canonical inner product. It is well-known that for every finite dimensional vector space $W$ we have: $dim(W) + dim(W^\bot) = n$.
-\\
-For every one-to-one linear function $h$, the inverse function $h^{-1}$ is a linear function too.
+\section{نظریه گراف}
+\begin{definition}
+یک گراف مانند
+$G$
+یک دو تایی مرتب
+$(V, E)$
+است به طوری که
+$E = \{e: e = (x, y), x, y \in V$.
+ $V$
+را مجموعه‌ی رئوس و
+$E$
+را مجموعه‌ی یال‌ها می نامیم.
 
-\section{Graph Theory:}
-A graph $G$ is a pair $(V, E)$ of a finite set $V$, called the vertex set and a set $E$ of 2-tuple elements of $V$ called the edge set. For a vertex $v\in V$, the set of all other vertices $u$ such that $\{u,v\}\in E$ are called the neighbors of $v$. We denote the set of the neighbors of $v$ by $N(v)$. A graph $G$ is called bipartite with parts $A$ and $B$ when $V$ is the disjoint union of $A$ and $B$ and each edge has exactly one vertex from each part. For a given bipartite graph $G$ with parts $B, C$ and vertices $B = \{B_1, \ldots, b_m\}, C = \{c_1, \ldots, c_n\}$ we call $B$ the ``data'' part and $C$ the ``client'' part. We assign a variable $x_i$ to each $b_i$ vertex. Each $x_i$ is supposed to take a value from a finite field $\mathbb{F}$.  
-%In other words $S_i$ is the set of indexes in the message tuple that client $i$ knows.
-For a vector $\mathcal{V} = (v_1, \ldots, v_m)$ and a set $S = \{s_1, \ldots, s_k\} \subseteq [m]$, we define $\mathcal{V} [S]$ as a $k$-coordinates vector that consists of $k$ coordinates of $V$ with indices from $S$, that is  $\mathcal{V} [S] = (v_{s_1}, \ldots, v_{s_k})$. Also we define $\mathcal{V} [i] := \mathcal{V} [{\{i\}}]$
+برای راس
+$v\in V$
+به مجمو‌عه‌ی تمام رئوسی مانند
+  $u$ 
+  که
+  $\{u,v\}\in E$ 
+  همسایه‌های 
+  $v$
+  می‌گوییم.
+  و با
+  $N(v)$
+  نشانشان می‌دهیم.
+  
+به گراف
+$G$
+دو بخشی می‌گوییم اگر راس‌های آن را بتوان به دو مجموعه 
+$A, B$
+افراز کرد دو سر هیچ یالی در یک مجموعه نباشد.
+\end{definition}
+
