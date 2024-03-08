@@ -16,14 +16,27 @@ jobs:
 #        with:
 #          name: PDF
 #          path: thesis.pdf
+      - name: Get commit message
+        id: commit_message
+        run: echo "::set-output name=message::$(git log --format=%B -n 1 ${{ github.sha }})"
+
+      - name: Get commit SHA
+        id: commit_sha
+        run: echo "::set-output name=sha::${GITHUB_SHA::8}"
+
+      - name: Get current date and time
+        id: current_datetime
+        run: echo "::set-output name=datetime::$(date +'%Y%m%d-%H%M%S')"
       - name: CreateRelease
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: Release-$(date +'%Y-%m-%d')
-          release_name: Release-$(date +'%Y-%m-%d')
+          tag_name: ${{ steps.current_datetime.outputs.datetime }}-${{ github.run_number }}
+          release_name: Release-${{ steps.current_datetime.outputs.datetime }}-${{ github.run_number }}
+          body: |
+            New release created from commit: ${{ steps.commit_sha.outputs.sha }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
