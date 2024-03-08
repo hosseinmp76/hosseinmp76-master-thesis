@@ -44,4 +44,4 @@ chapters:
 در هر فصل ابتدا به پاراگراف میاد که میگه این فصل پیرامون چیه
 برای لم ها یه مثال بیارم. قراره بیشتر بشه کار ما نسبت به مقاله و راحت تر بشه خوندش. فلوی مقاله هم عوض شه که راحت تر درک بشه
 
-federated learning an dinde xocding
+federated learning and dinde xocding
