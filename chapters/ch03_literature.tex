@@ -321,10 +321,8 @@ distributed learning
 	 $t$
 	 پیام جدید را بازیابی کند و 
 	 $l = |Y|$
-	 کمینه شود.
-	 
-	 مشابه 
-	 \autoref[def:icod]
+	 کمینه شود. مشابه
+	 \autoref{def:icod}
 	 به تعریف رسمی
 	 \picodt
 	 میپردازیم:
@@ -713,40 +711,258 @@ $|W(B_1)|$
  	نام دارد. زمان اجرای این الگوریتم برابر
  	$O(mn^2)$
  	است.
- 	\begin{latin}
  	\begin{algorithm}[H]
- 		\caption{GrCov1($G,\alpha,\boldsymbol{\eta}$) \cite{bibid}}
+ 		\caption{GrCov1($G,m,n,t$) \cite{pliable2015paper}}
  		\label{algorithm:grcov1}
  		\begin{algorithmic}[1]
- 			\State Inputs: A PPICOD graph $G=(\mathbb{U}, [1:m], E, w)$ and parameters $\alpha$, $\boldsymbol{\eta}$
- 			\State $\mathcal{C} \gets \emptyset$
- 			\State $\mathsf{SAT} \gets \emptyset$ 
- 			\While{$|\mathsf{SAT}| \neq n$}
- 			\State $\textrm{maximal} \gets \code{False}$
- 			\State $\mathcal{S} \gets \emptyset$
- 			\While{$\textrm{maximal} = \code{False}$}
- 			\State $\textrm{maximal} = \code{True}$
- 			\State Randomly pick $j^* \in \arg \max_{j \in [1:m] \setminus \mathcal{S}} f(\mathcal{S} \cup \{j\})$
- 			\If{$f(\mathcal{S} \cup \{j^*\}) > f(\mathcal{S})$}
- 			\State $\textrm{maximal} \gets \code{False}$
- 			\State $\mathcal{S} \gets \mathcal{S} \cup \{j^*\}$
- 			\EndIf
- 			\EndWhile
- 			\State $\mathsf{SAT} \gets \mathsf{SAT} \cup W_1(\mathcal{S})$
- 			\State $\mathcal{C} \gets \mathcal{C} \cup \{\mathcal{S}\}$
- 			%\State \% Remove outgoing edges from $W_1(\mathcal{S})$:
- 			\State $E \gets E \setminus \{ (u,v) \in E: u \in W_1(\mathcal{S})\}$
+ 			\State G is a \picodt with n clients and m messages
+ 			\State $\mathcal{C} = \{\}$
+ 			\State $\forall i \in [n]: CNT[i] = t$ 
+ 			\While{$\exists i$ s.t. $CNT[i] \neq 0$}
+		 			\State $B \leftarrow \varnothing$.
+		 			\While{$B$ is not a maximal set}
+				 			\State Find message vertex $b_v \notin B$ such that $\left|W_1\left(B \cup\left\{b_v\right\}\right)\right|$ is maximized.
+				 			\State $B \leftarrow B \cup\left\{b_v\right\}$
+		 			\EndWhile
+		 			\State $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\sum_{u=1}^{|B|} b_{v_u}, b_{v_u} \in B\right\}$
+		 			\For{ $c_i \in W_1(B)$ }
+		 			\State If $c_i$ is connected to $b_j \in B$, then delete the correspond-ing edge in $G$.
+		 			\State $CNT[i] \leftarrow CNT[i]-1$.
+		 			\EndFor
  			\EndWhile
  			\State Output: $\mathcal{C}$
  		\end{algorithmic}
  	\end{algorithm}
- 	\end{latin}
  \subsubsection{
  	\lr{GRCOV2} 
  }
+ این الگوریتم تغییر کوچکی نسبت به الگوریتم اصلی دارد. در الگوریتم اصلی وقتی یک مجموعه‌ی ماکسیمال را پیدا می‌کردیم هم
+ $B_1$
+ و هم متغیرهای مربوطه یعنی
+ $W(B_1)$
+ را حذف می‌کردیم. ولی ممکن است که این متغیرها در پیدا کردن مجموعه‌های ماکسیمال بهتری به ما کمک کنند. در این الگوریتم تنها
+ $B_1$
+ را حذف می‌کنیم.
+ 
+ زمان اجرای این الگوریتم نیز
+ $O(mn^2)$
+ است.
+ 	\begin{algorithm}[H]
+ 	\caption{GrCov2($G,m,n,t$) \cite{pliablefirstpaper}}
+ 	\label{algorithm:grcov2}
+ 	\begin{algorithmic}[1]
+ 		\State G is a \picodt with n clients and m messages
+ 		\State  $U C \leftarrow\left\{c_1, \cdots, c_n\right\}$,
+ 		\State  num\_bits $\leftarrow 0, \mathcal{C}=\{\}$.
+ 		\While{$U C \neq \varnothing$}
+		 		\State $B \leftarrow \varnothing$.
+		 		\While{$B$ is not a maximal set}
+				 		\State  Find bit vertex $b_v$ such that $\left|W\left(B \cup\left\{b_v\right\}\right)\right|$ is maximized.
+				 		\State  $B \leftarrow B \cup\left\{b_v\right\}$.
+		 		\EndWhile
+		 		\State  $UC \leftarrow UC \backslash W(B)$.
+		 		\State Remove $W(B)$ and all edges connected to it from $G$.
+		 		\State  $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\bigoplus_{t=1}^{|B|} b_{v_t}, b_{v_t} \in B\right\}$
+		 		\State  num\_bits $\stackrel{t=1}{\leftarrow}$ num\_bits +1 .
+ 		\EndWhile
+ 		\State  Output $\mathcal{C}$,num\_bits.
+ 	\end{algorithmic}
+ \end{algorithm} 
+ \subsection{\lr{SETCOV}}
+ فرگولی و براهما برای آزمایش کارایی الگوریتم‌های بالا، الگوریتم
+ \lr{SETCOV}
+ را معرفی می‌کند. این الگوریتم بر مبنای کاهش مسئله به
+ \icod
+ طراحی شده است. در 
+ \picod
+ هر گیرنده 
+ $i$
+ با بازیابی هر پیام از
+ $R_i$
+ ارضا می‌شود. برای تبدیل یک نمونه از
+ \picod
+ به
+ \icod
+ به ازای هر گیرنده
+ $R_i$
+ شبه‌گیرنده 
+ $c_{i, 1}, \ldots, c_{i, {R_i}}$
+ قرار می‌دهیم که هر کدام به دنبال یکی پیام‌های
+ $R_i$
+ است و اطلاعات جانبی مشابهی مانند
+ $c_i$
+ دارد. در نتیجه 
+ \icod
+ نهایی 
+ $\sum\limits_{i = 1}^{n} |R_i|$
+ گیرنده خواهد داشت. این نمونه توسط هر کدام از الگوریتم‌های
+ \icod
+ قابل حل است. فرگولی از بین الگوریتم‌های ارائه شده در
+ \cite{25}
+ ساده‌ترین آن‌ها که بر مبنای
+ \transf{
+ 	پوشش خوشه‌ای حریصانه
+ 	}{
+ greedy clique cover
+ }
+ است را استفاده می‌کند.
+ 
+ پس از حل مسئله‌ی
+ \icod
+ ایجاد شده فرض کنید ی
+ $Y$
+ کد خروجی الگوریتم پوشش خوشه‌ای حریصانه باشد. در این الگوریتم هر گیرنده تنها با استفاده از یک از پیام‌ها، پیام مورد نظر خود را بازیابی می‌کند. در واقع هر پیام توانایی بازیابی تنها با استفاده از همان پیام را به تعداد از گیرنده‌ها می‌دهد. این مسئله باعث می‌شود به طورر طبیعی یک رابطه‌ی "پوشش" دادن بین اعضای کد و گیرنده‌ها(در اینجا شبه‌گیرنده‌ها) ایجاد شود به این صورت که هر عضو کد تعداد از گیرنده‌ها را پوشش می‌دهد. چون هدف اصلی ما گیرنده‌های
+ \picod
+ هستند و نه شبه‌گیرنده‌هایی که ساخته ایم این برای هر عضو کد پوشش را به صورت گیرنده‌هایی که ارضا می‌کند تعریف می‌کنیم. یعنی اگر
+ $Y_t$
+ شبه‌گیرنده‌های
+ $c_{\sigma_1, g_1}, \ldots, c_{\sigma_s, g_s}$
+ را ارضا می‌کند تعریف می‌کنیم:
+ $$C(Y_t) =\{ c_{\sigma_1}, c_{\sigma_1}\}$$
+ طبیعی است که هر گیرنده ممکن است در چندین مجموعه‌ی مختلف باشد. برای پیدا کردن یک جواب برای
+ \picod
+ تنها کافی است تعداد از 
+ $C(Y_i)$
+ ها را پیدا کنیم که کل گیرنده‌ها را پوشش دهند و در بین جواب‌ها دنبال جواب با کمترین تعداد مجموعه‌ ایم. این یک نمونه از مسئله‌ی معروف
+ \transf{
+ پوشش مجموعه‌ای
+ }{SET-COVER}
+ است که عناصر، گیرنده‌ها هستند و مجموعه‌ها پوشش‌های
+ $C(Y_i)$.
+ 
+ فرگولی در پیاده سازی آزمایشگاهی از روش استاندارد حریصانه تقریبی برای این مسئله استفاده می‌کند که زمان اجرای نهایی آن
+ $O(m^2 n^6)$
+ است.
+\subsubsection{k-GRCOV2}
+برای حالت
+\picodt
+یک تعمیم طبیعی از الگوریتم قبلی وجود دارد. به جای اینکه در هر گاه راس‌هایی که یک پیام جدید را بازیابی می‌کنند حذف کنیم، هر راس 
+$c_i$
+یک شمارنده برابر
+$\min(k, |R_i|)$
+دارد و در هر گام که یک راس یک پیام جدید را بازیابی می‌کند این شمارنده را یک واحد کم می‌کنیم و راس‌های
+$W(B_j)$
+را به راس
+$c_i$
+به عنوان اطلاعات جانبی وصل می‌کنیم. هر راسی که شمارنده‌اش به صفر برسد را هم حذف می‌کنیم. زمان اجرای این الگوریتم
+$O(kmn^2)$
+است.
+
+\subsubsection{
+نتایج عددی
+}
+فرگولی و براهما  الگوریتم‌های گفته شده را به صورت عملی روی نمونه‌های تصادفی از مسئله تست می‌کنند. در این آزمایش‌ها 
+$n = m = 500$
+و هر یال در گراف اطلاعات جانبی را هم با احتمال
+$p$
+قرار می‌دهند. یعنی هر گیرنده با احتمال
+$p$
+ان پیام‌ را از قبل می‌داند. همچنین برای مقایسه بهتر، در نمونه‌های تولیدی هر گیرنده می‌خواهد یک پیام متفاوت را در مسئله‌ی
+\icod
+بازیابی کند.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figs/ch3/pliable2012}
+	\caption{\cite{pliablefirstpaper}}
+	\label{fig:pliable2012}
+\end{figure}
+
+در 
+\autoref{fig:pliable2012}
+کاراریی الگوریتم‌های مختلف به ازای 
+$p$
+های مختلف آمده است. برای هر
+$p$
+بیش از هزار بار آزمایش تکرار شده است. همان طور که در شکل مشخص است تفاوتی چشمگیر بین الگوریتم‌های
+\picod
+و الگوریتم‌های مختلف
+\icod
+است(تفاوتی چشمگیری بین الگوریتم‌های مختلف
+\icod
+که در این مقایسه مهم باشد دیده نمی‌شود). در حالی که الگوریتم‌های گفته شده‌ی
+\picod
+به طور میانگین کمتر از
+$11$
+پیام ارسال می‌کنند الگوریتم‌های
+\icod
+تنها وقتی
+$p \geq 0.95$
+است این کاراریی را دارد. یعنی زمانی که گراف اطلاعات جانبی بسیار پر است.
+
+در بین الگوریتم‌های بیان شده
+\lr{GRCOV2}
+بهترین عملکرد را دارد و
+\lr{GRCOV1}
+با فاصله‌ی کمی از آن عمل می‌کند.
+
+الگوریتم
+\lr{SETCOC}
+روند جالبی دارد. در محدوده‌ی 
+$p \leq 0.5$
+بهتر از
+\lr{GRCOV2}
+عمل می‌کند. بخشی از این عملکرد را می‌توان این گونه توجیه کرد که برای مقادیر کم
+$p$
+گراف اطلاعات جانبی تنک می‌شود و در نتیجه هر عضو کد(پیام ارسال شده توسط فرستنده)  برای تعداد بیشتری گیرنده حاوی اطلاعات(آنتروپی شرطی(بر پایه اطلاعات جانبی هر گیرنده)) است و در نتیجه وقتی به دنبال پوشش هستیم هر مجموعه گیرنده‌های بیشتری را شامل می‌شود.
+
+همان طور که در
+\autoref{fig:pliable2012}
+می‌بینید بیشینه‌ی طول کد در الگوریتم
+\lr{GRCOV2}
+در آزمایش‌های انجام شده برای تمام نمونه‌های
+\picod
+کمتر از
+$\log(500) \approx 6$
+است. در شکل
+\autoref{fig:pliable20122}
+به ازای مقادیر محتلف 
+$n$
+(که همچنان
+$m = n$
+) و نمونه‌های تصادفی یونیفرم می‌بینیم که برای
+$n \geq 60$
+طول کد حداکثر
+$\log(n)$
+است. فرگولی و براهما در این مقاله حدس می‌زنند که در حالت کلی این حکم برقرار باشد که نشان از یک تفاوت از مرتبه توانی بین طول کد
+\picod
+و 
+\icod
+است. این حدس بعدا توسط همین دو نفر در
+\cite{pliable2015paper}
+اثبات می‌شود که در
+\autoref{}
+خواهیم دید. 
+
+نتایج اجرای الگوریتم
+\lr{k-GRCOV2}
+در 
+\autoref{fig:pliable20123}
+آمده است. همان طور که مشخص است در عمل به طور میانگین با کدهای با طول کمتر از
+$17$
+می‌توان 
+$500$
+گیرنده که به دنبال بازیابی 
+$5$
+هستند را ارضا کرد.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figs/ch3/pliable2012_2}
+	\caption{\cite{pliablefirstpaper}}
+	\label{fig:pliable20122}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figs/ch3/pliable2012_3}
+	\caption{\cite{pliablefirstpaper}}
+	\label{fig:pliable20123}
+\end{figure}
+
 \subsubsection{\lr{RANDCOV}}
 \subsection{الگوریتم قطعی}
 \subsubsection{\lr{BinGreedy}}
+
+
+
 
 
 
