@@ -1,28 +1,35 @@
 \chapter{پیش‌نیازها}
 \label{chapter:preliminaries}
-\section{مفاهیم اولیه}
-
 در این فصل به مرور برخی ای تعاریف و قضایای اولیه در شاخه‌های مختلف ریاضی که پیش‌نیاز مطالعه‌ی کدگذاری اندیس است می‌پردازیم.
 
+\section{ترکیبیات}
 
+\begin{theorem}
+\transf{
+نامساوی ینسن
+}{Jensen's inequality}
+\label{Jensen}
+\end{theorem}
+$$f(E[X]) \leq E[f(X)]$$
+
+$$\log^{+}(x) = max\{\log(x), 0\}$$
+\begin{definition}[
+	\lr{ Pareto trade-off}
+	]
+	\label{def:Pareto}
+	به فلان میگویند.
+	
+	مرز پارتو
+	\lr{Pareto boundary}
+	\label{def:Pareto-boundary}
+\end{definition}
+\section{نظریه کدگذاری}
 \begin{definition}[
 	کد
 	\lr{mds}
 	]
 	\label{def:mds}
 \end{definition}
-
-\begin{definition}[
-	\lr{ Pareto trade-off}
-	]
-	\label{def:Pareto}
-    به فلان میگویند.
-
-    مرز پارتو
-    \lr{Pareto boundary}
-    \label{def:Pareto-boundary}
-\end{definition}
-
 \section{
     ‌نظریه اطلاعات
 }
@@ -265,6 +272,39 @@ $S$,
 $\mathcal{V} [S] = (v_{s_1}, \ldots, v_{s_k})$
 همچنین تعریف میکنیم:
 $\mathcal{V} [i] := \mathcal{V} [{\{i\}}]$
+
+لم بعدی از مقاله
+\cite{pliable2015paper}
+را در فصل ۳ نیاز داریم.
+\begin{lemma}
+	برای یک میدان به اندازه‌ی کافی بزرگ
+	$\mathcal{F}$
+	و
+	$m$
+	عضو آن،
+	$n_0 \leq m$
+	ترکیب خطی از این اعضا وجود دارد که برای هر زیرمجموعه‌ی
+	$m_0 \leq n_0$
+	عضوی از این اعضا را می‌توان با دانستن بقیه
+	$m - m_0$
+	عضو بازیابی کرد.
+\end{lemma}
+\begin{proof}
+این نتیجه با استفاده از ماتریس‌های کوشی به عنوان ماتریس ضرایب ترکیب‌های خطی به دست می‌آید
+\cite{Blmer1995AnXE}
+. در واقع
+$n_0$
+ترکیب خطی به یک دستگاه معادلات خطی با
+$m_0 \leq n_0$
+مجهول در
+$\mathcal{F}$
+تبدیل می‌شوند. چون هر زیر ماتریس مربعی از یک ماتریس کوشی، ناتکین است این دستگاه قابل حل است. برای اینکه ماتریس اصلی کوشی شود تنها کافی است که اندازه‌ی میدان حداقل
+$2m$
+باشد. در نتیجه فرض می‌کنیم که اندازه‌ی میدان حداقل
+$2m$
+است
+\cite{pliable2015paper}.
+\end{proof}
 
 \section{نظریه گراف}
 \begin{definition}
