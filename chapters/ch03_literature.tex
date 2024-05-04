@@ -5,7 +5,7 @@
 
 همان‌طور که در فصل اول گفته شد، مسئله‌ی کدگذاری اندیس منعطف توسط براهما و فرگولی در سال 2015 در
 \cite{pliablefirstpaper}
-به عنوان توسعه‌ای از مسئله‌ی کدگذاری اندیس معرفی شد. در این حالت هر گیرنده به جای اینکه به دنبال یک پیام خاص باشد، به دنبال یک پیام جدید است که در مجموعه‌ی اطلاعات جانبی‌ش نباشد.
+به عنوان توسعه‌ای از مسئله‌ی کدگذاری اندیس معرفی شد. در این مسئله هر گیرنده به جای اینکه به دنبال یک پیام خاص باشد، به دنبال یک پیام جدید است که در مجموعه‌ی اطلاعات جانبی‌ش نباشد.
 
 این مسئله کاربردهایی مختلفی در مسائل حوزه‌های گوناگون دارد. برای مثال در محاسبات توزیع شده
 \cite{datashuf}
@@ -23,31 +23,33 @@ distributed learning
 \picod
 می‌پردازیم.
 
-در 
-\autoref{sec:3:3}
-به بررسی الگوریتمی تقریبی برای 
+پس از تعریف دقیق مسئله، نشان می‌دهیم که 
 \picod
-که توسط فرگولی و همکاران در
-\cite{song2017polynomialtime}
-معرفی شده است می‌پردازیم.
-\section{تعریف دقیق مسئله}
-\label{sec:3:3}
-fix this
-در بخش به بررسی مقالات
+\nphard
+است. پس از آن الگوریتم‌های
+\lr{GRCOV1}
+،
+\lr{GRCOV2}
+و
+\lr{SETCOV}
+را در حالت‌های تک‌ارسال و چندارسال بررسی می‌کنیم. در نهایت به بررسی الگوریتم
+\lr{BinGreedy}
+که یک الگوریتم قطعی تقریبی است می‌پردازیم.
+
+در این فصل با بررسی مقالات مختلفی مثل
 \cite{pliablefirstpaper,6620405, pliable2015paper,  song2017polynomialtime}
 (نسخه ژرنالی مقاله دوم
-\cite{7541273}
-) از فرگولی و همکاران می‌پردازیم. 
-
+\cite{pliable2016}
+) از فرگولی و همکاران به تعریف دقیق مسئله می‌پردازیم. فرگولی در این مقالات با تعریف مسئله برای اولین بار به مرور نتایج مختلفی را اثبات می‌کند.
+\section{تعریف دقیق مسئله}
+\label{sec:3:3}
 	سیستمی با یک فرستنده و 
 	$n$
 	گیرنده در نظر بگیرید. فرستنده مقدار
 	$m$
 	متغیر تصادفی
-	$X = (X_1, \ldots, X_n)$
-	که از میدان متناهی
-	$\mathcal{F}$
-	را در دست دارد. هر گیرنده مانند 
+	$X = (X_1, \ldots, X_n): X_i \in \mathcal{F}$
+	مشاهده شده را در دست دارد. هر گیرنده مانند 
 	$i$
 	بخشی از متغیرهای تصادفی را در اختیار دارد که اندیس آن‌ها را با 
 	$S_i \subseteq [m]$
@@ -56,6 +58,7 @@ fix this
 	پیام که جز اطلاعات جانبی‌اش نیست یعنی اندیسشان در
 	$R_i = [m] \setminus S_i$
 	باشد را بازیابی کند.
+	
 	فرستنده می‌تواند تعدادی پیام مانند
 	$Y = (Y_1, \ldots, Y_l): Y_i \in \fq$
 	را برای تمام گیرنده‌ها ارسال کند تا گیرنده‌ها بتوانند با پیام‌های ارسالی و اطلاعات جانبی خود پیام‌های مورد نظر را بازیابی کنند. در
@@ -70,7 +73,7 @@ fix this
 	 \picodt
 	 پیدا کردن الگوریتمی است که با گرفتن 
 	 $S_i$
-	 ها
+	 ها،
 	 $U$
 	 و
 	 $Y$
@@ -142,7 +145,12 @@ $t > 1$
  	\icod
  	و
  	\picod
- 	]{\cite{pliablefirstpaper}}
+ 	]{
+ 		تفاوت
+ 		\icod
+ 		و
+ 		\picod
+ 		\cite{pliablefirstpaper}}
  	\label{fig:pliablefragouli1}
  \end{figure}
 \end{remark}
@@ -166,7 +174,7 @@ $t > 1$
 	ها چقدر است. یعنی گیرنده‌ی
 	$i$
 	ام بر اساس اطلاعات جانبی و پیام‌های دریافتی خود ممکن است پیام‌های مختلفی را بازیابی کند. این صورت بندی مخصوص مسئله‌ی کدگذاری اندیس بسیار منعطف است که در
-	\autoref{def:verypliable}
+	\autoref{sec:verypliable}
 	معرفی می‌کنیم. در مسئله‌ی
 	\picod
 	اگر بخواهیم به شکل کاملا دقیق توابع کدگشایی را تعریف کنیم باید 
@@ -175,7 +183,9 @@ $t > 1$
 	 $i$
 	 ام به شکل:
 	 	$$D_{i, \sigma_i}(E(X), S_i) = (X_{\sigma_{i,1}}, \ldots, X_{\sigma_{i,t}}): \sigma_i \subseteq R_i $$
-	 	در واقع زمانی که می‌خواهیم توابع کدگشایی را تعریف کنیم باید از پیش بگوییم که دقیقا کدام پیام‌ها کدگشایی خواهد شد.
+	 	در واقع تعریف توابع کدگشایی نباید به مقدار متغیرهای تصادفی
+	 	$X_i$
+	 	وابسته باشد و زمانی که می‌خواهیم توابع کدگشایی را تعریف کنیم باید از پیش بگوییم که دقیقا کدام پیام کدگشایی خواهد شد.
 \end{remark}
 
 \begin{note}
@@ -215,9 +225,9 @@ $t > 1$
 \end{notation}
 
 
-در ادامه روی کدهای خطی و همچنین برای راحتی با میدان
-$\mathcal{F}_2$
-تمرکز می‌کنیم.
+در ادامه  روی کدهای خطی تمرکز می‌کنیم. همچنین برای راحتی از میدان
+$\mathbb{F}_2$
+استفاده می‌کنیم. بسیاری از نتایج بدون هیچ تغییری برای هر میدانی برقرار اند.
 
 \section{
 \lpicod
@@ -232,7 +242,7 @@ $G$
 داده شده برای هر
 $t$
 ای همیشه
- $\text{\icodg} > \text{\picodg}$
+ $\text{\icodg} leq \text{\picodg}$
  است.
  \cite{pliablefirstpaper}
 \end{lemma}
@@ -254,10 +264,9 @@ $t$
 
 در ادامه نشان می‌دهیم که
 \transf{
- کدگذاری اندیس منعطف خطی
+ کدگذاری اندیس منعطف خطی،
 }{
 Linear Pliable index coding, \lpicod}
-
 \nphard
 است. برای این کار، 
 \lpicod
@@ -862,10 +871,217 @@ $t$
 	میرسیم.
 \end{proof}
 
+حال نشان می‌دهیم نمونه‌ای وجود دارد که به کد لگاریتمی نیاز دارد.
+\begin{lemma}
+	\label{lemma:algebraicconstraint}
+	در یک نمونه‌ی
+	\picod
+	خطی که از ماتریس
+	$A$
+	با ستون‌های 
+	$\alpha_1, \ldots, \alpha_m$
+	برای کدگذاری استفاده می‌شود، یعنی
+	$Y = A b$
+	توسط فرستنده ارسال می‌شود، اگر
+	$i \in R_j$
+	آنگاه، گیرنده‌‌ی 
+	$c_j$
+	می‌تواند پیام 
+	$b_i$
+	را بازیابی کند اگر و تنها اگر ستون
+	$\alpha_i$
+	از ماتریس
+	$A$
+	وجود داشته باشد که
+	$\alpha_i \notin span\{A_{R_i} \setminus i\}$
+\end{lemma}
+\begin{proof}
+	اگر شرط
+	$\alpha_i \notin span\{A_{R_i} \setminus i\}$
+	برقرار باشد آنگاه برای هر بردار که در فضای پوچ
+	$A_{R_j}$
+	باشد یعنی
+	$z \in \mathcal{N}(A_{R_j})$
+	خواهیم داشت:
+	$z_i = 0$
+	زیرا طبق فرض اول مستقل خطی بودن ستون
+	$0 = A_{R_j} z  = \alpha_1 z_1 + \ldots + \alpha_m z_m \Rightarrow z_i = 0$
+	.  از طرفی می‌دانیم که هر جواب یک معادله‌ی خطی را می‌توان به صورت جمع یک جواب خصوصی به علاوه‌ی یک بردار از مجموعه‌ی پوچ ماتریس نوشت. در نتیجه یک جواب برای 
+	$b_i$
+	در معادله‌ی
+	$Y' = A_{R_j} b_{R_j}$
+	تنها جواب آن خواهد بود و در نتیجه گیرنده‌ی
+	$c_j$
+	می‌تواند به صورت یکتا
+	$b_i$
+	را بازیابی کند.
+	
+	برای طرف دیگر قضیه اگر 
+	$c_j$
+	به صورت یکتا
+	$b_i$
+	را بازیابی کند ولی ستون
+	$\alpha_i \in span\{A_{R_j} \setminus \{i\}\}$
+	در این صورت جواب با درایه‌ی
+	$z_i \neq 0$
+	برای
+	$0 = A_{R_j} z$
+	خواهیم داشت. در این صورت اگر یک جواب خصوصی
+	$Y' = A_{R_j} b_{R_j}$
+	را با این بردار از فضای پوچ جمع کنیم از طرفی باید باز هم جوابی برای معادله باشد و از طرفی مقدار
+	$b_i$
+	آن متفاوت با جواب خصوصی اصلی خواهد بود که یعنی 
+	$c_j$
+	نمی‌تواند به صورت یکتا
+	$b_i$
+	را بازیابی کند.	
+\end{proof}
+
+\begin{definition}[
+	\picod
+	کامل
+	]
+	به یک نمونه از
+	\picod
+	که به ازای هر حالت ممکن از اطلاعات جانبی یک گیرنده وجود داشته باشد گفته می‌شود. در این نمونه به ازای
+	$n$
+	گیرنده
+	$\log(n)$
+	پیام داریم.	 برای مثال
+	\autoref{figure:complete_instance}
+	یک
+	\picod
+	کامل است.
+\end{definition}
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}[->, >=stealth, auto, semithick, edge_style/.style={color=red, dashed}]
+			% Set the positions of the nodes
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (b1) at (1.5,2.5) {$b_1$};
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (b2) at (3.5,2.5) {$b_2$};
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (b3) at (5.5,2.5) {$b_3$};
+			
+			\node[circle, draw=green, fill=green!20, inner sep=0pt] (c0) at (-1,0) {$c_0$};
+			\node[circle, draw=green, fill=green!20, inner sep=0pt] (c1) at (0,0) {$c_1$};
+			\node[circle, draw=green, fill=green!20, inner sep=0pt] (c2) at (1,0) {$c_2$};
+			\node[circle, draw=green, fill=green!20, inner sep=0pt] (c3) at (2,0) {$c_3$};
+			\node[circle, draw=green, fill=green!20, inner sep=0pt] (c4) at (3,0) {$c_4$};
+			\node[circle, draw=green, fill=green!20, inner sep=0pt] (c5) at (4,0) {$c_5$};
+			\node[circle, draw=green, fill=green!20, inner sep=0pt] (c6) at (5,0) {$c_6$};
+			\node[circle, draw=green, fill=green!20, inner sep=0pt] (c7) at (6,0) {$c_7$};
+			% Draw the edges
+			
+			\draw[edge_style] (c1) -- (b1);
+			\draw[edge_style] (c2) -- (b2);
+			\draw[edge_style] (c3) -- (b3);
+			\draw[edge_style] (c4) -- (b1);
+			\draw[edge_style] (c4) -- (b2);
+			\draw[edge_style] (c5) -- (b1);
+			\draw[edge_style] (c5) -- (b3);
+			\draw[edge_style] (c6) -- (b2);
+			\draw[edge_style] (c6) -- (b3);
+			\draw[edge_style] (c7) -- (b1);
+			\draw[edge_style] (c7) -- (b2);
+			\draw[edge_style] (c7) -- (b3);
+			% Position the parts
+		\end{tikzpicture}
+	\end{center}
+	\caption{
+		\picod
+		کامل برای
+		$m = 3$
+	}
+	\label{figure:complete_instance}
+	
+\end{figure}
+\begin{theorem}
+	نمونه‌ای از 
+	\picod
+	وجود دارد که به حداقل
+	$\Omega(\log(n))$
+	ارسال نیاز دارد.
+\end{theorem}
+\begin{proof}
+	برای هر
+	$n$
+	یک 
+	\picod
+	کامل با
+	$n$
+	گیرنده می‌سازیم. در یک 
+	\picod
+	کامل فرستنده می‌تواند با ارسال
+	$m = \log(n)$
+	پیام همه‌ی گیرنده‌ها را ارضا کند(تمام پیام‌ها را ارسال کند.). حال کافی است نشان دهیم که بهتر از این کران وجود ندارد.
+	
+	با استقرا روی رتبه ماتریس کدگذاری 
+	$A$
+	نشان می‌دهیم که رتبه ماتریس باید حداقل 
+	$m$
+	باشد تا طبق
+	\autoref{lemma:algebraicconstraint}
+	گیرنده‌ها بتوانند ارضا شوند.
+	
+	فرض کنید
+	$J \subseteq [m]$
+	مجموعه‌ی اندیس تعدادی از ستون ها باشد. به ازای هر
+	$J$
+	یک گیرنده هست که 
+	$R_j = J$
+	یعنی اندیس ستون‌های زیر ماتریس
+	$A_{R_j}$
+	که گیرنده‌ی
+	$c_j$
+	از آن برای بازیابی یک متغیر استفاده می‌کند برابر
+	$J$
+	باشد. در یک نمونه از
+	\picod
+	کامل، برای هر
+	$J$
+	ای 
+	\autoref{lemma:algebraicconstraint}
+	باید برقرار باشد زیرا به ازای هر
+	$b_i$
+	یک گیرنده هست که دقیقا همان متغیر را باید بازیابی کند(
+	گیرنده با اطلاعات جانبی
+	$S_j = [m] \setminus \{i\}$
+	). برای
+	$J = \{j_1\}$
+	برای اینکه گیرنده‌ای که دقیقا باید همان متغیر را بازیابی کند ارضا شود ستون
+	$j_1$
+	نباید صفر باشد. پس: 
+	$\forall J, |J| = 1 \Rightarrow rank(A_J) = 1$
+	. برای
+	$|J| = 2$
+	هر دو ستون متفاوت ماتریس باید مستقل خطی باشند. در غیر این صورت اگر
+	$J = \{j_1, j_2\}$
+	مستقل خطی نباشند، در این صورت گیرنده‌
+	$c_k$
+	که
+	$R_k = \{j_1, j_2\}$
+	نمی‌تواند هیچ کدام از 
+	$b_{j_1}, b_{j_2}$
+	را بازیابی کند. پس 
+	$\forall J, |J| = 2 \Rightarrow rank(A_J) = 2$
+	. حال برای فرض استفرا، فرض کنید
+	$\forall J, |J| = l \Rightarrow rank(A_J) = l$
+	حال برای
+	$|J| = l + 1$
+	اگر تمام گیرنده‌هایی که
+	$l + 1$
+	پیام را ندارند یعنی
+	$|R_k| = m - l - 1 $
+	ارضا می‌شوند پس برای یک
+	$i \in J$
+	داریم
+	$\alpha_i \notin span(A_{J \setminus \{i\}})$
+	پس
+	$\rank(A_{J}) = \rank(\alpha_i) + \rank(A_{J \setminus \{i\}}) = 1 + l$
+\end{proof}
 \section{
 الگوریتم‌های تصادفی
 }
-\subsubsection{
+\subsection{
 	\lr{GRCOV1} 
 }
 \picod
@@ -985,7 +1201,7 @@ $|W_1(B_1)|$
  			\State Output: $\mathcal{C}$
  		\end{algorithmic}
  	\end{algorithm}
- \subsubsection{
+ \subsection{
  	\lr{GRCOV2} 
  }
  این الگوریتم تغییر کوچکی نسبت به الگوریتم اصلی دارد. در الگوریتم اصلی وقتی یک مجموعه‌ی ماکسیمال را پیدا می‌کردیم هم
@@ -1020,7 +1236,7 @@ $|W_1(B_1)|$
  		\State  Output $\mathcal{C}$,num\_bits.
  	\end{algorithmic}
  \end{algorithm} 
- \section{\lr{SETCOV}}
+ \subsection{\lr{SETCOV}}
  فرگولی و براهما برای آزمایش کارایی الگوریتم‌های بالا، الگوریتم
  \lr{SETCOV}
  را معرفی می‌کند. این الگوریتم بر مبنای کاهش مسئله به
@@ -1217,212 +1433,7 @@ $5$
 	الگوریتم قطعی
 	\lr{BinGreedy}
 	}
-\begin{lemma}
-	\label{lemma:algebraicconstraint}
-	در یک نمونه‌ی
-	\picod
-	خطی که از ماتریس
-	$A$
-	با ستون‌های 
-	$\alpha_1, \ldots, \alpha_m$
-	برای کدگذاری استفاده می‌شود، یعنی
-	$Y = A b$
-	توسط فرستنده ارسال می‌شود، اگر
-	$i \in R_j$
-	آنگاه، گیرنده‌‌ی 
-	$c_j$
-	می‌تواند پیام 
-	$b_i$
-	را بازیابی کند اگر و تنها اگر ستون
-	$\alpha_i$
-	از ماتریس
-	$A$
-	وجود داشته باشد که
-	$\alpha_i \notin span\{A_{R_i} \setminus i\}$
-\end{lemma}
-\begin{proof}
-	اگر شرط
-		$\alpha_i \notin span\{A_{R_i} \setminus i\}$
-		برقرار باشد آنگاه برای هر بردار که در فضای پوچ
-		$A_{R_j}$
-		باشد یعنی
-		$z \in \mathcal{N}(A_{R_j})$
-		خواهیم داشت:
-		$z_i = 0$
-		زیرا طبق فرض اول مستقل خطی بودن ستون
-		$0 = A_{R_j} z  = \alpha_1 z_1 + \ldots + \alpha_m z_m \Rightarrow z_i = 0$
-		.  از طرفی می‌دانیم که هر جواب یک معادله‌ی خطی را می‌توان به صورت جمع یک جواب خصوصی به علاوه‌ی یک بردار از مجموعه‌ی پوچ ماتریس نوشت. در نتیجه یک جواب برای 
-		$b_i$
-		در معادله‌ی
-		$Y' = A_{R_j} b_{R_j}$
-		تنها جواب آن خواهد بود و در نتیجه گیرنده‌ی
-		$c_j$
-		می‌تواند به صورت یکتا
-		$b_i$
-		را بازیابی کند.
-		
-		برای طرف دیگر قضیه اگر 
-		$c_j$
-		به صورت یکتا
-		$b_i$
-		را بازیابی کند ولی ستون
-		$\alpha_i \in span\{A_{R_j} \setminus \{i\}\}$
-		در این صورت جواب با درایه‌ی
-		$z_i \neq 0$
-		برای
-		$0 = A_{R_j} z$
-		خواهیم داشت. در این صورت اگر یک جواب خصوصی
-				$Y' = A_{R_j} b_{R_j}$
-				را با این بردار از فضای پوچ جمع کنیم از طرفی باید باز هم جوابی برای معادله باشد و از طرفی مقدار
-				$b_i$
-				آن متفاوت با جواب خصوصی اصلی خواهد بود که یعنی 
-				$c_j$
-				نمی‌تواند به صورت یکتا
-				$b_i$
-				را بازیابی کند.	
-\end{proof}
 
-\begin{definition}[
-	\picod
-	 کامل
-	]
-	به یک نمونه از
-	\picod
-	که به ازای هر حالت ممکن از اطلاعات جانبی یک گیرنده وجود داشته باشد گفته می‌شود. در این نمونه به ازای
-	$n$
-	گیرنده
-	$\log(n)$
-	پیام داریم.	 برای مثال
-	\autoref{figure:complete_instance}
-	یک
-	\picod
-	کامل است.
-\end{definition}
-\begin{figure}
-	\begin{center}
-	\begin{tikzpicture}[->, >=stealth, auto, semithick, edge_style/.style={color=red, dashed}]
-		% Set the positions of the nodes
-		\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (b1) at (1.5,2.5) {$b_1$};
-		\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (b2) at (3.5,2.5) {$b_2$};
-		\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (b3) at (5.5,2.5) {$b_3$};
-		
-		\node[circle, draw=green, fill=green!20, inner sep=0pt] (c0) at (-1,0) {$c_0$};
-		\node[circle, draw=green, fill=green!20, inner sep=0pt] (c1) at (0,0) {$c_1$};
-		\node[circle, draw=green, fill=green!20, inner sep=0pt] (c2) at (1,0) {$c_2$};
-		\node[circle, draw=green, fill=green!20, inner sep=0pt] (c3) at (2,0) {$c_3$};
-		\node[circle, draw=green, fill=green!20, inner sep=0pt] (c4) at (3,0) {$c_4$};
-		\node[circle, draw=green, fill=green!20, inner sep=0pt] (c5) at (4,0) {$c_5$};
-		\node[circle, draw=green, fill=green!20, inner sep=0pt] (c6) at (5,0) {$c_6$};
-		\node[circle, draw=green, fill=green!20, inner sep=0pt] (c7) at (6,0) {$c_7$};
-		% Draw the edges
-
-		\draw[edge_style] (c1) -- (b1);
-		\draw[edge_style] (c2) -- (b2);
-		\draw[edge_style] (c3) -- (b3);
-		\draw[edge_style] (c4) -- (b1);
-		\draw[edge_style] (c4) -- (b2);
-		\draw[edge_style] (c5) -- (b1);
-		\draw[edge_style] (c5) -- (b3);
-		\draw[edge_style] (c6) -- (b2);
-		\draw[edge_style] (c6) -- (b3);
-		\draw[edge_style] (c7) -- (b1);
-		\draw[edge_style] (c7) -- (b2);
-		\draw[edge_style] (c7) -- (b3);
-		% Position the parts
-	\end{tikzpicture}
-\end{center}
-\caption{
-\picod
-کامل برای
-$m = 3$
-}
-		\label{figure:complete_instance}
-		
-\end{figure}
-\begin{theorem}
-	نمونه‌ای از 
-	\picod
-	وجود دارد که به حداقل
-	$\Omega(\log(n))$
-	ارسال نیاز دارد.
-\end{theorem}
-\begin{proof}
-	برای هر
-	$n$
-	یک 
-	\picod
-	کامل با
-	$n$
-	گیرنده می‌سازیم. در یک 
-	\picod
-	کامل فرستنده می‌تواند با ارسال
-	$m = \log(n)$
-	پیام همه‌ی گیرنده‌ها را ارضا کند(تمام پیام‌ها را ارسال کند.). حال کافی است نشان دهیم که بهتر از این کران وجود ندارد.
-	
-	با استقرا روی رتبه ماتریس کدگذاری 
-	$A$
-	نشان می‌دهیم که رتبه ماتریس باید حداقل 
-	$m$
-	باشد تا طبق
-	\autoref{lemma:algebraicconstraint}
-	گیرنده‌ها بتوانند ارضا شوند.
-	
-	فرض کنید
-	$J \subseteq [m]$
-	مجموعه‌ی اندیس تعدادی از ستون ها باشد. به ازای هر
-	$J$
-	یک گیرنده هست که 
-	$R_j = J$
-	یعنی اندیس ستون‌های زیر ماتریس
-	$A_{R_j}$
-	که گیرنده‌ی
-	$c_j$
-	از آن برای بازیابی یک متغیر استفاده می‌کند برابر
-	$J$
-	باشد. در یک نمونه از
-		\picod
-		کامل، برای هر
-		$J$
-		ای 
-			\autoref{lemma:algebraicconstraint}
-			باید برقرار باشد زیرا به ازای هر
-			$b_i$
-			یک گیرنده هست که دقیقا همان متغیر را باید بازیابی کند(
-			گیرنده با اطلاعات جانبی
-			$S_j = [m] \setminus \{i\}$
-			). برای
-			$J = \{j_1\}$
-			برای اینکه گیرنده‌ای که دقیقا باید همان متغیر را بازیابی کند ارضا شود ستون
-			$j_1$
-			نباید صفر باشد. پس: 
-			$\forall J, |J| = 1 \Rightarrow rank(A_J) = 1$
-			. برای
-			$|J| = 2$
-			هر دو ستون متفاوت ماتریس باید مستقل خطی باشند. در غیر این صورت اگر
-			$J = \{j_1, j_2\}$
-			مستقل خطی نباشند، در این صورت گیرنده‌
-			$c_k$
-			که
-			$R_k = \{j_1, j_2\}$
-			نمی‌تواند هیچ کدام از 
-			$b_{j_1}, b_{j_2}$
-			را بازیابی کند. پس 
-		$\forall J, |J| = 2 \Rightarrow rank(A_J) = 2$
-		. حال برای فرض استفرا، فرض کنید
-		$\forall J, |J| = l \Rightarrow rank(A_J) = l$
-		حال برای
-		$|J| = l + 1$
-		اگر تمام گیرنده‌هایی که
-		$l + 1$
-		پیام را ندارند یعنی
-		$|R_k| = m - l - 1 $
-		ارضا می‌شوند پس برای یک
-		$i \in J$
-		داریم
-		$\alpha_i \notin span(A_{J \setminus \{i\}})$
-		پس
-		$\rank(A_{J}) = \rank(\alpha_i) + \rank(A_{J \setminus \{i\}}) = 1 + l$
-\end{proof}
 در الگوریتم قطعی‌ای که معرفی خواهیم کرد از دو مفهوم گیرنده‌های موثر و درجه موثر استفاده می‌کنیم. برای یک پیام
 $X_i$
 (یا معادلا راس
