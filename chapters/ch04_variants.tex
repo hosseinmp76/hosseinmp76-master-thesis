@@ -134,7 +134,7 @@ $$X_2 = 1 \Rightarrow X_3 = 2$$
 بایرنه و همکاران
 \autoref{alg:pr-grcov}
  که بر مبنای 
- \autoref{algorithm:grcov2}
+ \autoref{algorithm:grcov}
   است را در مقاله خود ارائه می‌دهند. پارامتر 
  $\alpha$
  در این الگوریتم برای بهینه کردن خروجی با افزایش رضایت کلی و یا افزایش نرخ کد استفاده می‌‌شود. با افزایش 
@@ -142,34 +142,66 @@ $$X_2 = 1 \Rightarrow X_3 = 2$$
  تعداد گیرنده‌هایی که در هر تکرار ارضا می‌شوند افزایش یافته، به کد با طول کمتر می‌رسیم. در 
  \autoref{fig:alpha}
  تاثیر این پارامتر را می‌بینید.
-\begin{latin}
 \begin{algorithm}
-	\caption{PrGrCov($G,\alpha,\boldsymbol{\eta}$)}
+	\caption[
+		پوشش حریضانه‌ی ترجیحی
+	\lr{PrGrCov}
+	]{
+		پوشش حریصانه‌ی ترجیحی
+		\lr{PrGrCov($G,\alpha,\eta$)}
+	}
 	\label{alg:pr-grcov}
 	\begin{algorithmic}[1]
-		\State Inputs: A PPICOD graph $G=(\mathbb{U}, [1:m], E, w)$ and parameters $\alpha$, $\boldsymbol{\eta}$
-		\State $\mathcal{C} \gets \emptyset$
-		\State $\mathsf{SAT} \gets \emptyset$ 
+		\Require
+			گراف اطلاعات جانبی
+		$G$
+		با
+		$n$
+		گیرنده و
+		$m$
+		پیام،
+		$\alpha$
+		و
+		$\eta$
+		\Ensure
+		یک کد  اندیس منعطف
+		\State قرار دهید
+		$\mathcal{C} \gets \emptyset$
+		\State قرار دهید
+		$\mathsf{SAT} \gets \emptyset$ 
 		\While{$|\mathsf{SAT}| \neq n$}
-		\State $\textrm{maximal} \gets \code{False}$
-		\State $\mathcal{S} \gets \emptyset$
-		\While{$\textrm{maximal} = \code{False}$}
-		\State $\textrm{maximal} = \code{True}$
-		\State Randomly pick $j^* \in \arg \max_{j \in [1:m] \setminus \mathcal{S}} f(\mathcal{S} \cup \{j\})$
+		\State قرار دهید
+		$maximal \gets \code{False}$
+		\State قرار دهید
+		$\mathcal{S} \gets \emptyset$
+		\While{$maximal = \code{False}$}
+		\State قرار دهید
+		$maximal = \code{True}$
+		\State
+		به صورت تصادفی
+		$j^{\ast}$
+		را با شرط
+		$j^* \in \arg \max_{j \in [1:m] \setminus \mathcal{S}} f(\mathcal{S} \cup \{j\})$
+		انتخاب کنید.
 		\If{$f(\mathcal{S} \cup \{j^*\}) > f(\mathcal{S})$}
-		\State $\textrm{maximal} \gets \code{False}$
-		\State $\mathcal{S} \gets \mathcal{S} \cup \{j^*\}$
+		\State قرار دهید
+		$\textrm{maximal} \gets \code{False}$
+		\State قرار دهید
+		$\mathcal{S} \gets \mathcal{S} \cup \{j^*\}$
 		\EndIf
 		\EndWhile
-		\State $\mathsf{SAT} \gets \mathsf{SAT} \cup W_1(\mathcal{S})$
-		\State $\mathcal{C} \gets \mathcal{C} \cup \{\mathcal{S}\}$
+		\State قرار دهید
+		 $\mathsf{SAT} \gets \mathsf{SAT} \cup W_1(\mathcal{S})$
+		\State قرار دهید
+		$\mathcal{C} \gets \mathcal{C} \cup \{\mathcal{S}\}$
 		%\State \% Remove outgoing edges from $W_1(\mathcal{S})$:
-		\State $E \gets E \setminus \{ (u,v) \in E: u \in W_1(\mathcal{S})\}$
+		\State قرار دهید
+		$E \gets E \setminus \{ (u,v) \in E: u \in W_1(\mathcal{S})\}$
 		\EndWhile
-		\State Output: $\mathcal{C}$
+		\State $\mathcal{C}$
+		را به عنوان خروجی برگردانید.
 	\end{algorithmic}
 \end{algorithm}
-\end{latin}
 
 \begin{figure}[H]
 	\centering
