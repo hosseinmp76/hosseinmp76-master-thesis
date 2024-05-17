@@ -9,13 +9,13 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: thesis.tex
+          root_file: hosseinmp76-thesis.tex
           latexmk_use_xelatex: true
 #      - name: Upload PDF file
 #        uses: actions/upload-artifact@v3
 #        with:
 #          name: PDF
-#          path: thesis.pdf
+#          path: hosseinmp76-thesis.pdf
       - name: Get commit message
         id: commit_message
         run: echo "::set-output name=message::$(git log --format=%B -n 1 ${{ github.sha }})"
@@ -46,6 +46,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./thesis.pdf
-          asset_name: thesis.pdf
+          asset_path: ./hosseinmp76-thesis.pdf
+          asset_name: hosseinmp76-thesis.pdf
           asset_content_type: pdf
