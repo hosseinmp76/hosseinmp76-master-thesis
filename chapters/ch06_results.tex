@@ -42,6 +42,7 @@
  \icod
   و ظرفیت سیستم ذخیره‌سازی توزیع شده با قابلیت بازیابی محلی تک-شکست
  }
+\label{subsec:arya}
  شبکه‌ی ارتباطی یک سیستم ذخیره سازی توزیع شده را در نظر بگیرید.
  \autoref{fig:storage-graph}
  یک مثال برای چنین شبکه‌ای است. ارتباط بین سرورها بر اساس توانایی ارتباطی آن‌ها است(که می‌تواند به خاطر فاصله‌ی جغرافیایی ارتباطات فیبر نوری و \ldots). همچنین ممکن است به خاطر مسائل فنی در تفاوت فنی میان سرورها و ارتباطشان(مثال سرعت متفاوت دانلود و آپلود) از گراف جهت دار استفاده کنیم.
@@ -52,7 +53,8 @@
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{figs/chapter6/storage-graph}
-	\caption{
+	\caption[
+	مثالی از یک شبکه ارتباطی سرورهای یک سیستم ذخیره‌سازی توزیع شده]{
 		مثالی از یک شبکه ارتباطی سرورهای یک سیستم ذخیره‌سازی توزیع شده
 		\cite{arya}
 		}
@@ -101,6 +103,7 @@ $\log_q(|C|)$
   	\end{latin}
   \end{definition}
  \begin{definition}[\transf{رتبه کمینه}{minrank}]
+	 \label{def:minrank}
  	رتبه کمینه گراف
  	$G$
  	بر روی میدان
@@ -111,6 +114,7 @@ $\log_q(|C|)$
  	\end{equation}
  \end{definition}
  \begin{theorem}
+	 \label{thm:minranl}
  	در
  	\cite{4031356}
  	نشان داده شده است که:
@@ -187,7 +191,10 @@ $\log_q(|C|)$
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figs/chapter6/storage-graph-pent}
-	\caption{}
+	\caption[مثال تاثیر توابع غیر خطی]{
+		مثال تاثیر توابع غیر خطی
+	\cite{arya}
+	}
 	\label{fig:storage-graph-pent}
 \end{figure}
 بزرگترین کد برای این گراف به شکل زیر است:
@@ -567,7 +574,7 @@ $l$
             \label{fig:three graphs}
        	\end{figure}
        	
-       	\begin{figure}[H]
+       	\begin{table}[H]
        		    \begin{subtable}[h]{0.45\textwidth}
        			\centering
 	        		\begin{tabular}{|c|}
@@ -596,7 +603,7 @@ $l$
        	       \label{figure:example:shittable}
        	       	        		\end{subtable}
        	       	        		\caption{مثالی از جدول‌های قابل استفاده}
-      	\end{figure}
+      	\end{table}
 \end{example}
 
 \begin{lemma}
