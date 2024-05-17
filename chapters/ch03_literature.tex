@@ -389,6 +389,7 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 کران بالا برای حداقل تعداد ارسال مورد نیاز در
 \picod
 }
+\subsection{کران بالا}
 در این بخش ثابت خواهیم کرد که برای
 \picodt
 کران بالا برای حداکثر تعداد ارسال مورد نیاز از مرتبه لگاریتمی خواهد بود. همچنین یک مثال سخت هم ارائه می‌دهیم که نشان می‌دهد حالت تساوی کران نیز رخ می‌دهد.
@@ -875,6 +876,11 @@ $t$
 	میرسیم.
 \end{proof}
 
+\subsection{
+	مثالی از
+\picod
+با حداقل طول کد لگاریتمی
+}
 حال نشان می‌دهیم نمونه‌ای وجود دارد که به کد لگاریتمی نیاز دارد.
 \begin{lemma}
 	\label{lemma:algebraicconstraint}
@@ -941,6 +947,37 @@ $t$
 	را بازیابی کند.	
 \end{proof}
 
+\begin{theorem}
+	\cite{pliable2015paper}
+	\label{thm:pliable2015_7}
+	برای هر نمونه از
+	\picodtt{t}
+	با
+	$m$
+	پیام و
+	$n$
+	گیرنده، همه‌ی گیرنده‌ها را میتوان ارضا کرد با کدی به طول:
+	\begin{equation}
+		O\left( \min\left\{ t \log(m) (1 + \log^{+}(\dfrac{n}{\log m})), t \log(m) + \log(m) \log^2(n), m, n, tn\right\}\right)
+	\end{equation}
+\end{theorem}
+\begin{proof}
+\end{proof}
+\begin{theorem}
+		\cite{pliable2015paper}
+	\label{thm:pliable2015_8}
+	برای
+	$m$
+	به اندازه‌ی کافی بزرگ، اگر هر پیام با احتمال ثابت و مشخص 
+	$q$
+	در اطلاعات جانبی یک گیرنده ضاهر شود، در آن صورت هر نمونه از
+	\picodtt{t}
+	را با کدی به طول
+	$O(\min(t \log(n), t + \log^2(n)))$
+	می‌توان حل کرد.
+\end{theorem}
+\begin{proof}
+\end{proof}
 \begin{definition}[
 	\picod
 	کامل
@@ -1087,7 +1124,7 @@ $t$
 الگوریتم‌های تصادفی
 }
 \subsection{
-	\lr{GRCOV1} 
+	\lr{GRCOV} 
 }
 \picod
 ذات بسیار متفاوتی نسبت به
@@ -1184,32 +1221,77 @@ $|W_1(B_1)|$
  	نام دارد. زمان اجرای این الگوریتم برابر
  	$O(mn^2)$
  	است.
- 	\begin{algorithm}[H]
- 		\caption{GrCov1($G,m,n,t$) \cite{pliable2015paper}}
- 		\label{algorithm:grcov1}
+ 	\begin{algorithm}
+ 		\caption{
+ 			پوشش حریصانه‌ی
+ 			\lr{GrCov($G,m,n,t$) }
+ 			\cite{pliable2015paper}}
+ 		\label{algorithm:grcov}
  		\begin{algorithmic}[1]
- 			\State G is a \picodt with n clients and m messages
- 			\State $\mathcal{C} = \{\}$
- 			\State $\forall i \in [n]: CNT[i] = t$ 
- 			\While{$\exists i$ s.t. $CNT[i] \neq 0$}
-		 			\State $B \leftarrow \varnothing$.
-		 			\While{$B$ is not a maximal set}
-				 			\State Find message vertex $b_v \notin B$ such that $\left|W_1\left(B \cup\left\{b_v\right\}\right)\right|$ is maximized.
-				 			\State $B \leftarrow B \cup\left\{b_v\right\}$
+ 			\Require
+ 			گراف اطلاعات جانبی
+ 			$G$
+ 			با
+ 			$n$
+ 			گیرنده و
+ 			$m$
+ 			پیام برای مسئله‌ی
+ 			\picodtt{t}
+ 			
+ 			\Ensure
+ 			یک کد اندیس منعطف برای
+ 			$G$
+ 			\State 
+ 			قرار دهید
+ 			$\mathcal{C} = \{\}$
+ 			\State برای هر
+ 			 $\forall i \in [n]$
+ 			 قرار دهید
+ 			 $CNT[i] = t$ 
+ 			\While{
+ 				$i$
+ 				وجود دارد که
+ 				 $CNT[i] \neq 0$
+ 				 }
+		 			\State
+		 			قرار دهید
+		 			 $B \leftarrow \varnothing$.
+		 			\While{$B$
+		 			یک مجموعه‌ی ماکسیمال نیست}
+				 			\State
+				 			راس
+				 			 $b_v \notin B$ 
+				 			 که
+				 			 $\left|W_1\left(B \cup\left\{b_v\right\}\right)\right|$
+				 			 بیشینه باشد را بیابید.
+				 			\State قرار دهید
+				 			$B \leftarrow B \cup\left\{b_v\right\}$
 		 			\EndWhile
-		 			\State $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\sum_{u=1}^{|B|} b_{v_u}, b_{v_u} \in B\right\}$
+		 			\State قرار دهید
+		 			 $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\sum_{u=1}^{|B|} b_{v_u}, b_{v_u} \in B\right\}$
 		 			\For{ $c_i \in W_1(B)$ }
-		 			\State If $c_i$ is connected to $b_j \in B$, then delete the correspond-ing edge in $G$.
-		 			\State $CNT[i] \leftarrow CNT[i]-1$.
+		 			\If{
+		 				$c_i$ 
+		 				به
+		 		$b_j \in B$
+		 		متصل است
+		 	}
+		 	\State یال متناظر در
+		 	 $G$
+		 	 را حذف کنید.
+		 	 \EndIf
+		 			\State قرار دهید $CNT[i] \leftarrow CNT[i]-1$.
 		 			\EndFor
  			\EndWhile
- 			\State Output: $\mathcal{C}$
+ 			\State کد
+ 			 $\mathcal{C}$
+ 			 را به عنوان خروجی برگردانید.
  		\end{algorithmic}
  	\end{algorithm}
- \subsection{
+
+ الگوریتم
  	\lr{GRCOV2} 
- }
- این الگوریتم تغییر کوچکی نسبت به الگوریتم اصلی دارد. در الگوریتم اصلی وقتی یک مجموعه‌ی ماکسیمال را پیدا می‌کردیم هم
+ 	تغییر کوچکی نسبت به الگوریتم قبلی دارد. در الگوریتم قبلی وقتی یک مجموعه‌ی ماکسیمال را پیدا می‌کردیم هم
  $B_1$
  و هم متغیرهای مربوطه یعنی
  $w_1(B_1)$
@@ -1220,27 +1302,6 @@ $|W_1(B_1)|$
  زمان اجرای این الگوریتم نیز
  $O(mn^2)$
  است.
- 	\begin{algorithm}[H]
- 	\caption{GrCov2($G,m,n,t$) \cite{pliablefirstpaper}}
- 	\label{algorithm:grcov2}
- 	\begin{algorithmic}[1]
- 		\State G is a \picodt with n clients and m messages
- 		\State  $U C \leftarrow\left\{c_1, \cdots, c_n\right\}$,
- 		\State  num\_bits $\leftarrow 0, \mathcal{C}=\{\}$.
- 		\While{$U C \neq \varnothing$}
-		 		\State $B \leftarrow \varnothing$.
-		 		\While{$B$ is not a maximal set}
-				 		\State  Find bit vertex $b_v$ such that $\left|W\left(B \cup\left\{b_v\right\}\right)\right|$ is maximized.
-				 		\State  $B \leftarrow B \cup\left\{b_v\right\}$.
-		 		\EndWhile
-		 		\State  $UC \leftarrow UC \backslash w_1(B)$.
-		 		\State Remove $w_1(B)$ and all edges connected to it from $G$.
-		 		\State  $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\bigoplus_{t=1}^{|B|} b_{v_t}, b_{v_t} \in B\right\}$
-		 		\State  num\_bits $\stackrel{t=1}{\leftarrow}$ num\_bits +1 .
- 		\EndWhile
- 		\State  Output $\mathcal{C}$,num\_bits.
- 	\end{algorithmic}
- \end{algorithm} 
  \subsection{\lr{SETCOV}}
  فرگولی و براهما برای آزمایش کارایی الگوریتم‌های بالا، الگوریتم
  \lr{SETCOV}
@@ -1306,7 +1367,7 @@ $|W_1(B_1)|$
  فرگولی در پیاده سازی آزمایشگاهی از روش استاندارد حریصانه تقریبی برای این مسئله استفاده می‌کند که زمان اجرای نهایی آن
  $O(m^2 n^6)$
  است.
-\subsubsection{k-GRCOV2}
+\subsubsection{k-GRCOV}
 برای حالت
 \picodt
 یک تعمیم طبیعی از الگوریتم قبلی وجود دارد. به جای اینکه در هر گاه راس‌هایی که یک پیام جدید را بازیابی می‌کنند حذف کنیم، هر راس 
@@ -1321,7 +1382,7 @@ $c_i$
 $O(kmn^2)$
 است.
 
-\subsubsection{
+\subsection{
 نتایج عددی
 }
 فرگولی و براهما  الگوریتم‌های گفته شده را به صورت عملی روی نمونه‌های تصادفی از مسئله تست می‌کنند. در این آزمایش‌ها 
@@ -1422,13 +1483,237 @@ $5$
 	\label{fig:pliable20123}
 \end{figure}
 
+\subsection{\lr{RANDCOV}}
 \subsubsection{\lr{RANDCOV}}
-لم زیر از
-\cite{7176784}
-اولین گام برای دستیابی به الگوریتم ما است.
+این الگوریتم روند اثبات
+\autoref{theorem:log1}
+را برای پیدا کردم کدگذاری دنبال می‌کند. گیرنده‌ها به حداکثر
+$g = O(\log(m))$
+گروه ناتهی
+$S_1, \ldots, S_g$
+افراز می‌شوند به طوری که نسبت حداکثر و حداقل درجه در هر گروه حداکثر یک ثابت مشخص
+$r$
+باشد. فرض کنید بزرگترین درجه موثر در
+$S_i$
+برابر
+$d_{max, i}$
+باشد. در همسایگی
+$N[S_i]$
+هر راس را با احتمال
+$p_i = \dfrac{1}{d_{max, i}}$
+ انتخاب می‌کنیم.
+ اگر
+ $B_i$
+ مجموعه‌ی راس‌های انتخابی باشد،
+ گیرنده‌های مجموعه‌ی
+ $W_1(B_i)$
+ ارضا می‌شوند. این گیرنده‌ها را حذف می‌کنیم و فرآیند را تا زمانی که تمام گیرنده‌های
+ $S_i$
+ ارضا شوند ادامه می‌دهیم. تعداد مجموعه‌های تصادفی انتخاب شده مورد نیاز برابر طول کد خواهد بود. این کار را برای تمام مجموعه‌های
+ $S_1, \ldots, S_g$
+ انجام می‌دهیم. پیاده سازی ساده‌ای از این الگوریتم زمان اجرای
+ $O(m n \log(n))$
+ 
+ \subsubsection{\lr{RANDCOV-PP}}
+ گرچه طول کد ساخته شده در الگوریتم
+ \lr{RANDCOV}
+ توسط
+ \autoref{theorem:log1}
+ محدود می‌شود، همان طور که در 
+ \autoref{subsection:numerical}
+  خواهیم دید، یک پیاده سازی ساده بدون هیچ تغییری خروجی خوبی نسبت به
+  \lr{GRCOV}
+  نخواهد داشت. برای بهبود این الگوریتم می‌توانیم از مرحله‌ی پس‌پردازش زیر استفاده می‌کنیم. فرض کنید
+  $B_1$
+  و
+  $B_2$
+  دو مجموعه از گیرنده‌ها باشند. اگر هیچ یالی از
+  $B_1$
+  به
+  $W_1(B_2)$
+  نداشته باشد و همچنین هیچ یالی از
+  $B_2$
+  به
+  $W_1(B_1)$
+  وجود نداشته باشد آنگاه می‌توانیم با ارسال جمع تمام پیام‌های
+  $B_1 \cup B_2$
+  تمام گیرنده‌های
+  $W_1(B_1) \cup W_1(B_2)$
+  را ارضا کنیم. این ایده تنها به دو مجموعه وابسته نیست و می‌توان به هر تعداد مجموعه با شرایط گفته شده تعمیم داد. در هر مرحله به صورت حریصانه بیشترین تعداد مجموعه که در شرط بالا صدق می‌کنند را انتخاب می‌کنیم. این الگوریتم همچنان در زمان
+  $O(m n \log(n))$
+  اجرا می‌شود.
+  \subsection{
+  نتایج عددی
+  }
+  \label{subsection:numerical}
+  در
+  \autoref{fig:pliable2015}
+  نتایج شبیه‌‌سازی‌های الگوریتم‌های گفته شده را مشاهده می‌کنید. در این شبیه سازی‌ها عداد گیرنده‌ها و پیام‌ها برابر
+  $n = m = 512$
+  است و میدان
+  $\mathbb{F}_2$
+  استفاده شده است. برای الگوریتم‌های
+  \lr{RANDCOV}
+  و
+  \lr{RANDCOV-PP}
+  نیز
+  $r = 3$
+  انتخاب شده است. برای ساخت هر نمونه از مسئله از روش زیر استفاده کردیم. هر گیرنده با احتمال
+  $p_{msg}$
+  هر کدام از پیام‌ها را ممکن است در اطلاعات جانبی خود داشته باشد. این مدل از ساخت نمونه می‌تواند مدلی برای 
+  \lr{block-fading}
+  در 
+  \transf{
+  کانال‌های بی‌سیم
+}{wireless channels}
+   باشد یعنی زمانی که نسبت 
+   \transf{
+   پیام به نویز
+}{channel SNR =  channel signal to noise ratio}
+کم باشد، مثلا لایه‌های بالایی شبکه با احتمال
+$1 - p_{msg}$
+پیام‌ها را پاک کنند.
+\autoref{fig:pliable2015a}
+میانگین کارایی الگوریتم‌ها بر روی نمونه‌های مختلف را نشان می‌دهد. برای هر 
+$p_{msg}$
+بیش از ده هزار نمونه با ساخته شده است و طول کد میانگین روی تمام نمونه‌ها محاسبه شده است.
+
+همان طور که انتظار می‌رفت تفاوت بسیار زیادی بین کارایی(طول کد) در الگوریتم‌ها
+\picod
+و
+\icod
+وجود دارد. در حالی که هر الگوریتم‌های
+\picodtt{1}
+کدی با طول کمتر از ۲۶ تولید می‌کنند، طول کد برای
+\icod
+تنها زمانی در این بازی قرار می‌گیرد که
+$p_{msg} \geq 0.87$
+باشد، یعنی زمانی که گراف اطلاعات جانبی افراد بسیار
+\transf{
+	متراکم
+}{
+dense
+}
+  باشد.
+  
+  در بین الگوریتم‌های 
+  \picod
+  \lr{GRCOV}
+  بهترین کارایی را دارد. در واقع
+    \lr{GRCOV}
+     به صورت نظری روی نمونه‌های تصادفی، کارایی مشابهی به صورت 
+     \transf{
+     تقریبی
+    }{asymptotic}
+    با
+    \lr{RANDCOV}
+    دارد ولی در عمل کارایی بسیار بهتری دارد.
+    
+    برای بررسی کارایی
+        \lr{GRCOV}
+        در حالت چند پیامه
+        \picodtt{t}
+        نمونه‌های تصادفی با
+        $p_{msg} = 0.5$
+        و مقادیر متفاوت
+        $t$
+        و
+        $n$
+        و
+        $m = n$
+        ساخته شده است. اگر در یک نمونه‌ تصادفی
+        $m - |S_i| < t$
+        در این صورت مطابق تعریف این گیرنده به دنبال بازیابی
+        $m - |S_i|$
+        پیام است. در
+        \autoref{fig:pliable2015b}
+        به ازای مقادیر مختلف
+        $t$
+        و چند مقدار مختلف
+        $n$
+        کارایی الگوریتم به تصویر کشیده شده است.
+        
+        برای هر
+        $n$
+        بعد از کمی فاز ابتدایی، طول کد به صورت خطی نسبت به
+        $t$
+        افزایش می‌یابد. این نتیجه را به خاطر
+        \autoref{thm:pliable2015_8}
+        انتظار داشتیم. همچنین خط‌های نمودار در
+                \autoref{fig:pliable2015b}
+                برای
+                $t > 5$
+                به صورت تقریبا موازی هستند یعنی طول کد نسبت به 
+                $n$
+                مستقل است. که با نتیجه‌ی
+                $O(t + \log^2(n))$
+                برای
+                $t$
+                های بزرگ مطابقت دارد. خط‌های نشان دهنده‌ی خطا(حداکثر و حداقل طول کد در نمونه‌ها) نیز مشابها روندی خطی را دنبال می‌کنند.
+                
+                در
+                \autoref{fig:pliable2015c}
+                مطابق
+                  \autoref{fig:pliable2015b}
+                  است ولی این بار
+                  $n$
+                  در محور افقی آمده است و به ازای مقدارهای مختلف
+                  $t$
+                  نمودار رسم شده است.
+                  
+                  در
+                    \autoref{fig:pliable2015d}
+                    تاثیر
+                    $p_{msg}$
+                    را بررسی می‌کنیم. این نمودار به ازای
+                    $m = n = 100$
+                    و مقادیر مختلف
+                    $t$
+                    رسم شده است.
+  \begin{figure}
+  	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+  	\includegraphics[width=\textwidth]{figs/ch3/pliable2015_a}
+			\caption{}
+			\label{fig:pliable2015a}
+		\end{subfigure}
+		\hfill
+		  \begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figs/ch3/pliable2015_b}
+			\caption{}
+			\label{fig:pliable2015b}
+		\end{subfigure}
+		\\
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figs/ch3/pliable2015_c}
+			\caption{}
+			\label{fig:pliable2015c}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{figs/ch3/pliable2015_d}
+			\caption{}
+			\label{fig:pliable2015d}
+		\end{subfigure}
+		  	\caption][
+		  	مقایسه‌ی الگوریتم‌های تصادفی
+		  	]{
+		  		مقایسه‌ی الگوریتم‌های تصادفی
+		  		\cite{pliable2015paper}
+		  		}
+		\label{fig:pliable2015}
+  \end{figure}
+
 \section{
 	الگوریتم قطعی
 	\lr{BinGreedy}
+	}
+	\subsection{
+	توصیف الگوریتم
 	}
 
 در الگوریتم قطعی‌ای که معرفی خواهیم کرد از دو مفهوم گیرنده‌های موثر و درجه موثر استفاده می‌کنیم. برای یک پیام
@@ -1539,6 +1824,7 @@ $2 \log(n)$
 حال به توصیف گام‌های الگوریتم می‌پردازیم.
 \begin{itemize}
 	\item[مرحله‌ی مرتب سازی] 
+	
 	در این مرحله
 		\begin{enumerate}
 			\item [گام اول]
@@ -1680,25 +1966,76 @@ $2 \log(n)$
 \end{itemize}
 \subsection{شبه کد}
 	\begin{algorithm}[H]
-	\caption{Binary Field Greedy Algorithm (BinGreedy)($G,m,n,t$) \cite{pliable2016}}
+	\caption{
+		الگوریتم حریصانه برای میدان دودویی
+		\lr{BinGreedy($G,m,n,t$)}
+		\cite{pliable2016}
+		}
 	\label{algorithm:bingready}
 	\begin{algorithmic}[1]
-		\State $\mathcal{N} = [n]$
-		\State $\mathcal{C} = \{\}$
-		\State $\forall i \in [n]: CNT[i] = t$ 
-		\While{$\exists i$ s.t. $CNT[i] \neq 0$}
-		\State $B \leftarrow \varnothing$.
-		\While{$B$ is not a maximal set}
-		\State Find message vertex $b_v \notin B$ such that $\left|W_1\left(B \cup\left\{b_v\right\}\right)\right|$ is maximized.
-		\State $B \leftarrow B \cup\left\{b_v\right\}$
+		\Require
+		 گراف اطلاعات جانبی
+		$G$
+		با 
+		$n$
+		گیرنده و
+		$m$
+		پیام برای مسئله‌ی
+		\Ensure
+		یک اندیس کد منعطف برای
+		$G$
+		\picodtt{t}
+		\State 
+		قرار دهید
+		 $\mathcal{N} = [n]$
+		\State
+		قرار دهید
+		 $\mathcal{C} = \{\}$
+		\State
+		برای هر
+		 $\forall i \in [n]$
+		 قرار دهید
+		 $CNT[i] = t$ 
+		\While{که 
+			$i$
+			وجود دارد که
+			$CNT[i] \neq 0$
+			}
+		\State قرار دهید
+		$B \leftarrow \varnothing$.
+		\While{$B$ 
+		یک مجموعه‌ی ماکسیمال نیست
+		}
+		\State
+		راس پیام
+		 $b_v \notin B$
+		 را پیدا کن به طوری که
+		 $\left|W_1\left(B \cup\left\{b_v\right\}\right)\right|$
+		 بیشینه شود.
+		\State قرار دهید
+		$B \leftarrow B \cup\left\{b_v\right\}$
 		\EndWhile
-		\State $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\sum_{u=1}^{|B|} b_{v_u}, b_{v_u} \in B\right\}$
+		\State قرار دهید
+		 $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\sum_{u=1}^{|B|} b_{v_u}, b_{v_u} \in B\right\}$
 		\For{ $c_i \in W_1(B)$ }
-		\State If $c_i$ is connected to $b_j \in B$, then delete the correspond-ing edge in $G$.
-		\State $CNT[i] \leftarrow CNT[i]-1$.
+		\If{ $c_i$ 
+			به
+			 $b_j \in B$
+			 متصل است
+			 }
+		\State
+		یال متناظر در
+		 $G$
+		 را حذف کن.
+		\EndIf
+		\State
+		قرار دهید
+		 $CNT[i] \leftarrow CNT[i]-1$.
 		\EndFor
 		\EndWhile
-		\State Output: $\mathcal{C}$
+		\State کد
+		 $\mathcal{C}$
+		 را به عنوان خروجی برگردان.
 	\end{algorithmic}
 \end{algorithm}
 
@@ -1729,11 +2066,27 @@ $2 \log(n)$
 		است.
 \end{theorem}
 \begin{proof}
-	اثبات مفصل در مقاله آمده است
+	 طبق
+	 
+	 \autoref{lemma:pliable2016:lemma2}
+	 در هر تکرار، حداکثر
+	 $\log(n)$
+	 دسته و
+	 $2 * \log(n)$
+	 ارسال داریم که حداقل
+	 $1/3$
+	 گیرنده‌ها را ارضا می‌کنند. در نتیجه این فرایند حداکثر
+	 $\dfrac{\log(n)}{\log(1.5)}$
+	 بار می‌تواند تکرار شد.
 \end{proof}
+
+از روی پیاده‌سازی الگوریتم مشخص است که زمان اجرای آن
+$O(nm^2 \log(n))$
+است.
 \subsection{
 ضریب تقریب
 }
+\begin{definition}
 اگر برای نمونه‌ی
 $I_n$
 از 
@@ -1745,6 +2098,7 @@ $OPT(I_n)$
  	\alpha(n) = \max\limits_{I_n} \dfrac{BinGreedy(I_n)}{OPT(I_n)}
  \end{align}
 تعریف می‌کنیم.
+\end{definition}
 
 
 \begin{theorem}
@@ -1757,14 +2111,120 @@ $OPT(I_n)$
 	$NP \subseteq BPTIME(n^{O(\log \log (n))})$
 \end{theorem}
 \begin{proof}
-	اثبات مفصل در مقاله آمده است
+	اثبات این قضیه در
+	\cite{song2016deterministic}
+	آمده است. این اثبات مشابه اثبات
+	\cite{ELKIN20048}
+	از 
+	\transf{کاهش شکاف}{gap reduction}
+	از یک مسئله‌ی 
+	\nphard
+	(
+	\transf{
+	مسئله‌ی نمایش‌پذیری
+}{representation problem}
+	) استفاده می‌کند و نشان می‌دهد که به دست آوردن تقریبی برای
+	\picod
+	با طول کمتر از
+	$\Omega(\log \log (n))$
+	سخت است.
 \end{proof}
 
 \subsection{
 پیرامون کد بهینه برای
 \picod
 }
+در این بخش با ارائه‌ی یک مثال نشان می‌دهیم که استفاده از میدان دودویی
+$\mathbb{F}_2$
+همیشه به کد بهینه نمی‌انجامد. همچنین ارتباط
+\picod
+و مسئله‌ی رتبه‌ی کمینه را بررسی می‌کنیم.
+\begin{example}
+	\picod
+	با شرایط
+	$m = 4$
+	و
+	$n = 10$
+	را در نظر بگیرید. اطلاعات جانبی گیرنده‌ها شامل تمام زیرمجوعه‌های یک و دو عضوی از
+	$[4]$
+	هستند یعنی:
+	$R_1 = \{1\}, R_2 = \{2\}, R_3 = \{3\}, R_4 = \{4\}, R_5 = \{1, 2\}, R_6 = \{1, 3\}, R_7 = \{1, 4\}, R_8 = \{2, 3\}, R_9 = \{2, 4\}, R_{10} = \{3, 4\}$
+	
+	کد
+	$Y = (b_1 + b_2 + b_4, b_2+b_3+2b_4)$
+	با طول دو، یک کد بهینه در
+	$\mathbb{F}_3$
+	برای این مسئله خواهد بود. اما هیچ کدی با طول دو در
+	$\mathbb{F}_2$
+	برای این مسئله وجود ندارد. در واقع همان طور که در
+	\cite{song2016deterministic}
+	نشان داده شده است برای رسیده به کد با طول بهینه برای تمام نمونه‌های با
+	$m$
+	پیام به میدانی با حداقل
+	$m - 1$
+	عضو نیاز داریم.
+\end{example}
 
+در
+\autoref{subsec:arya}
+با مفهوم
+\lr{minrank}
+در
+\autoref{def:minrank}
+آشنا می‌شویم و در
+\autoref{thm:minranl}
+نشان می‌دهیم که که طول کد بهینه برای
+\icod
+برابر 
+$\minrank$
+است. برای
+\picod
+به طور مشابه می‌توان مفهوم
+$\minrank$
+را به شکل زیری تعریف کرد.
+\begin{definition}
+	میگوییم ماتریس
+	$G \in \mathbb{F}^{n\times m}_q$
+	بر مسئله‌ی
+	\picod
+	$(m, n, \{R_i\}_{i \in [m]})$
+	مطابقت می‌کند اگر برای هر
+	$i \in [n]$
+	درسطر 
+	$i$-ام
+	داشته باشیم:
+	\begin{itemize}
+		\item
+		برای هر
+		$j \in R_i$
+		دقیقا یک
+		$j^\ast \in R_i$
+		وجود داشته باشد که 
+		$g_{i j^\ast}= 1$
+		و برای هر
+		$h \in R_i \setminus \{j^\ast\}$
+		داشته باشیم:
+		$g_{i j} = 0$ 
+		\item
+		برای هر
+		$j \in S_i$
+		مقدار
+		$g_{i j}$
+		هر کدام از اعضای میدان
+		$\mathbb{F}_q$
+		می‌تواند باشد.
+	\end{itemize}
+\end{definition}
+\begin{definition}
+	اگر
+	$\mathcal{G}$
+	را مجموعه‌ی تمام ماتریس‌هایی که بر مسئله‌ی
+	\picod
+	$G$
+	مطابقت می‌کنند بگیریم، رتبه‌کمینه‌ی مسئله را با
+	$minrank(\mathcal{G}) = \min_{H \in \mathcal{G}} \rank(H)$
+	تعریف می‌کنیم.
+\end{definition}
 \begin{theorem}
 	\label{theorem:pliable2016:theorem3}
 	طول کد خطی بهینه برای نمونه‌ی
@@ -1776,7 +2236,7 @@ $OPT(I_n)$
 	است.
 \end{theorem}
 \begin{proof}
-	اثبات مفصل در مقاله  بعدی فرگولی 
+	اثبات مفصل در مقاله بعدی فرگولی 
 	\cite{song2016deterministic}
 	آمده است.
 \end{proof}
@@ -1787,9 +2247,130 @@ $OPT(I_n)$
 \subsubsection{
 مقایسه کارایی
 }
+برای مقایسه‌ی کارایی، کارایی این الگوریتم را با تصادفی‌ای که قبلا معرفی کردیم و
+\transf{
+بهترین 
+}{
+state-of-the art
+}
+الگوریتم موجود است و می‌تواند به صورت میانگین کدی با طول
+$O(\log^2(n))$
+تولید کند، مقایسه می‌کنیم. برای این مقایسه مقدار
+$m$
+را برابر
+$n^{0.75}$
+قرار می‌دهیم. ۱۰۰ نمونه تصادفی برای هر مقدار
+$n$
+می‌سازیم و هر پیام را با احتمال
+$0.3$
+در مجوعه‌ی اطلاعات جانبی هر گیرنده قرار می‌دهیم.
+
+\autoref{fig:pliable20162a}
+میانگین طول کد و بدترین طول کد به ازای
+$n$
+های مختلف نشان می‌دهد. محور افقی به صورت لگاریتمی مقیاس بندی شده است. همان طور که در نمودار مشخص است، در معیار بدترین طول کد حدود
+$40\%-60\%$
+و در معیار میانگین طول کد الگوریتم
+$20\%-35\%$
+الگوریتم
+\lr{BinGreedy}
+نسبت به الگوریتم تصادفی بهتر عمل می‌کند.
+  \begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+			\includegraphics[width=1\linewidth]{figs/ch3/pliable2016_2a}
+			\caption{}
+			\label{fig:pliable20162a}
+		\end{subfigure}
+		\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+	\centering
+	\includegraphics[width=1\linewidth]{figs/ch3/pliable2016_2b}
+	\caption{
+	}
+	\label{fig:pliable20162b}
+		\end{subfigure}
+		\caption{
+			مقایسه‌ی
+			\lr{BinGreedy}
+			}
+\end{figure}
+
 \subsubsection{
 	فاصله با جواب بهینه
 }
+برای بررسی کارایی الگوریتم
+\lr{BinGreedy}
+طول کد آن را طبق
+\autoref{theorem:pliable2016:theorem3}
+با طول کد بهینه که از طریق محاسبه‌ی
+\lr{minRank}
+به دست می‌اید مقایسه می‌کنیم. به دلیل سختی این محاسبه، مقایسه را تنها برای مقادیر کوچک انجام می‌دهیم. این مقایسه را برای مقدارهای
+$n = 12$
+و
+$n = 18$
+به ازای مقدارهای مختلف
+$m$
+انجام می‌دهیم.  در
+\lr{BinGreedy}
+یک گام اضافه نیز برای بهبود طول کد اضافه می‌کنیم به این صورت که یک پایه برای فضای سطری ماتریس کدگذاری نگه می‌داریم. برای هر جفت
+$m$
+و
+$n$
+به صورت تصادفی ۵ گراف دوبخشی می‌سازیم که بین هر گیرنده و فرستنده با احتمال
+$0.3$
+یال هست.
+
+همان طور که در
+\autoref{fig:pliable20163}
+	مشخص است، فاصله‌ی میانگین(خط مشکی) برای هر دو حالت
+	$n = 12$
+	و
+	$n = 18$
+	برابر
+	$2$
+	است. بیشینه‌ی فاصله(خط سفید) نیز برای هر دوی این حالت‌ها
+	$3$
+	است.
+	
+	ضریب تقریب برای حالت
+	$n = 18$
+	برابر
+	$2.01$
+	و برای
+	$n = 12$
+	برابر
+	$1.87$
+	است که با دانش ما از
+	\autoref{theorem:pliable2016:theorem2}
+	مطابقی می‌کند. زیرا ضریب تقریب نمی‌تواند بهتر از
+	$\Omega(\log \log (n))$
+	باشد و در نتیجه با افزایش
+	$n$
+	افزایش پیدا می‌کند.
+ \begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{figs/ch3/pliable2016_3a}
+		\caption{}
+		\label{fig:pliable20163a}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{figs/ch3/pliable2016_3b}
+		\caption{}
+		\label{fig:pliable20163b}
+	\end{subfigure}
+	\caption{
+		فاصله‌ی 
+		\lr{BinGreedy}
+		و جواب بهینه
+	}
+	\label{fig:pliable20163}
+\end{figure}
 
 
 
