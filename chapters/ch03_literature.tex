@@ -860,11 +860,11 @@ $t$
 	از ماتریس
 	$A$
 	وجود داشته باشد که
-	$\alpha_i \notin span\{A_{R_i} \setminus i\}$
+	$\alpha_i \notin \sspan \{A_{R_i} \setminus i\}$
 \end{lemma}
 \begin{proof}
 	اگر شرط
-	$\alpha_i \notin span\{A_{R_i} \setminus i\}$
+	$\alpha_i \notin \sspan\{A_{R_i} \setminus i\}$
 	برقرار باشد آنگاه برای هر بردار که در فضای پوچ
 	$A_{R_j}$
 	باشد یعنی
@@ -888,7 +888,7 @@ $t$
 	به صورت یکتا
 	$b_i$
 	را بازیابی کند ولی ستون
-	$\alpha_i \in span\{A_{R_j} \setminus \{i\}\}$
+	$\alpha_i \in \sspan\{A_{R_j} \setminus \{i\}\}$
 	در این صورت جواب با درایه‌ی
 	$z_i \neq 0$
 	برای
@@ -1049,7 +1049,7 @@ $t$
 	برای این‌که گیرنده‌ای که دقیقا باید همان متغیر را بازیابی کند ارضا شود ستون
 	$j_1$
 	نباید صفر باشد. پس: 
-	$\forall J, |J| = 1 \Rightarrow rank(A_J) = 1$
+	$\forall J, |J| = 1 \Rightarrow \rank(A_J) = 1$
 	. برای
 	$|J| = 2$
 	هر دو ستون متفاوت ماتریس باید مستقل خطی باشند. در غیر این صورت اگر
@@ -1061,9 +1061,9 @@ $t$
 	نمی‌تواند هیچ کدام از 
 	$b_{j_1}, b_{j_2}$
 	را بازیابی کند. پس 
-	$\forall J, |J| = 2 \Rightarrow rank(A_J) = 2$
+	$\forall J, |J| = 2 \Rightarrow \rank(A_J) = 2$
 	. حال برای فرض استفرا، فرض کنید
-	$\forall J, |J| = l \Rightarrow rank(A_J) = l$
+	$\forall J, |J| = l \Rightarrow \rank(A_J) = l$
 	حال برای
 	$|J| = l + 1$
 	اگر تمام گیرنده‌هایی که
@@ -1073,7 +1073,7 @@ $t$
 	ارضا می‌شوند پس برای یک
 	$i \in J$
 	داریم
-	$\alpha_i \notin span(A_{J \setminus \{i\}})$
+	$\alpha_i \notin \sspan(A_{J \setminus \{i\}})$
 	پس
 	$\rank(A_{J}) = \rank(\alpha_i) + \rank(A_{J \setminus \{i\}}) = 1 + l$
 \end{proof}
