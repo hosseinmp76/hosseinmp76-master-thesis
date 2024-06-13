@@ -11,11 +11,11 @@ jobs:
         with:
           root_file: hosseinmp76-thesis.tex
           latexmk_use_xelatex: true
-#      - name: Upload PDF file
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: PDF
-#          path: hosseinmp76-thesis.pdf
+      - name: Compile presentation
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: defence-presentation/hosseinmp76-msc-defence-presentation.tex
+          latexmk_use_xelatex: true
       - name: Get commit message
         id: commit_message
         run: echo "::set-output name=message::$(git log --format=%B -n 1 ${{ github.sha }})"
@@ -48,4 +48,14 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./hosseinmp76-thesis.pdf
           asset_name: hosseinmp76-thesis.pdf
+          asset_content_type: pdf
+      - name: Upload presenttion
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./defence-presentation/hosseinmp76-msc-defence-presentation.pdf
+          asset_name: hosseinmp76-msc-defence-presentation.pdf
           asset_content_type: pdf
