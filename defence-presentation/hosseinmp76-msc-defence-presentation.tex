@@ -90,7 +90,7 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 \setbeamercolor{palette secondary}{bg=Mycolor2,fg=white}
 \setbeamercolor{palette tertiary}{bg=Mycolor2,fg=white}
 \setbeamercolor{palette quaternary}{bg=red,fg=white}
-\setbeamercolor{structure}{fg=black} % itemize, enumerate, etc
+%\setbeamercolor{structure}{fg=black} % itemize, enumerate, etc
 \setbeamercolor{section in toc}{fg=black} % TOC sections
 \definecolor{UBCgrey}{rgb}{0.3686, 0.5255, 0.6235} % UBC Grey (secondary)
 
@@ -298,8 +298,8 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 	\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 		\column{.5\textwidth} % Left column and width
 		\begin{itemize}
-			\item<1-> distributed storage %\cite{arya}
-			\item<2-> Machine learning%: \cite{datashuff}
+			\item<1-> distributed storage: \textcite{arya}
+			\item<2-> Machine learning: \textcite{datashuff}
 		\end{itemize}
 		\column{.7\textwidth} % Right column and width			
 		\alt<1>{\begin{figure}
@@ -327,11 +327,8 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 			\item<3-> Clients are pliable, seeking any not-known message
 			\item<4-> Find the minimum needed transmission
 			\item<5-> NP-hard
-			
 		\end{itemize}
-		
 		\column{.4\textwidth} % Right column and width
-		
 		%			\includegraphics[width=0.7\linewidth]{img/screenshot005}
 		\alt<1>{}{
 			\begin{figure}
@@ -387,7 +384,6 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 		\end{tikzpicture}
 	\end{columns}
 \end{frame}
-\subsection{PICOD Example}
 \begin{frame}{PICOD Example}
 	\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 		
@@ -469,10 +465,8 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 	\end{columns}
 \end{frame}
 
-\subsection{ICOD vs PICOD}
 \begin{frame}{ICOD vs PICOD}
-	\begin{columns}
-	\column{.4\textwidth}
+
 	\begin{itemize}
 			\item<1->[]	Similarities: 
 			\begin{itemize}
@@ -481,121 +475,145 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 				\item<3->[]
 				clients' data: side info
 			\end{itemize}
-			\item<1->[]	Difference: 
+			\item<4->[]	Difference: 
 			\begin{itemize}
-				\item <2->[]
+				\item <5->[]
 				Objective: clients' requirement
 			\end{itemize}
 		\end{itemize}
-	\column{.6\textwidth} 
-	\centering
-	\begin{tikzpicture}[->, >=stealth, auto, semithick]
-		% Set the positions of the nodes
-		
-		\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C1) at (0,2) {
-			\alt<1-2,5>{
+	\end{frame}
+	\begin{frame}{ICOD vs PICOD. cont.}
+		\begin{columns}
+		\column{.5\textwidth}
+		\centering
+		\begin{tikzpicture}[->, >=stealth, auto, semithick]
+			% Set the positions of the nodes
+
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C1) at (0,2) {
 				\includegraphics[width=0.06\linewidth]{img/thinkingemoji}
-			}{
-				\includegraphics[width=0.06\linewidth]{img/slauthing2}
-			}
-		};
-		\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C2) at (1.5,2) {
-			\alt<4,6->{
-				\includegraphics[width=0.06\linewidth]{img/slauthing2}
-			}{
+			};
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C2) at (1.5,2) {
 				\includegraphics[width=0.06\linewidth]{img/thinkingemoji}
-			}
-		};
-		\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C3) at (3,2) {
-			\alt<1,5>{
+
+			};
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C3) at (3,2) {
 				\includegraphics[width=0.06\linewidth]{img/thinkingemoji}
-			}{
-				\includegraphics[width=0.06\linewidth]{img/slauthing2}
-			}
-		};
-		\node[above] at (1.5,2.5) {We want to know more};
-		
-		\alt<1->{
-			\node[circle, draw=green, fill=green!20, inner sep=0pt] (B1) at (0,0) {$B_1$};
-			\node[circle, draw=green, fill=green!20, inner sep=0pt] (B2) at (1.5,0) {$B_2$};
-			\node[circle, draw=green, fill=green!20, inner sep=0pt] (B3) at (3,0) {$B_3$};
-			\node[below] at (1.5,-0.5) {messages};
-		}{}
-		\alt<1->{
-			% Draw the edges
-			\draw (C1) -- (B1);
-			\alt<1-2,5>{}{\draw[->, color=red]  (C1) -- (B2);}
-			\draw (C1) -- (B3);
-			
-			\draw (C2) -- (B1);
-			\draw (C2) -- (B2);
-			\alt<1-3,5>{}{\draw[->, color=red]  (C2) -- (B3);}
-			
-			\alt<1,5>{}{\draw[->, color=red]  (C3) -- (B1);}
-			\draw (C3) -- (B2);
-			\draw (C3) -- (B3);
-		}{}
-		% Position the parts
-		%			\begin{scope}[on background layer]
+			};
+
+			\alt<1->{
+				\node[circle, draw=green, fill=green!20, inner sep=0pt] (B1) at (0,0) {$B_1$};
+				\node[circle, draw=green, fill=green!20, inner sep=0pt] (B2) at (1.5,0) {$B_2$};
+				\node[circle, draw=green, fill=green!20, inner sep=0pt] (B3) at (3,0) {$B_3$};
+				\node[below] at (1.5,-0.5) {PICOD};
+			}{}
+			% Position the parts
+			%			\begin{scope}[on background layer]
 			%				\alt<1->{\node[fit=(C1) (C2) (C3), draw=blue, fill=blue!10, rounded corners] {};}{}
 			%				\alt<1->{\node[fit=(B1) (B2) (B3), draw=green, fill=green!10, rounded corners] {};}{}
 			%			\end{scope}
-	\end{tikzpicture}			
-	\end{columns}
-\end{frame}
-%------------------------------------------------
-
-%------------------------------------------------
-\section{Main Result}
-\begin{frame}
+		\end{tikzpicture}
+	\column{.5\textwidth} 
 	\centering
-	\Huge
-	Main Result
-\end{frame}
+		\begin{tikzpicture}[->, >=stealth, auto, semithick]
+			% Set the positions of the nodes
 
-\subsection{Feasible Table \& Co-sets \& Source Coding}
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C1) at (0,2) {
+				\includegraphics[width=0.06\linewidth]{img/thinkingemoji}
+			};
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C2) at (1.5,2) {
+				\includegraphics[width=0.06\linewidth]{img/thinkingemoji}
+
+			};
+			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C3) at (3,2) {
+				\includegraphics[width=0.06\linewidth]{img/thinkingemoji}
+			};
+
+			\alt<1->{
+				\node[circle, draw=green, fill=green!20, inner sep=0pt] (B1) at (0,0) {$B_1$};
+				\node[circle, draw=green, fill=green!20, inner sep=0pt] (B2) at (1.5,0) {$B_2$};
+				\node[circle, draw=green, fill=green!20, inner sep=0pt] (B3) at (3,0) {$B_3$};
+				\node[below] at (1.5,-0.5) {ICOD};
+			}{}
+			\alt<1->{
+			% Draw the edges
+				\draw[->, color=Red]  (C1) -- (B1);
+
+
+				\draw[->, color=Red]  (C2) -- (B2);
+
+				\draw[->, color=Red]  (C3) -- (B3);
+			}{}
+			% Position the parts
+			%			\begin{scope}[on background layer]
+			%				\alt<1->{\node[fit=(C1) (C2) (C3), draw=blue, fill=blue!10, rounded corners] {};}{}
+			%				\alt<1->{\node[fit=(B1) (B2) (B3), draw=green, fill=green!10, rounded corners] {};}{}
+			%			\end{scope}
+		\end{tikzpicture}
+
+		\end{columns}
+\end{frame}
+\subsection{PICOD Algorithms}
+\begin{frame}{PICOD Algorithms}
+	\begin{enumerate}
+	\item <1->[]
+	ICOD upper bound: $n$
+	\item <2->[]
+	PICOD upper bound: $\log(n)$
+	\item <3->[]
+	PICOD algorithms: GrCov, RandCov, BinGreedy
+	\end{enumerate}
+\end{frame}
+\subsection{Source Coding}
+\begin{frame}{RDSS: Recoverable Distributed Storage System}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\linewidth]{img/aryaaa}
+		\label{fig:aryaaa}
+	\end{figure}
+	
+\end{frame}
 \begin{frame}{Feasible Table }
 	\begin{enumerate}[]
-		\item<1->
+		\item<1->[]
 		\begin{definition}[Feasible Table]
 			For side information graph: $G$, $T \subseteq \mathbb{F}_q^m$ is a feasible table if:
 			\begin{align*}
 				\forall C_i: \exists j \notin S_i: \forall X, X^\prime: X[S_i] = {X^\prime}[S_i]  \Rightarrow X[j] = {X^\prime}[j]
 			\end{align*}
 		\end{definition}
-		\item<2->
+		\item<2->[]
 		\begin{example}
 			\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-				\column{.41\textwidth}
+				\column{.45\textwidth}
 				\begin{enumerate}
-					
-					\item<2-> Consider side-information graph $G$.
-					\item<3-> $T_1$ is not a feasible graph bacause $C_3$ confuses between messages.
-					\item<4-> $T_2$ is a feasible table.
+
+					\item<2->[] Consider side-information graph $G$.
+					\item<3->[] $T_1$ is not a feasible graph bacause $C_3$ confuses between messages.
+					\item<4->[] $T_2$ is a feasible table.
 				\end{enumerate}
-				\column{.4\textwidth}
+				\column{.37\textwidth}
 				\centering
 				\begin{tikzpicture}[->, >=stealth, auto, semithick]
 					% Set the positions of the nodes
 					\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C1) at (0,2) {$C_1$};
-					
+
 					\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C2) at (1.5,2) {					$C_2$				};
 					\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C3) at (3,2) {$C_3$				};
-					
+
 					\node[circle, draw=green, fill=green!20, inner sep=0pt] (B1) at (0,0) {$B_1$};
 					\node[circle, draw=green, fill=green!20, inner sep=0pt] (B2) at (1.5,0) {$B_2$};
 					\node[circle, draw=green, fill=green!20, inner sep=0pt] (B3) at (3,0) {$B_3$};
-					
+
 					\alt<1->{
-						% Draw the edges
+					% Draw the edges
 						\draw (C1) -- (B2);
 						\draw (C1) -- (B3);
-						
+
 						\draw (C2) -- (B1);
 						\draw (C2) -- (B3);
-						
-						
-						
+
+
+
 						\draw (C3) -- (B1);
 						\draw (C3) -- (B2);
 					}{}
@@ -605,7 +623,7 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 %						\alt<1->{\node[fit=(B1) (B2) (B3), draw=green, fill=green!10, rounded corners] {};}{}
 %					\end{scope}
 				\end{tikzpicture}
-				\column{.19\textwidth}
+				\column{.17\textwidth}
 				\centering
 				\alt<2>{}{
 					\alt<3>{
@@ -642,10 +660,11 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 
 \begin{frame}{ Co-sets }
 	\begin{enumerate}[]
-		\item<1->\begin{definition}[Co-sets]
-			For sub-space $V \subseteq \mathbb{F}_q^m$, $W$ is co-set of $V$ if $\exists b\in\mathbb{F}_q^m: W = V + b$. 
+		\item<1->[]
+		\begin{definition}[Co-sets]
+					 For sub-space $V \subseteq \mathbb{F}_q^m$, $W$ is co-set of $V$ if $\exists b\in\mathbb{F}_q^m: W = V + b$.
 		\end{definition}
-		\item<2->
+		\item<2->[]
 		\begin{example}
 			\begin{columns}
 				\column{.5\textwidth}
@@ -676,42 +695,42 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 			\end{columns}
 		\end{example}
 	\end{enumerate}
-\end{frame}	
+\end{frame}
 
 
 \begin{frame}{Feasible Table \& Co-sets: Example 2}
 	\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 		\column{.5\textwidth}
 		\begin{enumerate}
-			
-			\item<1-> Let's $X = (011)$
-			\item <2-> $C_1$ should guess between ${(111), (011)}$
-			\item<3-> Transmitting table label is suffecint!
+
+			\item<1->[] Let's $X = (011)$
+			\item <2->[] $C_1$ should guess between ${(111), (011)}$
+			\item<3->[] Transmitting table label is sufficient!
 		\end{enumerate}
 		\column{.5\textwidth}
 		\centering
 		\begin{tikzpicture}[->, >=stealth, auto, semithick]
 			% Set the positions of the nodes
 			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C1) at (0,2) {$C_1$};
-			
+
 			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C2) at (1.5,2) {					$C_2$				};
 			\node[circle, draw=blue, fill=blue!20, inner sep=0pt] (C3) at (3,2) {$C_3$				};
-			
+
 			\node[circle, draw=green, fill=green!20, inner sep=0pt] (B1) at (0,0) {$B_1$};
 			\node[circle, draw=green, fill=green!20, inner sep=0pt] (B2) at (1.5,0) {$B_2$};
 			\node[circle, draw=green, fill=green!20, inner sep=0pt] (B3) at (3,0) {$B_3$};
 			\node[below] at (1.5,-0.5) {messages};
-			
+
 			\alt<1->{
-				% Draw the edges
+			% Draw the edges
 				\draw (C1) -- (B2);
 				\draw (C1) -- (B3);
-				
+
 				\draw (C2) -- (B1);
 				\draw (C2) -- (B3);
-				
-				
-				
+
+
+
 				\draw (C3) -- (B1);
 				\draw (C3) -- (B2);
 			}{}
@@ -721,7 +740,7 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 %				\alt<1->{\node[fit=(B1) (B2) (B3), draw=green, fill=green!10, rounded corners] {};}{}
 %			\end{scope}
 		\end{tikzpicture}
-		
+
 		\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 			\column{.5\textwidth}
 			\centering
@@ -755,21 +774,58 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 
 \begin{frame}{Source Coding }
 	\begin{enumerate}[]
-		\item<1->
+		\item<1->[]
 		\begin{definition}[Source coding]
 			The pliable source index coding problem, PSIC, is to find the largest possible feasible table for a given $G$.
 		\end{definition}
-		\item<2->
+		\item<2->[]
 		\begin{remark}
 			\begin{itemize}[label=\Roman*.]
-				\item<2-> There is always at least one linear feasible table, $\{\overrightarrow{0}\}$.
-				\item<3-> $\mathbb{F}^n$ can be partioned with a linear feasible table and its co-sets.
+				\item<2->[] There is always at least one linear feasible table, $\{\overrightarrow{0}\}$.
+				\item<3->[] $\mathbb{F}^n$ can be partitioned with a linear feasible table and its co-sets.
 			\end{itemize}
-		\end{remark}	
+		\end{remark}
 	\end{enumerate}
 \end{frame}
+\begin{frame}{PICOD vs SICOD}
+	\begin{itemize}
+	\item<1->[]	Similarities: 
+	\begin{itemize}
+		\item <2->[]
+				Objective: clients' requirement
+		\item<3->[]
+		clients' data: side info
+	\end{itemize}
+	\item<4->[]	Difference: 
+	\begin{itemize}
+		\item <5->[]
+		tool: min broadcast vs max code-book
+	\end{itemize}
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\section{Main Result}
+\begin{frame}
+	\centering
+	\Huge
+	Main Result
+\end{frame}
+
 
 \subsection{Main Theorem: Duality of PLIC \& PLSC}
+\begin{frame}{Main Theorem: Informal}
+	\begin{theorem}[Duality of PLIC \& PLSC]
+		\begin{enumerate}
+			\item <1->[]PLIC \& PLSC are dual!
+			\item<2->[]
+			PLIC $\Rightarrow$ PLSC: If you can cover all $\mathbb{F}^n$ with $r$ different sets with good properties then a feasible table with size $\lceil \dfrac{q^n}{r}\rceil $ exists.
+			\item<3->[]
+			PLIC $\Leftarrow$ PLSC:	If a feasible table with size $|W|$ exists we can cover $\mathbb{F}^n$ with $\dfrac{q^n}{\log(|W|)}$ sets.
+		\end{enumerate}
+	\end{theorem}
+\end{frame}
 \begin{frame}{Main Theorem: Formal}
 	\begin{theorem}[Duality of PLIC \& PLSC]
 		For any side information graph $G$, LPSIC $(W, J, \overrightarrow{g})$ is linear algebraic dual of LPIC $(En, I, \overrightarrow{f})$ in the sense that:
@@ -790,7 +846,7 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 			(En, I, \overrightarrow{f}) &= \begin{cases}
 				span(En) = W^{\bot} \\
 				J = I \\
-				\overrightarrow{f}_i(\overrightarrow{R}, En(X[S_i]) = g(En(X[S_i] - R[S_i])) + R[I_i]: \exists! V \in W: V + R = X \\
+				\overrightarrow{f}_i(\overrightarrow{R}, En(X[S_i]) =\\ g(En(X[S_i] - R[S_i])) + R[I_i]: \exists! V \in W: V + R = X \\
 			\end{cases}
 		\end{align*}
 		% $span(En) = W^{\bot},
@@ -798,34 +854,29 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 		% \overrightarrow{g}_i(En(X[S_i])) = \overrightarrow{f}_i(\overrightarrow{0}, En(X[S_i]),
 		% \overrightarrow{f}_i(\overrightarrow{R}, En(X[S_i]) = g(En(X[S_i] - R[S_i])) + R[I_i]
 		% $ where $\exists! V \in W: V + R = X $ 
-		and $dim(W) = n - dim(En)$ i.e. if $En: \mathbb{F}^n \rightarrow \mathbb{F}^k$ for feasible table $W$: $\log(|W|) + k = n$
+		$dim(W) = n - dim(En)$
 	\end{theorem}
 \end{frame}
-\begin{frame}{Main Theorem: Informal}
-	\begin{theorem}[Duality of PLIC \& PLSC]
-		\begin{enumerate}
-			\item<1->
-			PLIC $\Rightarrow$ PLSC: If you can cover all $\mathbb{F}^n$ with $r$ different sets with good properties then a feasible table with size $\lceil \dfrac{q^n}{r}\rceil $ exists.
-			\item<2->
-			PLIC $\Leftarrow$ PLSC:	If a feasible table with size $|W|$ exists we can cover $\mathbb{F}^n$ with $\dfrac{q^n}{\log(|W|)}$ sets.
-		\end{enumerate}
-	\end{theorem}
-\end{frame}
+
 
 \begin{frame}{Main Theorem: Proof Ideas}
 	\begin{itemize}
 		\item<1-> $PLIC \Rightarrow PLSC$, easy direction: messages with encoded code $\overrightarrow{0}$ form a feasible table
 		
-		\item<2-> $PLSC \Rightarrow PLIC$, hard direction: feasible table and its co-sets partion $\mathbb{F}^n$
+		\item<2-> $PLSC \Rightarrow PLIC$, hard direction: feasible table and its co-sets partition $\mathbb{F}^n$
 	\end{itemize}
 \end{frame}
-
+\subsection{Hard Example}
+\begin{frame}{Hard Example}
+	content...
+\end{frame}
 \subsection{Future Work}
 \begin{frame}{Future Work}
 	\begin{itemize}
 		\item<1-> Similar work for the very pliable problem
 		\item<2-> Tighter bounds for the non-linear case
 		\item<3-> Better shifts and covers
+		\item<4-> content type coding
 		
 	\end{itemize}
 \end{frame}
@@ -834,30 +885,26 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 
 
 
-
+\begin{frame}{refrences}
+	%		\bibliographystyle{plain}
+	\printbibliography
+	
+	%\bibliographystyle{ieeetr} % We choose the "plain" reference style
+	%	\bibliography{refs} % Entries are in the refs.bib file
+\end{frame}
 \setbeamertemplate{footline}{}
 \begin{frame}
     \centering
     \vspace{1cm}
-    \textbf{\Huge{- THE END - }}\\
-    \vspace{0.2cm}
-    \textit{\Large{Thank you for your attention}}\\
-    \vspace{15pt}
-    Acknowledgements:\\
-    I want to...\\
-    \vspace{20pt}
-    Contact:\\
-    youremail@hcmut.edu.vn
+    \hspace{2cm} \smaller{In} \textbf{\Huge{THE END}} \smaller{it doesn't even matter}\\
+    \vspace{0.5cm}
+    \textit{\Large{Thank you for your attention}}
 \end{frame}
 
-\begin{frame}{refrences}
-%		\bibliographystyle{plain}
-	\printbibliography
 
-	%\bibliographystyle{ieeetr} % We choose the "plain" reference style
-%	\bibliography{refs} % Entries are in the refs.bib file
+\begin{frame}{Bin Greedy}
+	on
 \end{frame}
-
 % \begin{frame}[allowframebreaks]
 %         \frametitle{References}
 %%         \bibliographystyle{ieeetr}
