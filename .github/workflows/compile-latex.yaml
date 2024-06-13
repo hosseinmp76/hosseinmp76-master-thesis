@@ -50,7 +50,7 @@ jobs:
           asset_name: hosseinmp76-thesis.pdf
           asset_content_type: pdf
       - name: Upload presenttion
-        id: upload-release-asset
+        id: upload-release-asset-presentaion
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
