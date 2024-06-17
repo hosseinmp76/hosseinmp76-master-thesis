@@ -41,6 +41,8 @@
 \usepackage{subcaption}
 \usepackage[T1]{fontenc}
 \usepackage{algorithmicx,algorithm}
+\usepackage{etoolbox}
+\usepackage{nomencl}
 \usepackage[localise=on,extrafootnotefeatures]{xepersian}
 \usepackage[noend]{algpseudocode}
 \input{styles/alg-fa}
@@ -249,3 +251,12 @@ BoldFont=Vazirmatn-Bold,
 \NewDocumentCommand{\img}{m m o}
 {\begin{wrapfigure}{l}{\IfValueTF{#3}{#3}{#2}}
 \centering\includegraphics[width=#2]{figs/#1}\end{wrapfigure}}
+
+\renewcommand{\nomname}{فهرست علائم و نمادگذاری‌ها}
+\renewcommand{\nompreamble}{در این فهرست مروری بر علامت‌های علمی استفاده شده و نمادگذاری‌های قرارداد شده در این پایان‌نامه می‌کنیم.}
+\renewcommand\nomgroup[1]{%
+	\item[\bfseries
+	\ifstrequal{#1}{P}{Physics constants}{%
+		\ifstrequal{#1}{N}{Number sets}{%
+			\ifstrequal{#1}{O}{Other symbols}{}}}%
+	]}

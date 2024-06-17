@@ -1,3 +1,4 @@
+% !BIB program = biber
 %\documentclass[xcolor=dvipsnames, aspectratio=169, handout]{beamer}
 \documentclass[xcolor=dvipsnames, aspectratio=169]{beamer}
 \usetheme{Madrid}
@@ -147,7 +148,12 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 \renewcommand{\footnotesize}{\tiny}
 \newcommand{\mathbi}[1]{\boldsymbol{#1}}
 \newtheorem{proposition}{Proposition}
-
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\seq}[1]{\left< #1 \right>}
+\newcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\newcommand{\card}[1]{\left|{#1}\right|}
+\newcommand{\setcomp}[1]{\overline{#1}}
 
 %------------------------------------------------------------
 %This block of code defines the information to appear in the
