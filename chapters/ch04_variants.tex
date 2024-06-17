@@ -43,7 +43,7 @@
 	]{
 		کدگذاری بسیار منعطف با نرخ بهینه برای
 		$m=3$, 
-		$\mathbb{U} = \big\{ \{1\}, \{2\}, \{3\} \big\}$,
+		$\mathbb{U} = \set{ \set{1}, \set{2}, \set{3}}$,
 		$k=3$.
 	}
 	\label{fig:eg:0}
@@ -97,7 +97,7 @@ $$X_2 = 1 \Rightarrow X_3 = 2$$
 		\boldsymbol{P} = [P_{i,j}]_{n\times m},
 	\end{equation}
 	به طوری که
-	 $P_{i,j}\in\mathbb{R}\cup\{\infty\}$ 
+	 $P_{i,j}\in\mathbb{R}\cup\set{\infty}$
 	 ترجیح گیرنده‌ی
 	 ~$i$
 	 برای پیام
@@ -167,7 +167,7 @@ $$X_2 = 1 \Rightarrow X_3 = 2$$
 		$\mathcal{C} \gets \emptyset$
 		\State قرار دهید
 		$\mathsf{SAT} \gets \emptyset$ 
-		\While{$|\mathsf{SAT}| \neq n$}
+		\While{$\card{\mathsf{SAT}} \neq n$}
 		\State قرار دهید
 		$maximal \gets \code{False}$
 		\State قرار دهید
@@ -179,22 +179,22 @@ $$X_2 = 1 \Rightarrow X_3 = 2$$
 		به صورت تصادفی
 		$j^{\ast}$
 		را با شرط
-		$j^* \in \arg \max_{j \in [1:m] \setminus \mathcal{S}} f(\mathcal{S} \cup \{j\})$
+		$j^* \in \arg \max_{j \in [1:m] \setminus \mathcal{S}} f(\mathcal{S} \cup \set{j})$
 		انتخاب کنید.
-		\If{$f(\mathcal{S} \cup \{j^*\}) > f(\mathcal{S})$}
+		\If{$f(\mathcal{S} \cup \set{j^*}) > f(\mathcal{S})$}
 		\State قرار دهید
 		$\textrm{maximal} \gets \code{False}$
 		\State قرار دهید
-		$\mathcal{S} \gets \mathcal{S} \cup \{j^*\}$
+		$\mathcal{S} \gets \mathcal{S} \cup \set{j^*}$
 		\EndIf
 		\EndWhile
 		\State قرار دهید
 		 $\mathsf{SAT} \gets \mathsf{SAT} \cup W_1(\mathcal{S})$
 		\State قرار دهید
-		$\mathcal{C} \gets \mathcal{C} \cup \{\mathcal{S}\}$
+		$\mathcal{C} \gets \mathcal{C} \cup \set{\mathcal{S}}$
 		%\State \% Remove outgoing edges from $W_1(\mathcal{S})$:
 		\State قرار دهید
-		$E \gets E \setminus \{ (u,v) \in E: u \in W_1(\mathcal{S})\}$
+		$E \gets E \setminus \set{ (u,v) \in E: u \in W_1(\mathcal{S})}$
 		\EndWhile
 		\State $\mathcal{C}$
 		را به عنوان خروجی برگردانید.
@@ -227,7 +227,7 @@ $$X_2 = 1 \Rightarrow X_3 = 2$$
 لیو و همکاران در این مقاله به دلیل پیچیدگی مسئله فقط روی دو حالت خاص آن کار می‌کنند. برای 
 $m$
 پیام و مجموعه‌ی
-$S = \{s_{min}, s_{min }+ 1, \ldots, s_{max}\}$
+$S = \set{s_{min}, s_{min }+ 1, \ldots, s_{max}}$
 مسئله‌ی 
 \lr{consecutive complete–S PICOD(t)}
 را به این صورت تعریف می‌کنیم: به ازای تمام حالت‌های اطلاعات جانبی ممکن از اندازه
@@ -237,7 +237,7 @@ $n = \sum\limits_{s \in S} \binom{m}{s}$
 گیرنده خواهیم داشت. همچنین مسئله‌ی
 \lr{complement-consecutive complete–S PICOD(t)}
 را هم به طور مشابه برای مجموعه
-$S = \{0, \ldots, m - t\} \setminus \{s_{min}, \ldots, s_{max}\}$
+$S = \set{0, \ldots, m - t} \setminus \set{s_{min}, \ldots, s_{max}}$
 تعریف می‌کنیم.
 
 در این مقاله نیز از نظریه اطلاعات و ترکیبیات برای اثبات قضایا استفاده می‌شود و با استفاده از کدهای ام‌دی‌اس، کد با کران بهینه را می‌سازند. قضیه اصلی‌ای که در این مقاله اثبات می‌شود در رابطه با طول کدهای غیرمتمرکز است:
@@ -256,7 +256,7 @@ $S = \{0, \ldots, m - t\} \setminus \{s_{min}, \ldots, s_{max}\}$
 	\begin{align}
 		\ell^{\star}=\begin{cases}
 			\frac{\binom{m}{m-\cardi}}{\binom{m}{m-\cardi}-1}  \cardi \quad \smax=\smin=m-\cardi,\\
-			\min\{\smax+\cardi, m-\smin\} \quad \#
+			\min\set{\smax+\cardi, m-\smin} \quad \#
 		\end{cases}
 		\label{eq:thm:consecutive_s}
 	\end{align}
@@ -277,7 +277,7 @@ $S = \{0, \ldots, m - t\} \setminus \{s_{min}, \ldots, s_{max}\}$
  $0 < \smin \leq \smax < m-\cardi$
  ، طول کد بهینه برابر است با:
 	\begin{align}
-		\ell^{\star}=\min\{m,|S|+2\cardi-2\}.
+		\ell^{\star}=\min\set{m,\card{S}+2\cardi-2}.
 		\label{eq:thm:complement_consecutive_s}
 	\end{align}
 \end{theorem}

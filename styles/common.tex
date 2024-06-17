@@ -30,7 +30,12 @@
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{calc}
 \usepackage[header]{appendix}
-
+\usepackage[
+    left = «,
+    right = »,
+    leftsub = «, 
+    rightsub = »
+]{dirtytalk}
 \usepackage{multirow}
 \usepackage[figureposition=bottom,tableposition=top,font={small,bf},labelfont=bf]{caption}
 \usepackage{subcaption}
@@ -175,6 +180,7 @@ BoldFont=Vazirmatn-Bold,
 \newcommand{\IQ}{\ensuremath{\mathbb{Q}}} 
 \newcommand{\IR}{\ensuremath{\mathbb{R}}} 
 \newcommand{\IC}{\ensuremath{\mathbb{C}}} 
+\newcommand{\calf}{\ensuremath{\mathcal{F}}}
 
 \newcommand{\set}[1]{\left\{ #1 \right\}}
 \newcommand{\seq}[1]{\left< #1 \right>}

@@ -18,7 +18,7 @@
 \usepackage{bbm}
 \definecolor{Blue}{rgb}{0,0,1}
 \definecolor{Red}{rgb}{1,0,0}
-\usepackage{subfig}
+%\usepackage{subfig}
 % \usepackage[colorlinks=true,linkcolor=Red,urlcolor=Blue,citecolor=Red]{hyperref}
 % \pagestyle{fancy}
 %\usepackage[top=3cm, bottom=3cm, left=3cm, right=3cm]{geometry}
@@ -31,6 +31,7 @@
 
 
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{algg}[theorem]{Algorithm}
  \usepackage{tikz}
 \usetikzlibrary{
 	arrows,
@@ -85,11 +86,26 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 %\usecolortheme[named=Mycolor2]{structure}
 \setbeamercolor{title}{fg=tit,bg=}
 \setbeamersize{text margin left=20mm,text margin right=20mm}
-
+%
 \setbeamercolor{palette primary}{bg=Mycolor2,fg=white} % banner and third sub banne
 \setbeamercolor{palette secondary}{bg=Mycolor2,fg=white}
 \setbeamercolor{palette tertiary}{bg=Mycolor2,fg=white}
 \setbeamercolor{palette quaternary}{bg=red,fg=white}
+%\BeforeBeginEnvironment{definition}{%
+%	\setbeamercolor{block title}{fg=black,bg=pink!50!white}
+%	\setbeamercolor{block body}{fg=pink, bg=pink!30!white}
+%}
+%\AfterEndEnvironment{definition}{
+%	\setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
+%	\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg, fg=black}
+%}
+
+\setbeamercolor{block title example}{use=example text,fg=example text.fg,bg=example text.fg!20!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
+
+%\setbeamercolor{block title definition}{use=example text,fg=example text.fg,bg=example text.fg!20!bg}
+%\setbeamercolor{block body definition}{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
+
 %\setbeamercolor{structure}{fg=black} % itemize, enumerate, etc
 \setbeamercolor{section in toc}{fg=black} % TOC sections
 \definecolor{UBCgrey}{rgb}{0.3686, 0.5255, 0.6235} % UBC Grey (secondary)
@@ -116,6 +132,7 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 \usepackage{graphicx}
 \usepackage{diagbox}
 \usetikzlibrary{fadings}
+\usepackage{caption}
 \usepackage{subcaption}
 % \captionsetup[subfigure]{labelsep=space}
 \usepackage{amsmath}
@@ -159,7 +176,8 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 	Department of Mathematical Sciences \\
 	Sharif University of Technology % Your institution for the title page
 }
-
+\newcommand{\rdss}{\mathrm{RDSS}}
+\newcommand{\indx}{\mathrm{INDEX}}
 
 
 %End of title page configuration block
@@ -351,7 +369,7 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 		\begin{itemize}
 			\item<1-> n clients
 			\item<2-> m messages $X = (X_1, \ldots, X_m)$
-			\item<3-> Client $i$ knows varibles with indeices in $S_i$: $X[S_1] = \{B_1, B_2\}$
+			\item<3-> Client $i$ knows varibles with indeices in $S_i$: $X[S_1] = \set{B_1, B_2}$
 		\end{itemize}
 		\column{.5\textwidth}
 		
@@ -581,17 +599,22 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 				\forall C_i: \exists j \notin S_i: \forall X, X^\prime: X[S_i] = {X^\prime}[S_i]  \Rightarrow X[j] = {X^\prime}[j]
 			\end{align*}
 		\end{definition}
-		\item<2->[]
+			\end{enumerate}
+	\end{frame}
+	\begin{frame}{Feasible Table. cont. }
+		\begin{enumerate}[]
+		\item<1->[]
 		\begin{example}
 			\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-				\column{.45\textwidth}
+				\begin{column}{.5\textwidth}
+				\centering
 				\begin{enumerate}
-
-					\item<2->[] Consider side-information graph $G$.
-					\item<3->[] $T_1$ is not a feasible graph bacause $C_3$ confuses between messages.
-					\item<4->[] $T_2$ is a feasible table.
+					\item<1->[] Consider side-information graph $G$.
+					\item<2->[] $T_1$ is not a feasible graph because $C_3$ confuses between messages.
+					\item<3->[] $T_2$ is a feasible table.
 				\end{enumerate}
-				\column{.37\textwidth}
+				\end{column}
+				\begin{column}{.5\textwidth}
 				\centering
 				\begin{tikzpicture}[->, >=stealth, auto, semithick]
 					% Set the positions of the nodes
@@ -623,12 +646,11 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 %						\alt<1->{\node[fit=(B1) (B2) (B3), draw=green, fill=green!10, rounded corners] {};}{}
 %					\end{scope}
 				\end{tikzpicture}
-				\column{.17\textwidth}
+\\
 				\centering
-				\alt<2>{}{
-					\alt<3>{
 						\begin{table}[h]
-							\centering
+					\begin{subtable}[h]{0.45\textwidth}
+								\centering
 							\begin{tabular}{|c|}
 								\hline
 								000 \\
@@ -637,9 +659,8 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 								\hline
 							\end{tabular}
 							\caption*{$T_1$}
-						\end{table}
-					}{
-						\begin{table}[h]
+						\end{subtable}
+						\begin{subtable}[h]{0.45\textwidth}
 							\centering
 							\begin{tabular}{|c|}
 								\hline
@@ -650,9 +671,9 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 								\hline
 							\end{tabular}
 							\caption*{$T_2$}
+						\end{subtable}
 						\end{table}
-					}
-				}
+				\end{column}
 			\end{columns}
 		\end{example}
 	\end{enumerate}
@@ -668,7 +689,6 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 		\begin{example}
 			\begin{columns}
 				\column{.5\textwidth}
-				\centering
 				\begin{table}
 					\begin{tabular}{|c|}
 						\hline
@@ -781,7 +801,7 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 		\item<2->[]
 		\begin{remark}
 			\begin{itemize}[label=\Roman*.]
-				\item<2->[] There is always at least one linear feasible table, $\{\overrightarrow{0}\}$.
+				\item<2->[] There is always at least one linear feasible table, $\set{\overrightarrow{0}}$.
 				\item<3->[] $\mathbb{F}^n$ can be partitioned with a linear feasible table and its co-sets.
 			\end{itemize}
 		\end{remark}
@@ -814,21 +834,21 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 \end{frame}
 
 
-\subsection{Main Theorem: Duality of PLIC \& PLSC}
+\subsection{Main Theorem: Duality of LPICOD \& LPSCOD}
 \begin{frame}{Main Theorem: Informal}
-	\begin{theorem}[Duality of PLIC \& PLSC]
+	\begin{theorem}[Duality of LPICOD \& LPSCOD]
 		\begin{enumerate}
-			\item <1->[]PLIC \& PLSC are dual!
+			\item <1->[]LPICOD \& LPSCOD are dual!
 			\item<2->[]
-			PLIC $\Rightarrow$ PLSC: If you can cover all $\mathbb{F}^n$ with $r$ different sets with good properties then a feasible table with size $\lceil \dfrac{q^n}{r}\rceil $ exists.
+			LPICOD $\Rightarrow$ LPSCOD: If you can cover all $\mathbb{F}^n$ with $r$ different sets with good properties then a feasible table with size $\lceil \dfrac{q^n}{r}\rceil $ exists.
 			\item<3->[]
-			PLIC $\Leftarrow$ PLSC:	If a feasible table with size $|W|$ exists we can cover $\mathbb{F}^n$ with $\dfrac{q^n}{\log(|W|)}$ sets.
+			LPICOD $\Leftarrow$ LPSCOD:	If a feasible table with size $|W|$ exists we can cover $\mathbb{F}^n$ with $\dfrac{q^n}{\log(|W|)}$ sets.
 		\end{enumerate}
 	\end{theorem}
 \end{frame}
 \begin{frame}{Main Theorem: Formal}
-	\begin{theorem}[Duality of PLIC \& PLSC]
-		For any side information graph $G$, LPSIC $(W, J, \overrightarrow{g})$ is linear algebraic dual of LPIC $(En, I, \overrightarrow{f})$ in the sense that:
+	\begin{theorem}[Duality of LPICOD \& LPSCOD]
+		For any side information graph $G$, LPSICOD $(W, J, \overrightarrow{g})$ is linear algebraic dual of LPICOD $(En, I, \overrightarrow{f})$ in the sense that:
 		%     \begin{enumerate}[label=\Roman*.]
 			%     \item $W = ker(En)$
 			%     \item    $I = J $
@@ -861,14 +881,31 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 
 \begin{frame}{Main Theorem: Proof Ideas}
 	\begin{itemize}
-		\item<1-> $PLIC \Rightarrow PLSC$, easy direction: messages with encoded code $\overrightarrow{0}$ form a feasible table
+		\item<1-> $PLICOD \Rightarrow PLSCOD$, easy direction: messages with encoded code $\overrightarrow{0}$ form a feasible table
 		
-		\item<2-> $PLSC \Rightarrow PLIC$, hard direction: feasible table and its co-sets partition $\mathbb{F}^n$
+		\item<2-> $PLSCOD \Rightarrow PLICOD$, hard direction: feasible table and its co-sets partition $\mathbb{F}^n$
 	\end{itemize}
 \end{frame}
 \subsection{Hard Example}
 \begin{frame}{Hard Example}
-	content...
+	\begin{itemize}
+		\item<1->[]
+			\begin{example}
+				\begin{itemize}
+					\item<1->[] PICOD with side information from a sub-space
+					\item<2->[] $V_1, \ldots, V_n$ a basis of V
+					\item<3->[] $C_i = V_i$
+					\item<4->[] Using extended version of Mazumdar's inequality for PICOD we show there exists a haard example needing $\log(n)$ even for non-linear codes
+				\end{itemize}
+			\end{example}
+		\item <5->[]
+			\begin{theorem}[Mazumdar]
+				\begin{align*}
+					n - \rdss_q(G) \le \indx_q(G) &\le n -\rdss_q(G) \\
+					&+ \log_q\Big(\min\set{n\ln q, 1+ \rdss_q(G)\ln q }\Big)
+				\end{align*}
+			\end{theorem}
+	\end{itemize}
 \end{frame}
 \subsection{Future Work}
 \begin{frame}{Future Work}
@@ -902,8 +939,43 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 \end{frame}
 
 
-\begin{frame}{Bin Greedy}
-	on
+\begin{frame}{GrCov}
+	\begin{definition}
+		$\forall B_1 \subseteq B: W_i(B_1) := \card{\set{c_j \in C: c \in N(B_1), N(c) \cap B_1 = |B_1| - i }}$
+	\end{definition}
+	\begin{lemma}
+		For $d_{max} = \max\set{R_i}, d_{min} = \min\set{R_i}$, if there exists a constant $r$ such that $d_{max} \leq r d_{min}$ then there exists a code with lenght $O(\log(n))$
+	\end{lemma}
+	\begin{theorem}
+		For a $(n, m)$ PICOD there exists a code with lenght:
+			$$O(\min\set{m, n, \log(m)(1 + \log^{+}(\dfrac{n}{\log(m)}) ))})$$
+	\end{theorem}
+\end{frame}
+\begin{frame}{BinGreedy}
+			\begin{itemize}
+				\item<1->[]
+	\begin{definition}
+		For Permutation $\pi = (j_1, \ldots, j_m)$ of messages, we define effectie degree of $b_{j_t}$ as $\card{\set{c_i: c_i \in N[]b_{j_t}], \forall t' < t: c_i \notin N[b_{j_{t'}}]}}$
+	\end{definition}
+	\item<2->[]
+	\begin{algg}
+		\begin{itemize}
+			\item<2-> Sorting: in $t$-th iteration pick $j_t$ as the message node with maximum degree from from $[m] \setminus \set{j_1, \ldots, j_{t - 1}}$
+			\item<3-> partition permutation in $\log(n)$ sets such that $\dfrac{n}{2^{s - 1}} \geq d^\dagger[j] > \dfrac{n}{2^s}$
+			\item<4-> send a code for each set.
+		\end{itemize}
+	\end{algg}
+			\end{itemize}
+\end{frame}
+
+\begin{frame}{BinGreedy. cont.}
+	\begin{theorem}[efficency]
+			\begin{itemize}
+			\item<1-> code lengh is at most $\dfrac{2}{\log(1.5)} \log^2(n)$
+			 \item<2-> BinGreedy runs in $O(n m^2 \log(n))$ 
+			\item<3-> approximation ratio $\alpha(n)$ satiffy: 	$$\Omega(\log \log (n)) \leq \alpha(n) \leq O(\log^2(n))$$
+			\end{itemize}
+	\end{theorem}
 \end{frame}
 % \begin{frame}[allowframebreaks]
 %         \frametitle{References}

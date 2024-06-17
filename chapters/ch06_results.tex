@@ -76,15 +76,15 @@
 		،  مجموعه‌ای از بردار‌ها از
 		$\mathbb{F}_{q}$
 		همراه با مجموعه‌ی توابع قطعی بازیابی به شکل
-		$f_i: \mathbb{F}_q^{|N(i)|} \to \mathbb{F}_q$
+		$f_i: \mathbb{F}_q^{\card{N(i)}} \to \mathbb{F}_q$
 		است به طوری که برای هر مجموعه از متغیرهای تصادفی 
 		$(X_1, X_2,\dots,X_n) \in \mathbb{F}_q^n$
 		داشته باشیم:
-		$$X_i = f_i(\{X_j: j \in N(i)\}), \quad i = 1,\dots,n$$
+		$$X_i = f_i(\set{X_j: j \in N(i)}), \quad i = 1,\dots,n$$
 \end{definition}
 
 به
-$\log_q(|C|)$
+$\log_q(\card{C})$
 \transf{بعد کد}{dimension of code}
  گفته می‌شود. برای گراف داده شده‌ی $G$، بزرگترین بعد کد را با
  $RDSS_q(G)$
@@ -111,7 +111,7 @@ $\log_q(|C|)$
  	$\mathbb{F}_q$
  	به صورت زیر تعریف می‌شود:
  	\begin{equation}
- 		\minrank_q(G) = \min\{\rank_{\mathbb{F}_q}(A): A \text{ fits } G\}.
+ 		\minrank_q(G) = \min\set{\rank_{\mathbb{F}_q}(A): A \text{ fits } G}.
  	\end{equation}
  \end{definition}
  \begin{theorem}
@@ -135,7 +135,7 @@ $\log_q(|C|)$
  	\autoref{fig:storage-graph}
  	داریم:
  	$$
- 		N(1) = \{2,3,4,5\}, \, N(2)  = \{1,3\}, N(3)  = \{1,2,4\}, N(4)  = \{1,3,5\},  N(5)  = \{1,4\}
+ 		N(1) = \set{2,3,4,5}, \, N(2)  = \set{1,3}, N(3)  = \set{1,2,4}, N(4)  = \set{1,3,5},  N(5)  = \set{1,4}
  	$$
  	اگر داده‌ی درون سرور
  	$i$
@@ -171,7 +171,7 @@ $\log_q(|C|)$
  	قرار دارد.
  	
  	بعد فضای پوچ ماتریس برابر
- 	$|null(D)| = n - \rank(D)$
+ 	$\card{null(D)} = n - \rank(D)$
  	است. پس اگر خود را به توابع خطی محدود کنیم خواهیم داشت:
  	$$RDSS_q(G) = n - minrank_q(G)$$
  	ولی برای توابع غیر خطی این تساوی برقرار نخواهد بود و خواهیم داشت:
@@ -201,7 +201,7 @@ $\log_q(|C|)$
 	\label{fig:storage-graph-pent}
 \end{figure}
 بزرگترین کد برای این گراف به شکل زیر است:
-$\{00000,01100,00011,11011,11101\}$
+$\set{00000,01100,00011,11011,11101}$
 که توابع مربوطه به شکل زیر خواهد بود:
 \begin{align*}
 	X_1 = X_2 \wedge X_5 \\
@@ -233,7 +233,7 @@ $\indx_2(G)=3$.
  	 $G(V,E)$,
  	 داریم:
  	\begin{align}
- 		n - \rdss_q(G) \le \indx_q(G) \le n -\rdss_q(G) + \log_q\Big(\min\{n\ln q, 1+ \rdss_q(G)\ln q \}\Big)
+ 		n - \rdss_q(G) \le \indx_q(G) \le n -\rdss_q(G) + \log_q\Big(\min\set{n\ln q, 1+ \rdss_q(G)\ln q }\Big)
  	\end{align}
  \end{theorem}
  
@@ -276,7 +276,7 @@ $\mathbb{F}_q$
 	فرض کنید پیام‌ها از
 	$\mathbb{F}_2$
 	می‌آیند یعنی
-	$X_i \in \{0, 1\}$
+	$X_i \in \set{0, 1}$
 	برای گراف اطلاعات جانبی زیر، کمترین تعداد پیام مورد نیاز برای ارضای همه گیرنده‌ها چند است؟
 	\newline
 		\begin{minipage}{0.5\textwidth}
@@ -347,8 +347,8 @@ $\mathbb{F}_q$
 	با توجه به بحث بالا در مورد نحوه‌ی نگاه به مسئله می‌توان دید که در واقع فرستنده پیام‌ها را به دو دسته تقسیم می‌کند.
 		\begin{enumerate}
 			\centering
-			\item $\{X: X_1 + X_2 + X_3 = 1\}$
-			\item $\{X: X_1 + X_2 + X_3 = 0\}$
+			\item $\set{X: X_1 + X_2 + X_3 = 1}$
+			\item $\set{X: X_1 + X_2 + X_3 = 0}$
 		\end{enumerate}
 	حال هر کدام از گیرنده‌ها بر اساس این‌که پیام در کدام دسته است می‌توانند پیام مورد نظر خود را بازیابی کنند.
 \end{example}
@@ -494,7 +494,7 @@ $l$
 
 \begin{remark}
     همیشه حداقل یک جدول ممکن خطی وجود دارد، 
-    $\{\overrightarrow{0}\}$
+    $\set{\overrightarrow{0}}$
     . در حالت خطی، ما می‌توانیم 
     $\mathbb{F}^m$
      را با یک جدول ممکن خطی و هم‌دسته‌های\footnote{\autoref{coset}} آن تقسیم‌بندی کنیم. به سادگی با در نظر گرفتن یک جدول ممکن خطی و تمامی انتقال‌های  آن با بردارهای مختلف این کار قابل انجام است. این کار به ما امکان می‌دهد تا تمام 
@@ -676,7 +676,7 @@ $l$
     فرض کنید 
     $r = dim(W)$
      و 
-     $\{V_1, V_2, \ldots, V_{n - r} \}$ 
+     $\set{V_1, V_2, \ldots, V_{n - r} }$
      یک پایه برای فضای
       $n - r$
        بعدی 
@@ -799,7 +799,7 @@ $l$
     $dim(W) + dim(W^{\bot}) = n$ 
     نتیجه می‌شود.
 \end{proof}
-\iffalse
+
 \subsection{
 	مثال سخت
 }
@@ -838,7 +838,7 @@ $\mathbb{F}_2$
 	و
 	$ C_i[R_i] = \vec{0}$
 	همچنین تعریف می‌کنیم
-	$\overline{C_i} = \overline{1} + C_i$
+	$\setcomp{C_i} = \setcomp{1} + C_i$
 \end{definition}
 
 \begin{lemma}
@@ -846,14 +846,14 @@ $\mathbb{F}_2$
 	برای یک جدول قابل استفاده
 	$T$
 	که شامل
-	$|T|$
+	$\card{T}$
 	بردار پیام است، برای یک نمونه از
 	\picod
 	با بردارهای مشخصه‌ی اطلاعات جانبی
-	$C = \{C_1, \ldots, C_n\}$
+	$C = \set{C_1, \ldots, C_n}$
 	داریم:
 	\begin{align}
-		\forall i \in [n]: \nexists j, k \in [|T|]: T_j + T_k = \overline{C_i}
+		\forall i \in [n]: \nexists j, k \in [\card{T}]: T_j + T_k = \setcomp{C_i}
 	\end{align}
 \end{lemma}
 \begin{proof}
@@ -870,13 +870,13 @@ $\mathbb{F}_2$
 	و
 	$T_j$
 	نمی‌تواند تفاوتی قائل شود زیرا
-	$(T_i + T_j)[S_i] = \overline{C_i}[S_i] = \vec{0}$
+	$(T_i + T_j)[S_i] = \setcomp{C_i}[S_i] = \vec{0}$
 	یعنی چون روی
 	$\mathbb{F}_2$
 	هستیم تک تک درایه‌های این دو بردار برابر هستند. پس اطلاعات جانبی
 	$c_i$
 	روی این دو بردار پیام یکسان است. اما از طرفی
-	$(T_i + T_j)[R_i] = \overline{C_i}[R_i] = \vec{1}$
+	$(T_i + T_j)[R_i] = \setcomp{C_i}[R_i] = \vec{1}$
 	و این یعنی تمام پیام‌هایی که خارج از اطلاعات جانبی
 	$c_i$
 	هستند در این دو پیام متفاوت اند و در نتیجه این گیرنده بین این دو پیام نمی‌تواند تفواتی قائل شود و جدول
@@ -928,7 +928,7 @@ $\mathbb{F}_2$
 	$T$
 	داریم:
 	\begin{align*}
-		|T| \leq 2^{m - n}
+		\card{T} \leq 2^{m - n}
 	\end{align*}
 \end{theorem}
 \begin{proof}
@@ -943,12 +943,12 @@ $\mathbb{F}_2$
 	پس مجموعه‌های
 	$T_i + C$
 	از هم‌دیگر مجزا اند یعنی
-	$\forall i, j \in [|T|]: T_i + C \cap T_j + C = \emptyset$.
+	$\forall i, j \in [\card{T}]: T_i + C \cap T_j + C = \emptyset$.
  پس چون
-	$|T_i + C| = |C|$
+	$\card{T_i + C} = \card{C}$
 	داریم
 	\begin{align}
-	T + C =  \cup_{i \in [|T|]} |T_i| + C \subseteq \mathbb{F}_2^m \Rightarrow |T + C| = |T| * |C| \leq 2^m \Rightarrow |T| \leq 2^{m - n}
+	T + C =  \cup_{i \in [\card{T}]} \card{T_i} + C \subseteq \mathbb{F}_2^m \Rightarrow \card{T + C} = \card{T } * \card{C} \leq 2^m \Rightarrow \card{T} \leq 2^{m - n}
 		\end{align}
 \end{proof}
 
@@ -959,7 +959,7 @@ $\mathbb{F}_2$
 	یک 
 	\nameref{def:lineartable}
 	باشد، در این صورت
-	$T \cap \overline{C} = \emptyset$.
+	$T \cap \setcomp{C} = \emptyset$.
 \end{theorem}
 \begin{proof}
 	چون
@@ -969,34 +969,34 @@ $\mathbb{F}_2$
 	در نتیجه شرط
 	\autoref{lemma:tableconstraint}
 	،
-	$T_i + T_j \notin \overline{C}$،
+	$T_i + T_j \notin \setcomp{C}$،
 	تبدیل می‌شود به
-	$\nexists k: T_k \in \overline{C}$.
+	$\nexists k: T_k \in \setcomp{C}$.
 \end{proof}
 
 \begin{openproblem}
 	در دو قضیه‌ی قبلی از خطی بودن اطلاعات جانبی و جدول قابل استفاده، برای اثبات استفاده کردیم. ولی در
 	\autoref{lemma:tableconstraint}
 	نیازی به خطی بودن هیچ کدام نبود. در حالت غیر خطی اطلاعات جانبی و جدول قابل استفاده، چه رابطه‌ی بین
-	$|T|$
+	$\card{T}$
 	و
-	$|C|$
+	$\card{C}$
 	برقرار است؟ در واقع به بین دو مجموعه‌ی
 	$T$
 	و
 	$C$
 	 از بردارها با شرط
  	\begin{align}
-	 	\forall i \in [|C|]: \nexists j, k \in [|T|]: T_j + T_k = \overline{C_i}
+	 	\forall i \in [\card{C}]: \nexists j, k \in [\card{T}]: T_j + T_k = \setcomp{C_i}
 	 \end{align}
 	 چه رابطه‌ای بین
-	 	$|T|$
+	 	$\card{T}$
 	 و
-	 $|C|$
+	 $\card{C}$
 	 برقرار است؟
 \end{openproblem}
 
-\fi
+
 
 
 

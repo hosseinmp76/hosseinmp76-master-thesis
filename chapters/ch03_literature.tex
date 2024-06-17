@@ -80,15 +80,15 @@
 	\begin{enumerate}
 		\item 
 		تابع کدگذاری
-		$E: \mathcal{F}^n \rightarrow \mathcal{F}^l$
+		$E: \calf^n \rightarrow \calf^l$
 		که به 
 		$l$
 		طول کد می‌گوییم.
 		\item متغیرهای هدف به ازای هر گیرنده
-		$\sigma_i \subseteq R_i,  |\sigma_i| = t$
+		$\sigma_i \subseteq R_i,  card{\sigma_i} = t$
 		\item 
 		توابع کدگشایی 
-		$D_i: \mathcal{F}^l \times \mathcal{F}^{|S_i|} \rightarrow \mathcal{F}^t$
+		$D_i: \calf^l \times \calf^{\card{S_i}} \rightarrow \calf^t$
 	\end{enumerate}
 	به گونه‌ای که
 	$$D_i(E(X), S_i) = (X_{\sigma_{i,1}}, \ldots, X_{\sigma_{i,t}}): \sigma_i \subseteq R_i$$
@@ -110,7 +110,7 @@ $Y$
 را پیدا کند به طوری که هر گیرنده بتواند
 $t$
 پیام جدید را بازیابی کند و 
-$l = |Y|$
+$l = \card{Y}$
 کمینه شود.
 
 \begin{remark}[تفاوت 
@@ -148,7 +148,7 @@ $l = |Y|$
 	را به عنوان بخشی از تعریف اندیس‌کد نمی‌آورند. برای مثال توابع کدگشایی در
 	\cite{song2017polynomialtime}
 	به شکل
-	$D_i: \mathcal{F}^l \times \mathcal{F}^{|S_i|} \rightarrow \mathcal{F}^t \times [m]^t$
+	$D_i: \calf^l \times \calf^{\card{S_i}} \rightarrow \calf^t \times [m]^t$
 	تعریف می‌شود، یعنی خروجی تابع
 	$\big((X_{\sigma_1}, \sigma_1), \ldots, (X_{\sigma_t}, \sigma_t) \big)$
 	است که به ذهن متبادر می‌کند که در خروجی تابع کدگشایی گیرنده‌ی 
@@ -181,10 +181,10 @@ $l = |Y|$
 	$t > 1$
 	است اگر
 	$i$ای وجود داشته باشد که
-	$|R_i| < t$
+	$\card{R_i} < t$
 	در این صورت کافی است گیرنده‌ی 
 	$i$ام
-	$|R_i|$
+	$\card{R_i}$
 	پیام را بازیابی کنید \cite{pliablefirstpaper}.
 \end{note}
 
@@ -388,7 +388,7 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 	$B_1$اند 
 	$C$
 	 که به 
-	$|B_1| - i$
+	$\card{B_1} - i$
 	راس از راس‌های
 	$B_1$
 	وصل‌اند. به
@@ -401,7 +401,7 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 	همچنین برای هر مجموعه‌ راس
 	$B_1$
 	تعریف می‌کنیم 
-	$t(B_1) = \max\{i: W_i(B_1) \neq \emptyset \}$
+	$t(B_1) = \max\set{i: W_i(B_1) \neq \emptyset }$
 \end{definition}
 
 \begin{lemma}
@@ -411,11 +411,11 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 	مجموعه‌ای شامل 
 	$k$
 	گیرنده‌ باشد، بدون از دست رفتن کلیت فرض می‌کنیم
-	$C' = \{c_1, \ldots, c_k\}$
+	$C' = \set{c_1, \ldots, c_k}$
 	و تعریف می‌کنیم:
-	$\dmax = \max\{R_i: i \in [k] \}$
+	$\dmax = \max\set{R_i: i \in [k] }$
 	و
-	$\dmin = \min\{R_i: i \in [k] \}$.
+	$\dmin = \min\set{R_i: i \in [k] }$.
  همچنین فرض می‌کنیم که هر گیرنده حداقل به دنبال یک پیام هست یعنی
 	$\dmin \geq 1$. 
  اگر ثابت
@@ -481,7 +481,7 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 	است. چون حتما یک مجموعه‌ی
 	$B_1$
 	وجود دارد که از 
-	$|W_1(B_1)|$
+	$\card{W_1(B_1)}$
 	از امیدریاضی بیشتر مساوی باشد. در نتیجه ارسال جمع اعضای
 	$B_1$
 	کسر ثابتی
@@ -523,7 +523,7 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 	گیرنده و 
 	$m$
 	پیام کدی با طول
-	$$O(\min\{m, n, \log(m)(1 + \log^{+}(\dfrac{n}{\log(m)}) ))\})$$
+	$$O(\min\set{m, n, \log(m)(1 + \log^{+}(\dfrac{n}{\log(m)}) ))})$$
 	وجود دارد.
 \end{theorem}
 \begin{proof}
@@ -534,37 +534,37 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 	تا
 	$m - 1$
 	باشد. این رئوس را به دسته‌های زیر تقسیم می‌کنیم:
-	$S_{i}' = \{c_l: m - 2^{i - 1} \geq d(c_l) > m -  2^i\}$
+	$S_{i}' = \set{c_l: m - 2^{i - 1} \geq d(c_l) > m -  2^i}$
 	برای راحتی مجموعه‌های تهی را دور می‌ریزیم و بقیه را
 	$S_1, \ldots, S_g$
 	نام‌گذاری می‌کنیم. به وضوح شرط لم قبلی در تمام این مجموعه‌ها با
 	$r = 2$
 	برقرار است و همچنین
-	$g \leq 1 + \lceil\log_2(m)\rceil$.
+	$g \leq 1 + \ceil{\log_2(m)}$.
  حال این مجموعه‌ها را به دو گروه تقسیم می‌کنیم.
-	$G_1 = \{ S_i: |S_i| < 3\}$
+	$G_1 = \set{ S_i: \card{S_i} < 3}$
 	و 
-	$G_2 = \{ S_i: |S_i| \geq 3\}$
+	$G_2 = \set{ S_i: \card{S_i} \geq 3}$
 	چون
-	$\sum_{i \in G_2} |S_i| \leq \sum_{i \in [g]} |S_i| = n$
+	$\sum_{i \in G_2} \card{S_i} \leq \sum_{i \in [g]} \card{S_i} = n$
 	پس
-	$|G_2| \leq \dfrac{n}{3}$.
+	$\card{G_2} \leq \dfrac{n}{3}$.
  از طرفی
-	$|G_1| + |G_2| = g$.
+	$\card{G_1} + \card{G_2} = g$.
  حال طبق لم قبلی به ازای یک ثابت
 	$K_1$
 	به
-	$K_1(1 + \log(|S_i|))$
+	$K_1(1 + \log(\card{S_i}))$
 	پیام برای ارضا اعضای
 	$S_i$
 	نیاز داریم که یک اضافی در جمله داخل پرانتز برای حالتی است که
-	$|S_i| = 1$
+	$\card{S_i} = 1$
 	. در نتیجه در نهایت طول کد برابر می‌شود با:
 	\begin{align}
-		K_1 \sum\limits_{i = 1}^{g} (1 + \log(|S_i|)) 
-		& \leq K_1 \sum_{i \in G_1}	(1 + \log(|S_i|)) + K_1 \sum_{i \in G_2} (1 + \log(|S_i|)) \\
-		& \leq K_1 |G_1| (1 + \log(2)) + K_1 |G_2| + K_1 |G_2| \log(\dfrac{\sum_{i\in G_2} |S_i}{|G_2}) \\
-		& \leq q K_1 |G_1| (1 + \log(2)) + K_1 |G_2| + K_1 |G_2| \log(\dfrac{n}{|G_2|}) \\
+		K_1 \sum\limits_{i = 1}^{g} (1 + \log(\card{S_i}))
+		& \leq K_1 \sum_{i \in G_1}	(1 + \log(\card{S_i})) + K_1 \sum_{i \in G_2} (1 + \log(\card{S_i})) \\
+		& \leq K_1 \card{G_1} (1 + \log(2)) + K_1 \card{G_2} + K_1 \card{G_2} \log(\dfrac{\sum_{i\in G_2} \card{S_i}}{\card{G_2}}) \\
+		& \leq q K_1 \card{G_1} (1 + \log(2)) + K_1 \card{G_2} + K_1 \card{G_2} \log(\dfrac{n}{\card{G_2}}) \\
 		& = O(\log m (1 + \log^{+}(\dfrac{n}{\log m})))
 	\end{align}
 	نامساوی دوم از 
@@ -572,23 +572,23 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 		نامساوی ینسن
 	}
 	روی تابع لگاریتم و این نکته که
-	$\forall i \in G1: |S_i| < 3$
+	$\forall i \in G1: \card{S_i} < 3$
 	نتیجه می‌شود. آخرین خط این گونه توجیه می‌شود که تابع
 	$x \log(n/x)$
 	روی
 	$x \leq n/e$
 	ناکاهشی است در نتیجه اگر
-	$1 + \lceil \log m \rceil \leq n/3$
+	$1 + \ceil{ \log m} \leq n/3$
 	باشد چون
-	$|G_2| \leq g$
+	$\card{G_2} \leq g$
 	داریم
-	$$|G_2| \log (\dfrac{n}{|G_2|}) = O(\log m \log (\dfrac{n}{\log m}))$$
+	$$\card{G_2} \log (\dfrac{n}{\card{G_2}}) = O(\log m \log (\dfrac{n}{\log m}))$$
 	و اگر برعکس این حالت برقرار باشد یعنی
-	$1 + \lceil \log m \rceil \ge n/3$
+	$1 + \ceil{ \log m } \ge n/3$
 	چون 
-	$|G_2| \leq n/3$
+	$\card{G_2} \leq n/3$
 	داریم:
-	$$|G_2| \log(\dfrac{n}{|G_2}) = \dfrac{n}{3} \log(3) = O(\log m)$$
+	$$\card{G_2} \log(\dfrac{n}{\card{G_2}}) = \dfrac{n}{3} \log(3) = O(\log m)$$
 	
 	همچنین اگر تمام پیام‌ها را ارسال کنیم($m$
 	ارسال) تمام گیرنده‌ها می‌توانند پیام جدیدی را بازیابی کنند. اگر به ازای هر گیرنده یک پیام خاص را ارسال کنیم باز هم این برقرار است. در نتیجه با کمینه گرفتن از این سه نتیجه، قضیه اثبات می‌شود.
@@ -658,11 +658,11 @@ $t$
 	مجموعه‌ای شامل 
 	$k$
 	تا از گیرنده‌‌ها باشد. بدون از دست رفتن کلیت فرض می‌کنیم
-	$C' = \{c_1, \ldots, c_k\}$
+	$C' = \set{c_1, \ldots, c_k}$
 	. و تعریف می‌کنیم:
-	$\dmax = \max\{R_i: i \in [k] \}$
+	$\dmax = \max\set{R_i: i \in [k] }$
 	و
-	$\dmin = \min\{R_i: i \in [k] \}$
+	$\dmin = \min\set{R_i: i \in [k] }$
 	و همچنین فرض می‌کنیم که هر گیرنده حداقل به دنبال 
 	$t$
 	پیام هست یعنی
@@ -672,7 +672,7 @@ $t$
 	وجود داشته باشد که
 	$\dmax \leq r \dmin$
 	در این صورت کدی با اندازه‌ی
-	$O(\min\{t \log(k), t + \log^2 k\})$
+	$O(\min\set{t \log(k), t + \log^2 k})$
 	وجود دارد که تمام اعضای
 	$C'$
 	بتوانند
@@ -698,7 +698,7 @@ $t$
 	انتخاب می‌شود. بدون از دست رفتن کلیت گیرنده‌ی
 	$c_1$
 	با درجه‌ی
-	$d = |B_0| - R_i$
+	$d = \card{B_0} - R_i$
 	را در نظر بگیرید.
 	$Z_i$
 	متغیر تصادفی شاخصی است که یک است اگر
@@ -844,7 +844,7 @@ $t$
 		f(k, t) \leq \begin{cases}f\left(k, t\left(1-\frac{1}{2 r}\right)\right)+O(t) & t \geq 24 r \log k \\ O(t \log k) & \text { \# }\end{cases}
 	\end{equation}
 	با حل این تابع بازگشتی به جواب
-	$f(k, t) = O(\min\{t \log k, t + \log^2 k\})$
+	$f(k, t) = O(\min\set{t \log k, t + \log^2 k})$
 	میرسیم.
 \end{proof}
 
@@ -859,7 +859,7 @@ $t$
 	$n$
 	گیرنده، همه‌ی گیرنده‌ها را با کدی به طول زیر میتوان ارضا کرد:
 	\begin{equation}
-		O\left( \min\left\{ t \log(m) (1 + \log^{+}(\dfrac{n}{\log m})), t \log(m) + \log(m) \log^2(n), m, n, tn\right\}\right)
+		O\left( \min\set{ t \log(m) (1 + \log^{+}(\dfrac{n}{\log m})), t \log(m) + \log(m) \log^2(n), m, n, tn}\right)
 	\end{equation}
 \end{theorem}
 \begin{proof}
@@ -874,7 +874,7 @@ $t$
 	قرار می‌گیرد. راس‌های گیرنده را در زیرمجموعه‌های
 	$S_i^{'}$
 	تقسیم می‌کنیم به صورتی که
-	$S_i^{'} = \{c_l | 2^{i - 1} \leq d(c_l) < 2^i \}$.
+	$S_i^{'} = \set{c_l | 2^{i - 1} \leq d(c_l) < 2^i }$.
 	مانند قضیه تک پیامه، تنها مجموعه‌های ناتهی را در نظر می‌گیریم و با
 	$S_1, \ldots, S_g$
 	نشان می‌دهیم. واضح است که نسبت بیشینه درجه به کمینه درجه در هر مجموعه
@@ -882,13 +882,13 @@ $t$
 	حداکثر
 	$r = 2$
 	است و
-	$g \leq 1 + \lceil\log_2(m)\rceil$.
+	$g \leq 1 + \ceil{\log_2(m)}$.
 	طبق
 	\autoref{lemma:pliable2015:6}
 	برای ارضای راس‌های مجموعه‌
 	$S_i$
 	به حداکثر
-	$\min (K_1 t (1 + \log(|S_i|)), K_2(t + \log^2(|S_i|)))$
+	$\min (K_1 t (1 + \log(\card{S_i})), K_2(t + \log^2(\card{S_i})))$
 	پیام نیاز داریم(به ازای دو ثابت 
 	$K_1$
 	و
@@ -897,13 +897,13 @@ $t$
 	\autoref{theorem:log1}
 	تعداد پیام‌ها در مجموع با کران بالای زیر محدودی می‌شود:
 	$$
-	K_1 t \sum_{i=1}^g\left(1+\log \left(\left|S_i\right|\right)\right)=O\left(t \log m\left(1+\log ^{+}\left(\frac{n}{\log m}\right)\right)\right)
+	K_1 t \sum_{i=1}^g\left(1+\log \left(\card{S_i}\right)\right)=O\left(t \log m\left(1+\log ^{+}\left(\frac{n}{\log m}\right)\right)\right)
 	$$
 	همچنین اگر از جمله دوم استفاده کنیم به کران بالای زیر می‌رسیم:
 	$$
 	\begin{aligned}
-		& K_2 \sum_{i=1}^g\left(t+\log ^2\left(\left|S_i\right|\right)\right) \\
-		& \quad=K_2\left(t g+\sum_{i=1}^g \log ^2\left(\left|S_i\right|\right)\right) \leq K_2\left(t g+g \log ^2 n\right) \\
+		& K_2 \sum_{i=1}^g\left(t+\log ^2\left(\card{S_i}\right)\right) \\
+		& \quad=K_2\left(t g+\sum_{i=1}^g \log ^2\left(\card{S_i}\right)\right) \leq K_2\left(t g+g \log ^2 n\right) \\
 		& \quad=O\left(t \log m+\log m \log ^2 n\right)
 	\end{aligned}
 	$$
@@ -973,11 +973,11 @@ $t$
 	از ماتریس
 	$A$
 	وجود داشته باشد به صورتی که
-	$\alpha_i \notin \sspan \{A_{R_j} \setminus i\}$.
+	$\alpha_i \notin \sspan \set{A_{R_j} \setminus i}$.
 \end{lemma}
 \begin{proof}
 	اگر شرط
-	$\alpha_i \notin \sspan\{A_{R_j} \setminus i\}$
+	$\alpha_i \notin \sspan\set{A_{R_j} \setminus i}$
 	برقرار باشد آنگاه برای هر بردار که در فضای پوچ
 	$A_{R_j}$
 	باشد یعنی
@@ -1001,7 +1001,7 @@ $t$
 	به صورت یکتا
 	$b_i$
 	را بازیابی کند ولی
-	$\alpha_i \in \sspan\{A_{R_j} \setminus \{i\}\}$
+	$\alpha_i \in \sspan\set{A_{R_j} \setminus \set{i}}$
 	باشد، در این صورت جواب با درایه‌ی
 	$z_i \neq 0$
 	برای
@@ -1126,39 +1126,39 @@ $t$
 	$b_i$
 	یک گیرنده هست که دقیقا همان متغیر را باید بازیابی کند(
 	گیرنده با اطلاعات جانبی
-	$S_j = [m] \setminus \{i\}$
+	$S_j = [m] \setminus \set{i}$
 	). برای
-	$J = \{j_1\}$
+	$J = \set{j_1}$
 	برای این‌که گیرنده‌ای که دقیقا باید همان متغیر را بازیابی کند ارضا شود ستون
 	$j_1$
 	نباید صفر باشد. پس: 
-	$\forall J, |J| = 1 \Rightarrow \rank(A_J) = 1$
+	$\forall J, \card{J} = 1 \Rightarrow \rank(A_J) = 1$
 	. برای
-	$|J| = 2$
+	$\card{J} = 2$
 	هر دو ستون متفاوت ماتریس باید مستقل خطی باشند. در غیر این صورت اگر
-	$J = \{j_1, j_2\}$
+	$J = \set{j_1, j_2}$
 	مستقل خطی نباشند، در این صورت گیرنده‌
 	$c_k$
 	که
-	$R_k = \{j_1, j_2\}$
+	$R_k = \set{j_1, j_2}$
 	نمی‌تواند هیچ کدام از 
 	$b_{j_1}, b_{j_2}$
 	را بازیابی کند. پس 
-	$\forall J, |J| = 2 \Rightarrow \rank(A_J) = 2$
+	$\forall J, \card{J} = 2 \Rightarrow \rank(A_J) = 2$
 	. حال برای فرض استفرا، فرض کنید
-	$\forall J, |J| = l \Rightarrow \rank(A_J) = l$
+	$\forall J, \card{J} = l \Rightarrow \rank(A_J) = l$
 	حال برای
-	$|J| = l + 1$
+	$\card{J} = l + 1$
 	اگر تمام گیرنده‌هایی که
 	$l + 1$
 	پیام را ندارند یعنی
-	$|R_k| = m - l - 1 $
+	$\card{R_k} = m - l - 1 $
 	ارضا می‌شوند پس برای یک
 	$i \in J$
 	داریم
-	$\alpha_i \notin \sspan(A_{J \setminus \{i\}})$
+	$\alpha_i \notin \sspan(A_{J \setminus \set{i}})$
 	پس
-	$\rank(A_{J}) = \rank(\alpha_i) + \rank(A_{J \setminus \{i\}}) = 1 + l$
+	$\rank(A_{J}) = \rank(\alpha_i) + \rank(A_{J \setminus \set{i}}) = 1 + l$
 \end{proof}
 \section{الگوریتم‌های تصادفی}
 \subsection{الگوریتم \lr{GRCOV} }
@@ -1227,23 +1227,23 @@ $m - 1$
 به دنبال مجموعه‌ای از رئوس گراف مانند
 $B_1$
 هستیم که 
-$|W_1(B_1)|$
+$\card{W_1(B_1)}$
 بیشینه باشد. به جای این‌که در هر گام مجموعه‌ای با اندازه‌ی ماکسیمم پیدا کنیم به صورت حریصانه مجموعه‌ای با اندازه‌ی ماکسیمال پیدا می‌کنیم.
 
 \begin{definition}[مجموعه‌ی ماکسیمال]
 به مجموعه‌ی 
-$B_1 = \{b_{v_1}, \ldots, b_{v_t}\}$
+$B_1 = \set{b_{v_1}, \ldots, b_{v_t}}$
 می‌گوییم ماکسیمال اگر برای هر راس
 $b_{v_{t  +1}} \notin B_1$
 داشته باشیم:
 \begin{equation}
 	\tag{شرط ماکسیمال بودن}
-	|W_1(B_1 \cup \{b_{v_{t + 1}} \})| < |W_1(B_1)|
+	\card{W_1(B_1 \cup \set{b_{v_{t + 1}} })} < \card{W_1(B_1)}
 \end{equation}
 \end{definition}
 
 برای پیدا کردن یک مجموعه‌ی ماکسیمال با یک مجموعه‌ی تهی شروع می‌کنیم و در هر گام یک راس جدید را به صورت حریصانه به طوری که 
-$|W_1(B_1)|$
+$\card{W_1(B_1)}$
 را بیشینه کند انتخاب می‌کنیم. این کار را تا زمانی که نتوانیم ادامه بدهیم، انجام می‌دهیم.
 
 زمانی که مجموعه‌ی ماکسیمال را پیدا کردیم، مطابق آنچه قبل‌تر گفته شد پیام
@@ -1286,7 +1286,7 @@ $|W_1(B_1)|$
  			$G$
  			\State 
  			قرار دهید
- 			$\mathcal{C} = \{\}$
+ 			$\mathcal{C} = \set{}$
  			\State برای هر
  			 $\forall i \in [n]$
  			 قرار دهید
@@ -1305,13 +1305,13 @@ $|W_1(B_1)|$
 				 			راس
 				 			 $b_v \notin B$ 
 				 			 که
-				 			 $\left|W_1\left(B \cup\left\{b_v\right\}\right)\right|$
+				 			 $\card{W_1\left(B \cup\set{b_v}\right)}$
 				 			 بیشینه باشد را بیابید.
 				 			\State قرار دهید
-				 			$B \leftarrow B \cup\left\{b_v\right\}$
+				 			$B \leftarrow B \cup\set{b_v}$
 		 			\EndWhile
 		 			\State قرار دهید
-		 			 $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\sum_{u=1}^{|B|} b_{v_u}, b_{v_u} \in B\right\}$
+		 			 $\mathcal{C} \leftarrow \mathcal{C} \cup\set{\sum_{u=1}^{\card{B}} b_{v_u}, b_{v_u} \in B}$
 		 			\For{ $c_i \in W_1(B)$ }
 		 			\If{
 		 				$c_i$ 
@@ -1374,7 +1374,7 @@ $|W_1(B_1)|$
  دارد. در نتیجه 
  \icod
  نهایی 
- $\sum\limits_{i = 1}^{n} |R_i|$
+ $\sum\limits_{i = 1}^{n} \card{R_i}$
  گیرنده خواهد داشت. این نمونه توسط هر کدام از الگوریتم‌های
  \icod
  قابل حل است. فرگولی از بین الگوریتم‌های ارائه شده در
@@ -1395,9 +1395,9 @@ $|W_1(B_1)|$
  اگر پیام
  $Y_t$
  شبه‌گیرنده‌های
- $$\big\{c_{\sigma_1, \theta_{1, 1}}, c_{\sigma_1, \theta_{1, 2}},\ldots, c_{\sigma_1, \theta_{1, k_1}}\big\} \cup \big\{c_{\sigma_2, \theta_{2, 1}}, \ldots, \big\} \cup \ldots \cup \big\{c_{\sigma_s, \theta_{s, 1}}, \ldots, c_{\sigma_s, \theta_{s, k_s}}\big\}$$
+ $$\set{c_{\sigma_1, \theta_{1, 1}}, c_{\sigma_1, \theta_{1, 2}},\ldots, c_{\sigma_1, \theta_{1, k_1}}} \cup \set{c_{\sigma_2, \theta_{2, 1}}, \ldots,} \cup \ldots \cup \set{c_{\sigma_s, \theta_{s, 1}}, \ldots, c_{\sigma_s, \theta_{s, k_s}}}$$
  را ارضا کند میگوییم $Y_i$ مجموعه‌ی
- $$C(Y_t) =\{ c_{\sigma_1}, \ldots, c_{\sigma_s}\}$$
+ $$C(Y_t) =\set{ c_{\sigma_1}, \ldots, c_{\sigma_s}}$$
  را پوشش می‌دهد.
 \end{definition}
  طبیعی است که هر گیرنده ممکن است در چندین مجموعه‌ی مختلف باشد. برای پیدا کردن یک جواب برای
@@ -1418,7 +1418,7 @@ $|W_1(B_1)|$
 یک تعمیم طبیعی از الگوریتم قبلی وجود دارد. به جای این‌که در هر گام راس‌هایی که یک پیام جدید را بازیابی می‌کنند حذف کنیم، هر راس 
 $c_i$
 یک شمارنده برابر
-$\min(k, |R_i|)$
+$\min(k, \card{R_i})$
 دارد و در هر گام که یک راس یک پیام جدید را بازیابی می‌کند این شمارنده را یک واحد کم می‌کنیم و راس‌های
 $w_1(B_j)$
 را به راس
@@ -1670,9 +1670,9 @@ $p_{msg}$
         و
         $m = n$
         ساخته شده است. اگر در یک نمونه‌ تصادفی
-        $m - |S_i| < t$
+        $m - \card{S_i} < t$
         در این صورت مطابق تعریف این گیرنده به دنبال بازیابی
-        $m - |S_i|$
+        $m - \card{S_i}$
         پیام است. در
         \autoref{fig:pliable2015b}
         به ازای مقادیر مختلف
@@ -1813,7 +1813,7 @@ $2 \log(n)$
  		را با
  		$N^\dagger_\pi [j_l] = N[j_l] \setminus N[j_1, \ldots, j_{l - 1}]$
  		نشان می‌دهیم همچنین درجه را با
- 		$d^\dagger_\pi[j_l] = |N^\dagger_\pi [j_l] |$
+ 		$d^\dagger_\pi[j_l] = \card{N^\dagger_\pi [j_l] }$
  		نشان می‌دهیم.
  	\end{notation}
 
@@ -1824,12 +1824,12 @@ $2 \log(n)$
 	در شکل
 	\autoref{figure:example:effective}
 	با جایگشت
-	$<b_1, b_2, b_3>$
+	$\seq{b_1, b_2, b_3}$
 	داریم:
 	\begin{align*}
-			&d^\dagger[1] = 4, N^\dagger[1] = \{1, 4, 5, 7\} \\
-			&d^\dagger[2] = 2, N^\dagger[1] = \{2, 6\} \\
-			&d^\dagger[3] = 1, N^\dagger[1] = \{3\}
+			&d^\dagger[1] = 4, N^\dagger[1] = \set{1, 4, 5, 7} \\
+			&d^\dagger[2] = 2, N^\dagger[1] = \set{2, 6} \\
+			&d^\dagger[3] = 1, N^\dagger[1] = \set{3}
 	\end{align*}
 
 	\begin{figure}
@@ -1884,10 +1884,10 @@ $2 \log(n)$
 			نشان می‌دهیم راس پیام
 			$j_1$
 			با درجه بیشینه را در نظر بگیرید. در صورت وجود چند گزینه یکی را به دلخواه انتخاب کنید. خواهیم داشت
-			$$\forall j \in [m] \setminus \{j_1\} |N[j_1]| \geq |N[j]|$$
+			$$\forall j \in [m] \setminus \set{j_1} \card{N[j_1]} \geq \card{N[j]}$$
 			\item{[گام دوم]}
 			زیر گراف القا شده توسط راس‌های پیام
-			$[m] \setminus \{j_1\}$
+			$[m] \setminus \set{j_1}$
 			و راس‌های گیرنده‌ی
 			$[n] \setminus N[j_1]$
 			را با
@@ -1895,7 +1895,7 @@ $2 \log(n)$
 		   نمایش می‌دهیم. حال مشابه گام قبل راس پیام
 		   $j_2$
 		   با درجه بیشینه را در نظر می‌گیریم. خواهیم داشت:
-		   $$\forall j \in [m] \setminus \{j_1, j_2\} |N_{G_2}[j_2]| \geq |N_{G_2}[j]|$$
+		   $$\forall j \in [m] \setminus \set{j_1, j_2} \card{N_{G_2}[j_2]} \geq \card{N_{G_2}[j]}$$
 		   که
 		   $N_{G_2}[j] = N[j] \cap V(G_2) = N[j] \setminus N[j_1]$
 			\item{[
@@ -1904,7 +1904,7 @@ $2 \log(n)$
 			در گام
 			$l = 3, \ldots, m$
 			گراف القا شده توسط راس‌های پیام
-			$[m] \setminus \{j_1, \ldots, j_{l - 1}\}$
+			$[m] \setminus \set{j_1, \ldots, j_{l - 1}}$
 			و راس‌های گیرنده‌ی
 			$[n] \setminus N[j_1, \ldots, j_{l-1} ]$
 			را با
@@ -1914,18 +1914,18 @@ $2 \log(n)$
 			را مشابه قدم‌های قبل با بیشنه درجه در زیر گراف
 			$G_l$
 			 انتخاب می‌کنیم. خواهیم داشت:
-			 $$\forall j \in [m] \setminus \{j_1, \ldots, j_l\}: |N_{G_l}[j_l]| \geq |N_{G_l} [j]|$$
+			 $$\forall j \in [m] \setminus \set{j_1, \ldots, j_l}: \card{N_{G_l}[j_l]} \geq \card{N_{G_l} [j]}$$
 			 که
 			 $N_{G_l} = N[j] \cap V(G_l) = N[j] \setminus N[J_1, \ldots, j_{l - 1}] $
 			
 			اگر جایگشت انتخابی راس‌های ما طبق فرایند بالا باشد درجه موثر 
 			$j_1$
 			برابر
-			$|N[j_1]|$
+			$\card{N[j_1]}$
 			 خواهید بود. به طور کلی درجه اثر گذاری راس
 			 $j_l$
 			 برابر
-			 $|N[j_l]]\setminus N[j_1, \ldots, j_{l-1}]|$
+			 $\card{N[j_l]]\setminus N[j_1, \ldots, j_{l-1}]}$
 			 خواهد بود.
 			 
 			 پس از انتخاب جایگشت به روش بالا، راس‌ها را بر اساس درجه موثر آن‌ها به
@@ -1944,7 +1944,7 @@ $2 \log(n)$
 			 خواهیم داشت:
 			 $$d^{\dagger}[j] > \dfrac{n}{2^s} \triangleq \dfrac{d}{2}$$
 			 و همچنین:
-			 $$|N[j] \cap \mathcal{N}_s| \leq \dfrac{n}{2^{s - 1}} \triangleq d$$
+			 $$\card{N[j] \cap \mathcal{N}_s} \leq \dfrac{n}{2^{s - 1}} \triangleq d$$
 			 که
 			 $\mathcal{N}_s$
 			 مجموعه‌ی تمام گیرنده‌های موثر پیام‌های مجموعه‌ی
@@ -1953,7 +1953,7 @@ $2 \log(n)$
 			 $\mathcal{N}_s = \cup_{j' \in \mathcal{M}_s} N^{\dagger}[j']$.
 			 
 			 نامساوی دوم به این دلیل برقرار است که اگر
-			 $|N[j] \cap \mathcal{N}_s | > d$،
+			 $\card{N[j] \cap \mathcal{N}_s } > d$،
 			 در این صورت پیام
 			 $j'$
 			 در فرایند گروه بندی بالا، درجه‌ی موثر بزرگتر از
@@ -1965,9 +1965,9 @@ $2 \log(n)$
 			 در مثال در
 			 \autoref{figure:example:effective}
 			 یک ترتیب و گروه‌بندی معتبر برابر است با
-			 $<b_1, b_2, b_3>$
+			 $\seq{b_1, b_2, b_3}$
 			 و
-			 $\mathcal{M}_1 = \{1\}, \mathcal{M}_2 = \{2\}, \mathcal{M}_3 = \{3\}$
+			 $\mathcal{M}_1 = \set{1}, \mathcal{M}_2 = \set{2}, \mathcal{M}_3 = \set{3}$
 		\end{enumerate}
 	\item{[مرحله ارسال]}
 	برای هر گروه
@@ -1977,7 +1977,7 @@ $2 \log(n)$
 	در ابتدا زیرماتریس خالی است. به ترتیب راس‌های پیام
 	$\mathcal{M}_s$
 	را با همان ترتیب مرحله‌ی قبل بررسی می‌کنیم و به ازای هر کدام یک ستون به زیر ماتریس اضافه می‌کنیم که به آن بردار کدگذاری می‌گوییم. بردارهای کدگذاری به یکی از سه حالت
-	$\{(1, 0)^T, (0, 1)^T, (1, 1)^T\}$
+	$\set{(1, 0)^T, (0, 1)^T, (1, 1)^T}$
 	هستند. در هر گام یکی از این سه بردار را بر این اساس انتخاب می‌کنیم که بیشترین تعداد گیرنده‌های
 	$\mathcal{N}_s$
 	را همچنان قابل ارضا باشند. در مثال
@@ -2043,7 +2043,7 @@ $2 \log(n)$
 		 $\mathcal{N} = [n]$
 		\State
 		قرار دهید
-		 $\mathcal{C} = \{\}$
+		 $\mathcal{C} = \set{}$
 		\State
 		برای هر
 		 $\forall i \in [n]$
@@ -2063,13 +2063,13 @@ $2 \log(n)$
 		راس پیام
 		 $b_v \notin B$
 		 را پیدا کن به طوری که
-		 $\left|W_1\left(B \cup\left\{b_v\right\}\right)\right|$
+		 $\card{W_1\left(B \cup\set{b_v}\right)}$
 		 بیشینه شود.
 		\State قرار دهید
-		$B \leftarrow B \cup\left\{b_v\right\}$
+		$B \leftarrow B \cup\set{b_v}$
 		\EndWhile
 		\State قرار دهید
-		 $\mathcal{C} \leftarrow \mathcal{C} \cup\left\{\sum_{u=1}^{|B|} b_{v_u}, b_{v_u} \in B\right\}$
+		 $\mathcal{C} \leftarrow \mathcal{C} \cup\set{\sum_{u=1}^{\card{B}} b_{v_u}, b_{v_u} \in B}$
 		\For{ $c_i \in W_1(B)$ }
 		\If{ $c_i$ 
 			به
@@ -2200,7 +2200,7 @@ $\mathbb{F}_2$
 	را در نظر بگیرید. اطلاعات جانبی گیرنده‌ها شامل تمام زیرمجوعه‌های یک و دو عضوی از
 	$[4]$
 	هستند یعنی:
-	$R_1 = \{1\}, R_2 = \{2\}, R_3 = \{3\}, R_4 = \{4\}, R_5 = \{1, 2\}, R_6 = \{1, 3\}, R_7 = \{1, 4\}, R_8 = \{2, 3\}, R_9 = \{2, 4\}, R_{10} = \{3, 4\}$.
+	$R_1 = \set{1}, R_2 = \set{2}, R_3 = \set{3}, R_4 = \set{4}, R_5 = \set{1, 2}, R_6 = \set{1, 3}, R_7 = \set{1, 4}, R_8 = \set{2, 3}, R_9 = \set{2, 4}, R_{10} = \set{3, 4}$.
 	کد
 	$Y = (b_1 + b_2 + b_4, b_2+b_3+2b_4)$
 	با طول دو، یک کد بهینه در
@@ -2237,7 +2237,7 @@ $\minrank$
 	ماتریس
 	$G \in \mathbb{F}^{n\times m}_q$
 	بر نمونه‌ی
-		$(m, n, \{R_i\}_{i \in [m]})$
+		$(m, n, \set{R_i}_{i \in [m]})$
 		از مسئله‌ی
 	\picod
 	مطابقت می‌کند اگر برای هر
@@ -2254,7 +2254,7 @@ $\minrank$
 		وجود داشته باشد که 
 		$g_{i j^\ast}= 1$
 		و برای هر
-		$h \in R_i \setminus \{j^\ast\}$
+		$h \in R_i \setminus \set{j^\ast}$
 		داشته باشیم:
 		$g_{i j} = 0$ 
 		\item
@@ -2279,7 +2279,7 @@ $\minrank$
 \begin{theorem}
 	\label{theorem:pliable2016:theorem3}
 	طول کد خطی بهینه برای نمونه‌ی
-	$(m, n, \{R_i\}_{i \in [n]})$
+	$(m, n, \set{R_i}_{i \in [n]})$
 	،
 	\picod
 	برابر
