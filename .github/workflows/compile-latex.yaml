@@ -51,7 +51,7 @@ jobs:
         with:
           working_directory: defence-presentation
           root_file: hosseinmp76-msc-defence-presentation.tex
-          latexmk_use_xelatex: true
+#          latexmk_use_xelatex: true
       - name: Upload presenttion
         id: upload-release-asset-presentaion
         uses: actions/upload-release-asset@v1
