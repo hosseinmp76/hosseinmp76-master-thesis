@@ -16,7 +16,7 @@ jobs:
 
       - name: Get current date and time
         id: current_datetime
-        run: echo "::set-output name=datetime::$(date +'%Y-%m-%d-%H:%M:%S')"
+        run: echo "::set-output name=datetime::$(date +'%Y-%m-%d-%H-%M-%S')"
       - name: CreateRelease
         id: create_release
         uses: actions/create-release@v1
