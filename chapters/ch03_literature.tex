@@ -474,7 +474,7 @@ $$\phi(\alpha_1, \ldots, \alpha_M) = \bigwedge\limits_{i = 1}^{N_0} CL_i, CL_i =
 	$w_1(B_1)$
 	برابر است با
 	\begin{equation}
-		E[|W_1(B_1)] \geq k \dfrac{\dmin}{max}(1 - \dfrac{1}{\dmax})^{\dmax - 1} \geq k \dfrac{\dmin}{max} \geq \dfrac{k}{\gamma r}
+		\mathbb{E}[|W_1(B_1)] \geq k \dfrac{\dmin}{max}(1 - \dfrac{1}{\dmax})^{\dmax - 1} \geq k \dfrac{\dmin}{max} \geq \dfrac{k}{\gamma r}
 	\end{equation}
 	که منظور از
 	$\gamma$
@@ -715,14 +715,14 @@ $t$
 	$Z = Z_1 \ldots + Z_d$
 	حال داریم:
 	\begin{equation}
-		E[Z] = E[\sum\limits_{i = 1}^{d} X_i ] = \sum\limits_{i = 1}^{d} E[X_i] = dp = \dfrac{dt}{d_{max}}
+		\mathbb{E}[Z] = \mathbb{E}[\sum\limits_{i = 1}^{d} X_i ] = \sum\limits_{i = 1}^{d} \mathbb{E}[X_i] = dp = \dfrac{dt}{d_{max}}
 	\end{equation}
 	چون
 	$d \leq \dmax \leq rd$
 	و همچنین
-	$t \geq E[Z] \geq \dfrac{t}{r}$.
+	$t \geq \mathbb{E}[Z] \geq \dfrac{t}{r}$.
 	حال به کرانی برای میزان تمرکز
-	$E[Z]$
+	$\mathbb{E}[Z]$
 	نیاز داریم. چون
 	$Z$
 	جمع چند متغیر برنولی مستقل با توزیع یکسان است می‌توان از نامساوی‌های چرنوف زیر استفاده کرد
@@ -730,9 +730,9 @@ $t$
 	برای هر
 	$\epsilon \in (0, 1)$
 	داریم
-	$$P(Z < (1 - \epsilon) E[Z]) \leq e^{- \dfrac{\epsilon^2}{2} E[Z]}$$
+	$$P(Z < (1 - \epsilon) \mathbb{E}[Z]) \leq e^{- \dfrac{\epsilon^2}{2} \mathbb{E}[Z]}$$
 	و
-	$$P(Z > (1 + \epsilon) E[Z]) \leq e^{- \dfrac{\epsilon^2}{3} E[Z]}$$
+	$$P(Z > (1 + \epsilon) \mathbb{E}[Z]) \leq e^{- \dfrac{\epsilon^2}{3} \mathbb{E}[Z]}$$
 	فرض کنید
 	$t \geq 24 r \log k$
 	. اگر
@@ -740,24 +740,24 @@ $t$
 	انتخاب کنیم خواهیم داشت
 	$\epsilon \leq \dfrac{1}{2}$
 	آنگاه با استفاده از این‌که
-	$E[Z] \geq t/r$
+	$\mathbb{E}[Z] \geq t/r$
 	داریم:
 	\begin{equation}
-		P(Z > 3 E[Z]/x) \leq P(X > (1 + \epsilon) E[Z]) \leq e^{-\dfrac{\epsilon^2}{3} E[Z]} \leq e^{- \dfrac{6 r \log k}{3 t} \cdot \dfrac{t}{r}} = e^{- 2 \log k} = k^{-2}
+		P(Z > 3 \mathbb{E}[Z]/x) \leq P(X > (1 + \epsilon) \mathbb{E}[Z]) \leq e^{-\dfrac{\epsilon^2}{3} \mathbb{E}[Z]} \leq e^{- \dfrac{6 r \log k}{3 t} \cdot \dfrac{t}{r}} = e^{- 2 \log k} = k^{-2}
 	\end{equation}
 	به طور مشابه داریم:
 	\begin{equation}
-		P(Z < E[Z]/x) \leq P(X > (1 -- \epsilon) E[Z]) \leq e^{-\dfrac{\epsilon^2}{2} E[Z]} \leq e^{- \dfrac{6 r \log k}{2 t} \cdot \dfrac{t}{r}} = e^{-3 \log k} = k^{-3}
+		P(Z < \mathbb{E}[Z]/x) \leq P(X > (1 -- \epsilon) \mathbb{E}[Z]) \leq e^{-\dfrac{\epsilon^2}{2} \mathbb{E}[Z]} \leq e^{- \dfrac{6 r \log k}{2 t} \cdot \dfrac{t}{r}} = e^{-3 \log k} = k^{-3}
 	\end{equation}
 	
 	با ترکیب دو کران بابا خواهیم داشت:
 	\begin{equation}
-		P(\dfrac{E[Z]}{2} \leq Z \leq \dfrac{3E[Z]}{2}) \geq 1 - \dfrac{1}{k^2} - \dfrac{1}{k^3}
+		P(\dfrac{\mathbb{E}[Z]}{2} \leq Z \leq \dfrac{3\mathbb{E}[Z]}{2}) \geq 1 - \dfrac{1}{k^2} - \dfrac{1}{k^3}
 	\end{equation}
 	که نتیجه می‌دهد با احتمال ناصفر راس گیرنده‌ای هست که به، بین
-	$E[Z]/2$
+	$\mathbb{E}[Z]/2$
 	و
-	$3E[Z]/2$
+	$3\mathbb{E}[Z]/2$
 	از پیام‌های
 	$B_1$
 	وصل نیست. امید ریاضی تعداد گیرنده‌هایی که این ویژگی را داشته باشند حداقل
@@ -767,19 +767,19 @@ $t$
 	وجود دارد که امید ریاضی آن بیشتر مساوی باشد. پس زیر مجموعه‌ی
 	$B_1$
 	وجود دارد که تمام گیرنده‌ها بین
-	$E[Z] / 2$
+	$\mathbb{E}[Z] / 2$
 	و
-	$3E[Z]/2$
+	$3\mathbb{E}[Z]/2$
 	پیام نادانسته در آن دارند. توجه کنید که
-	$E[Z]$
+	$\mathbb{E}[Z]$
 	برای هر گیرنده متفاوت است و اینجا به دلیل واضح بودن مسئله دقتمان را کم کردیم و
 	\transf{سوءاستفاده از نمادگذاری}{abuse of notation}
 	رخ داد. اگر از 
 	\autoref{lemma:pliable20151}
 	استفاده کنیم، مجموعه‌ای وجود دارد با حداکثر
-	$3E[Z]/2 \leq 3t/2$
+	$3\mathbb{E}[Z]/2 \leq 3t/2$
 	ترکیب خطی از پیام‌ها که هر گیرنده می‌تواند حداقل
-	$E[X]/2 \geq t/2r$
+	$\mathbb{E}[X]/2 \geq t/2r$
 	پیام جدید را بازیابی کند. توجه کنید که اگر
 	$3t/2 > \dmax$
 	آنگاه تعداد ترکیب‌های خطی حداکثر
