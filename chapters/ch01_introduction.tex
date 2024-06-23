@@ -106,7 +106,7 @@ $b_1$، $b_2$ و $b_3$
 نشان دهیم، گیرنده‌ی اول، خبر دوم و سوم را می‌داند و به دنبال \transf{بازیابی}{retrieve} خبر اول است. به طور مشابه گیرنده‌های دوم و سوم به ترتیب به دنبال بازیابی خبرهای دوم و سوم هستند. 
 
 \noindent
-سوالی که در این نمونه‌های \icod به دنبال آن هستیم این است که، کم‌ترین تعداد دفعات ارسال خبر از طرف ماهواره برای این‌که تمام گیرنده‌ها پیام مورد نظر خود را بازیابی کنند، چقدر است؟
+پرسشی که در این نمونه‌های \icod به دنبال آن هستیم این است که، کم‌ترین تعداد دفعات ارسال خبر از طرف ماهواره برای این‌که تمام گیرنده‌ها پیام مورد نظر خود را بازیابی کنند، چقدر است؟
 
 برای مدل‌سازی ریاضی مسئله، خبرها را با متغیرهای تصادفی مدل می‌کنیم که از الفبای
 $\chi$
@@ -426,6 +426,241 @@ $\mathscr{C}_\chi$
 	\end{figure}
 \end{itemize}
 \end{notation}
+ یکی از ابزارهای مهم در حل مسائل مربوط به
+\icod 
+استفاده از
+\transf{گراف گمراهی}{Confusion Graph}
+است که در ادامه تعریف خواهیم کرد. گراف گمراهی برای مسئله‌ی \icod اولین بار توسط 
+\namef{
+	اِلون}{Alon} و همکاران در
+\cite{4691014}
+معرفی شد. مفهوم معادلی در بازی‌های حدس‌زنی نیز به صورت مستقل در
+\cite{5942165}
+تعریف شده است. استفاده از مفهوم گراف گمراهی در نظریه اطلاعات به
+\cite{1056798}
+بر می‌گردد. برای تعریف گراف گمراهی، نیاز داریم تا ابتدا گمراه‌کننده بودن دو پیام را تعریف کنیم.
+\begin{definition}[گمراه‌کننده بودن دو پیام]
+	در مسئله‌ی
+	\icodg
+	با بردارهای پیام به شکل
+	${X = (X_1, \ldots, X_n): X_i \in \chi^{t_i}}$،
+	می‌گوییم دو بردار پیام
+	$X, Z \in \prod_{i = 1}^n \chi^{t_i}$
+	در مکان
+	$l$-ام
+	که
+	$l \in [t_i]$،
+	گمراه‌کننده‌اند اگر
+	$X_{il} \ne Z_{il}$
+	و
+	$\forall j \in S[i]: X_j = Z_j$
+	یا به صورت معادل می‌گوییم دو بردار
+	$X$ و $Z$
+	در مکان
+	$l$
+	گمراه‌کننده نیستند اگر
+	$X_{il} = Z_{il}$
+	یا
+	$\exists j \in S[i]: X_j \ne Z_j$.
+	
+\end{definition}
+\begin{example}
+	برای گراف اطلاعات جانبی
+	\autoref{fig:fatemeh4}،
+	دو بردار پیام
+	$X = (0, 0, 0)$
+	و
+	$Z = (0, 1, 1)$
+	در مکان $1$ پیام $2$-ام (در این مثال پیام‌ها بردارهای تک عضوی هستند.) گمراه‌کننده‌اند، زیرا گیرنده‌ی $3$-ام نمی‌تواند بین این دو بردار پیام که در پیام سوم متفاوت‌اند تفاوتی قائل شود. همچنین دو بردار پیام
+	$X = (0, 0, 0)$
+	و
+	$Z = (1, 1, 0)$
+	در مکان $1$ پیام $3$-ام  گمراه‌کننده نیستند، زیرا گیرنده‌ی سوم که می‌خواهد پیام سوم را بازیابی کند، بین این دو بردار تفاوت قائل است (یعنی پیام دیگری هست که در مجموعه‌ی اطلاعات جانبی گیرنده‌ی سوم است ولی در این دو بردار متفاوت است.)
+\end{example}
+\begin{definition}[
+	گراف گمراهی در مکان
+	$l$
+	از پیام
+	$i$
+	]
+	برای مسئله‌ی
+	\icodg
+	با بردار پیام‌هایی با اندازه‌ی
+	$t = (t_1, \ldots, t_n)$
+	و الفبای
+	$\chi$،
+	گراف گمراهی در مکان
+	$l$-ام
+	پیام
+	$i$-ام
+	را با
+	$\Gamma_t^{il}(G)$
+	نشان می‌دهیم که شامل
+	$\prod_{i = 1}^n |\chi|^{t_i}$
+	راس است که به هر راس یکی از بردارهای پیام ممکن از مجموعه‌ی
+	$\prod_{i = 1}^n \chi^{t_i}$
+	را نسبت می‌دهیم و دو راس به همدیگر یال دارند اگر بردارهای پیام متناظرشان در مکان
+	$l$
+	از پیام
+	$i$
+	گمراه‌کننده باشند.
+\end{definition}
+\begin{definition}[
+	گراف گمراهی]
+	\label{def:confusiongraph}
+	با روی هم قرار دادن تمام گراف‌های گمراهی ممکن برای یک مسئله به گراف گمراهی آن می‌رسیم، یعنی گرافی شامل
+	$\prod_{i = 1}^n |\chi|^{t_i}$
+	راس که به هر راس یکی از بردارهای پیام ممکن از مجموعه‌ی
+	$\prod_{i = 1}^n \chi^{t_i}$
+	را نسبت می‌دهیم و دو راس به همدیگر یال دارند اگر در یکی از گراف‌های گمراهی به ازای دو بردار پیام ممکن به یک دیگر متصل باشند.
+\end{definition}
+\begin{example}
+	برای گراف اطلاعات جانبی
+	\autoref{fig:fatemeh4}،
+	و الفبای
+	$\mathbb{F}_2$
+	و 
+	$t = (1, 1, 1)$
+	تمامی گراف‌های گمراه‌کننده به ازای تمام مکان‌های تمام پیام‌ها و همچنین گراف گمراهی نهایی را در
+	\autoref{fig:confusion_graph}
+	می‌بینیم.
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.4\textwidth}
+			\centering
+			\begin{tikzpicture}[->, >=stealth, auto, semithick]
+				% Set the positions of the nodes
+				\node[circle, draw=blue, inner sep=0pt] (C0) at (-0.2,0) {$000$};
+				\node[circle, draw=blue, inner sep=0pt] (C1) at (1.2,0) {$001$};
+				\node[circle, draw=blue, inner sep=0pt] (C2) at  (2,-1) {$010$};
+				\node[circle, draw=blue, inner sep=0pt] (C3) at (2,-2) {$011$};
+				\node[circle, draw=blue, inner sep=0pt] (C4) at (1.2,-3) {$100$};
+				\node[circle, draw=blue, inner sep=0pt] (C5) at   (-0.2,-3) {$101$};
+				\node[circle, draw=blue, inner sep=0pt] (C6) at   (-1,-2) {$110$};
+				\node[circle, draw=blue, inner sep=0pt] (C7) at (-1,-1) {$111$};
+
+				\draw[-] (C0) -- (C4);
+				\draw[-] (C1) -- (C5);
+				\draw[-] (C2) -- (C6);
+				\draw[-] (C3) -- (C7);
+			\end{tikzpicture}
+			\caption{$\Gamma^{11}$}
+			\label{fig:confusion_graph1}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\textwidth}
+			\centering
+			\begin{tikzpicture}[->, >=stealth, auto, semithick]
+				
+				\node[circle, draw=blue, inner sep=0pt] (C0) at (-0.2,0) {$000$};
+				\node[circle, draw=blue, inner sep=0pt] (C1) at (1.2,0) {$001$};
+				\node[circle, draw=blue, inner sep=0pt] (C2) at  (2,-1) {$010$};
+				\node[circle, draw=blue, inner sep=0pt] (C3) at (2,-2) {$011$};
+				\node[circle, draw=blue, inner sep=0pt] (C4) at (1.2,-3) {$100$};
+				\node[circle, draw=blue, inner sep=0pt] (C5) at   (-0.2,-3) {$101$};
+				\node[circle, draw=blue, inner sep=0pt] (C6) at   (-1,-2) {$110$};
+				\node[circle, draw=blue, inner sep=0pt] (C7) at (-1,-1) {$111$};
+				
+				\draw[-] (C0) -- (C2);
+				\draw[-] (C1) -- (C3);
+				\draw[-] (C4) -- (C6);
+				\draw[-] (C5) -- (C7);
+
+			\end{tikzpicture}
+			\caption{$\Gamma^{21}$}
+			\label{fig:confusion_graph2}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\textwidth}
+					\centering
+		\begin{tikzpicture}[->, >=stealth, auto, semithick]
+			\node[circle, draw=blue, inner sep=0pt] (C0) at (-0.2,0) {$000$};
+			\node[circle, draw=blue, inner sep=0pt] (C1) at (1.2,0) {$001$};
+			\node[circle, draw=blue, inner sep=0pt] (C2) at  (2,-1) {$010$};
+			\node[circle, draw=blue, inner sep=0pt] (C3) at (2,-2) {$011$};
+			\node[circle, draw=blue, inner sep=0pt] (C4) at (1.2,-3) {$100$};
+			\node[circle, draw=blue, inner sep=0pt] (C5) at   (-0.2,-3) {$101$};
+			\node[circle, draw=blue, inner sep=0pt] (C6) at   (-1,-2) {$110$};
+			\node[circle, draw=blue, inner sep=0pt] (C7) at (-1,-1) {$111$};
+			
+			\draw[-] (C0) -- (C1);
+			\draw[-] (C0) -- (C3);
+			\draw[-] (C1) -- (C2);
+			\draw[-] (C2) -- (C3);
+			\draw[-] (C4) -- (C5);
+			\draw[-] (C4) -- (C7);
+			\draw[-] (C5) -- (C6);
+			\draw[-] (C6) -- (C7);
+
+			
+		\end{tikzpicture}
+		\caption{$\Gamma^{31}$}
+		\label{fig:confusion_graph3}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\textwidth}
+		\centering
+		\begin{tikzpicture}[->, >=stealth, auto, semithick]
+				\node[circle, draw=blue, inner sep=0pt] (C0) at (-0.2,0) {$000$};
+			\node[circle, draw=blue, inner sep=0pt] (C1) at (1.2,0) {$001$};
+			\node[circle, draw=blue, inner sep=0pt] (C2) at  (2,-1) {$010$};
+			\node[circle, draw=blue, inner sep=0pt] (C3) at (2,-2) {$011$};
+			\node[circle, draw=blue, inner sep=0pt] (C4) at (1.2,-3) {$100$};
+			\node[circle, draw=blue, inner sep=0pt] (C5) at   (-0.2,-3) {$101$};
+			\node[circle, draw=blue, inner sep=0pt] (C6) at   (-1,-2) {$110$};
+			\node[circle, draw=blue, inner sep=0pt] (C7) at (-1,-1) {$111$};
+			
+			\draw[-] (C0) -- (C4);
+			\draw[-] (C1) -- (C5);
+			\draw[-] (C2) -- (C6);
+			\draw[-] (C3) -- (C7);
+			
+						
+			\draw[-] (C0) -- (C2);
+			\draw[-] (C1) -- (C3);
+			\draw[-] (C4) -- (C6);
+			\draw[-] (C5) -- (C7);
+			
+						
+			\draw[-] (C0) -- (C1);
+			\draw[-] (C0) -- (C3);
+			\draw[-] (C1) -- (C2);
+			\draw[-] (C2) -- (C3);
+			\draw[-] (C4) -- (C5);
+			\draw[-] (C4) -- (C7);
+			\draw[-] (C5) -- (C6);
+			\draw[-] (C6) -- (C7);
+		\end{tikzpicture}
+		\caption{گراف گمراهی}
+		\label{fig:confusion_graph4}
+		\end{subfigure}
+		\caption{گراف‌های گمراهی در مکان‌های مختلف و گراف گمراهی مسئله}
+		\label{fig:confusion_graph}
+	\end{figure}
+	\end{example}
+	گراف گمراهی ابزار قدرتمندی برای حل مسائل مربوط به نرخ انتشار است. برای مثال با استفاده از آن می‌توان نرخ انتشار را به عدد رنگی گراف مربوط کرد. ابتدا به یک تعریف نیاز داریم.
+	\begin{definition}[
+		نرخ انتشار برای کدهای $t$ تایی]
+		\begin{equation}
+			\beta_t(G) := \inf_{
+				(t, r)
+				\text{
+					کدهای
+				}
+			} \dfrac{r}{t}
+		\end{equation}
+	\end{definition}
+	\begin{remark}
+		\begin{equation}
+			\forall t: \beta(G) \leq \beta_t(G)
+		\end{equation}
+	\end{remark}
+	به عنوان نمونه‌ای از کاربردهای گراف گمراهی به قضیه زیر اشاره می‌کنیم. اثبات این قضیه خارج از چارچوب این پایان‌نامه است.
+	\begin{theorem}
+		اگر عدد رنگی یک گراف را با
+		$\chi(G)$
+		نمایش دهیم داریم:
+		\begin{equation}
+			\beta_t(G) = \dfrac{1}{t}\ceil{\log \chi(\Gamma_t(G))}
+		\end{equation}
+	\end{theorem}
 	\begin{remark}
 	\label{remark:xbdiff}
 	برای جلوگیری از گمراهی و ایجاد سردرگمی هر متغیر تصادفی و راس متناظر با آن به صورت معادل در ادبیات پژوهشی و این پایان‌نامه استفاده می‌شوند یعنی در هر بخش با توجه به این‌که در مورد گراف صحبت کنیم یا درباره‌ی متغیر تصادفی و توزیع آن،
