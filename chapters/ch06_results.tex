@@ -1135,18 +1135,28 @@ $l$
 	$\mathbb{F}_q^n$
 	انتخاب می‌کنیم. اگر
 	$r'$
-	بردار تصادفی انتخاب کنیم، خواهیم داشت:
-	\begin{equation}
-	Pr(\bigcup_{i = 1}^{r'} T \ne \mathbb{F}_q^n) \leq q^n (1 - |T|/q^n)^{r'} < q^n e^{- r' |T| / q^n} \leq 1
-	\end{equation}
-	که
-	$r' = q^{n - k} n \ln q \leq m$\footnote{
+	بردار تصادفی انتخاب کنیم، احتمال اینکه 
+	$x \in \mathbb{F}_q^n$
+	در
+	$T + z_i$
+	نباشد برابر
+	$ (1 - |T|/q^n)$
+	است. در نتیجه اگر مقدار
+	$r'$
+	را قرار دهیم
+	$r' = q^{n - k} n \ln q \leq r$\footnote{
 		به
 		\lr{Prop. 3.12}
 		در فصل 27 کتاب
 		\cite{graham1995handbook}
 		رجوع کنید.
 	}.
+	 احتمال اینکه یک 
+	$x \in \mathbb{F}_q^n$
+	وجود داشته باشد که در اجتماع این جدول‌ها نباشد برابر است با:
+	\begin{equation}
+	Pr(\bigcup_{i = 1}^{r'} T \ne \mathbb{F}_q^n) \leq q^n (1 - |T|/q^n)^{r'} < q^n e^{- r' |T| / q^n} \leq 1
+	\end{equation}
 	اگر مقدار
 	$r'$
 	را برابر
@@ -1325,6 +1335,7 @@ $\mathbb{F}_2$
 	با اطلاعات جانبی ساخته شده از یک زیر فضای خطی
 	$n$
 	بعدی]
+	\label{def:our:linearspacepicod}
 	 یک زیر فضای خطی 
 	$n$
 	بعدی از
@@ -1355,13 +1366,15 @@ $\mathbb{F}_2$
 \end{definition}
 
 \begin{theorem}
-	برای مسئله‌ی
+	\label{thm:our:hardexample}
+	برای هر  جدول قابل استفاده
+	مانند
+	$T$
+	 در مسئله‌ی دوگان برای مسئله‌ی
 	\picod
 	با اطلاعات جانبی ساخته شده از یک زیر فضای خطی
 	$n$
-	بعدی و یک جدول قابل استفاده‌ی مسئله‌ی دوگان آن
-	$T$
-	داریم:
+	بعدی داریم:
 	\begin{align*}
 		\card{T} \leq 2^{m - n}
 	\end{align*}
@@ -1430,6 +1443,40 @@ $\mathbb{F}_2$
 	 $\card{C}$
 	 برقرار است؟
 \end{openproblem}
+
+حال آماده‌ایم تا با استفاده از
+\autoref{thm:our:hardexample}
+مثال سخت مورد نظر خود را ارائه دهیم.
+\begin{corollary}
+	به ازای هر 
+	$n$
+	یک نمونه از 
+	\picod
+	روی الفبای
+	$\mathbb{F}_2$
+	وجود دارد که طول کد بهینه حداقل
+	$m \equiv \log(n)$
+	است، که نشان می‌دهد کران پایین \picod دقیق است.
+\end{corollary}
+\begin{proof}
+	به ازای هر
+	$n$
+	نمونه تعریف شده در
+		\autoref{def:our:linearspacepicod}
+	شرایط گفته شده را دارد، زیرا طبق
+	\autoref{thm:ourmain}
+	می‌دانیم
+		$n - \psindx_2(G) \le \pindx_2(G)$.
+		از طرفی طبق
+		\autoref{thm:our:hardexample}
+		داریم
+		${\psindx_2(G) \leq m - n}$
+		در نتیجه
+		\begin{equation}
+			n - (m - n) \le \pindx_2(G) \Rightarrow m \le \pindx_2(G)
+		\end{equation}
+\end{proof}
+
 
 
 
