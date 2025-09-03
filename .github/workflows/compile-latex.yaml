@@ -34,7 +34,7 @@ jobs:
           prerelease: false
 
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@3.2.0
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: hosseinmp76-thesis.tex
           latexmk_use_xelatex: true
@@ -50,7 +50,7 @@ jobs:
           asset_content_type: pdf
 
       - name: Compile presentation
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v4
         with:
           working_directory: defence-presentation
           root_file: hosseinmp76-msc-defence-presentation.tex
